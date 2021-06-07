@@ -1,8 +1,12 @@
-package fr.epita.assistants.myide.domain.entity;
+package fr.epita.assistants.myide.domain.entity.aspect;
+
+import fr.epita.assistants.myide.domain.entity.Aspect;
+import fr.epita.assistants.myide.domain.entity.Feature;
+import fr.epita.assistants.myide.domain.entity.Mandatory;
 
 import java.util.List;
 
-public class Any implements Aspect{
+public class Any implements Aspect {
     private final Type type = Mandatory.Aspects.ANY;
 
     public Any(List<Feature> featureList) {
