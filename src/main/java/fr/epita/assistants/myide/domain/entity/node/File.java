@@ -1,19 +1,21 @@
-package fr.epita.assistants.myide.domain.entity;
+ckage fr.epita.assistants.myide.domain.entity.node;
+
+import fr.epita.assistants.myide.domain.entity.Node;
 
 import javax.validation.constraints.NotNull;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class Folder implements Node{
-    private Path path;
-    private final Type type = Types.FOLDER;
+public class File implements Node {
+    private final Path path;
+    private final Type type = Types.FILE;
+    private final List<@NotNull Node> children = Collections.emptyList();
 
-    public Folder(Path path, List<@NotNull Node> children) {
+    public File(Path path) {
         this.path = path;
-        this.children = children;
     }
-
-    private List<@NotNull Node> children;
 
     @Override
     public Path getPath() {
@@ -32,11 +34,11 @@ public class Folder implements Node{
 
     @Override
     public boolean isFile() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isFolder() {
-        return true;
+        return false;
     }
 }

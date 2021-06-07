@@ -1,8 +1,12 @@
-package fr.epita.assistants.myide.domain.entity;
+package fr.epita.assistants.myide.domain.entity.aspect;
+
+import fr.epita.assistants.myide.domain.entity.Aspect;
+import fr.epita.assistants.myide.domain.entity.Feature;
+import fr.epita.assistants.myide.domain.entity.Mandatory;
 
 import java.util.List;
 
-public class Maven implements Aspect{
+public class Maven implements Aspect {
     private final Type type = Mandatory.Aspects.MAVEN;
 
     public Maven(List<Feature> featureList) {
