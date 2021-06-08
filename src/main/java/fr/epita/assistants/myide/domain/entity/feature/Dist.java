@@ -10,7 +10,7 @@ import java.util.zip.ZipOutputStream;
 
 public class Dist implements Feature {
 
-    public void zipFile(String path) throws IOException {
+    private void zipFile(String path) throws IOException {
         var file = new File(path);
         var fileOutputStream = new FileOutputStream(path + ".zip");
         var outputZip = new ZipOutputStream(fileOutputStream);
@@ -29,6 +29,30 @@ public class Dist implements Feature {
         fileOutputStream.close();
     }
 
+    public void zipFolder(String folder, File file, ZipOutputStream zipOut) throws IOException {
+        if (file.isDirectory()) {
+            if (!folder.endsWith("/")) {
+                folder += "/";
+            }
+            zipOut.putNextEntry(new ZipEntry(folder));
+            zipOut.closeEntry();
+            File[] files = file.listFiles();
+            for (var child : files) {
+                zipFolder(folder + child.getName(), child, zipOut);
+            }
+        } else {
+            var inputStream = new FileInputStream(file);
+            var zip = new ZipEntry(folder);
+            zipOut.putNextEntry(zip);
+            var bytes = new byte[1024];
+
+            for (int length = inputStream.read(bytes); length >= 0; length = inputStream.read(bytes)) {
+                zipOut.write(bytes, 0, length);
+            }
+            inputStream.close();
+        }
+    }
+
     @Override
     public ExecutionReport execute(Project project, Object... params) {
         Cleanup cleanup = new Cleanup();
@@ -41,7 +65,20 @@ public class Dist implements Feature {
                 e.printStackTrace();
             }
         } else {
-            //zipFile(project.getRootNode().getPath().toString());
+            String path = project.getRootNode().getPath().toString();
+            try {
+                FileOutputStream outputStream = new FileOutputStream(path + ".zip");
+                ZipOutputStream zipOut = new ZipOutputStream(outputStream);
+                File file = new File(path);
+                zipFolder(file.getName(), file, zipOut);
+                zipOut.close();
+                outputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
         return null;
     }
