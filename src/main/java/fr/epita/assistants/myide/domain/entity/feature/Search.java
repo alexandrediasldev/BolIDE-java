@@ -10,6 +10,7 @@ import org.apache.lucene.document.TextField;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.document.Document;
@@ -27,8 +28,6 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.store.Directory;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,12 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 public class Search implements Feature {
@@ -77,7 +70,7 @@ public class Search implements Feature {
             var node = project.getRootNode();
 
             addAllFiles(node);
-            var listDoc = searchFiles("content","Amogus");
+            var listDoc = searchFiles("content","AMONGUS");
             if(listDoc.isEmpty())
                 return report;
 
@@ -89,6 +82,7 @@ public class Search implements Feature {
 
         return report;
     }
+
     public void addAllFiles(Node n) throws IOException {
         if(n.isFile())
             addFileToIndex(n.getPath().toString());
@@ -96,28 +90,29 @@ public class Search implements Feature {
             for (var a : n.getChildren())
                 addAllFiles(a);
     }
-    public List<Document> searchFiles(String inField, String queryString) throws ParseException, IOException {
-        Query query = null;
-            query = new QueryParser(inField, analyzer)
-                    .parse(queryString);
-            IndexReader rootReader = DirectoryReader.open(rootDirectory);
-            IndexSearcher searcher = new IndexSearcher(rootReader);
-            TopDocs topDocs = searcher.search(query, 10);
 
-            var a =  Arrays.stream(topDocs.scoreDocs).map(scoreDoc -> {
-                try {
-                    var s = searcher.doc(scoreDoc.doc);
-                    return s;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            })
-                    .collect(Collectors.toList());
-            return a;
+    public List<Document> searchFiles(String inField, String queryString) throws ParseException, IOException {
+        Query query = new QueryParser(inField, analyzer)
+                .parse(queryString);
+        IndexReader rootReader = DirectoryReader.open(rootDirectory);
+        IndexSearcher searcher = new IndexSearcher(rootReader);
+        TopDocs topDocs = searcher.search(query, 10);
+
+        var a =  Arrays.stream(topDocs.scoreDocs).map(scoreDoc -> {
+            try {
+                var s = searcher.doc(scoreDoc.doc);
+                return s;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        })
+                .collect(Collectors.toList());
+        return a;
 
 
     }
+
     public void addFileToIndex(String filepath) throws IOException {
             Path path = Paths.get(filepath);
             File file = path.toFile();
