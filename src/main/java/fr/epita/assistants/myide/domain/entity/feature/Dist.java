@@ -10,6 +10,20 @@ import java.util.zip.ZipOutputStream;
 
 public class Dist implements Feature {
 
+    public class DistReport implements ExecutionReport {
+
+        final boolean success;
+
+        public DistReport(boolean success) {
+            this.success = success;
+        }
+
+        @Override
+        public boolean isSuccess() {
+            return success;
+        }
+    }
+
     /*
         Annex for writing into zip files
         does not close content
@@ -67,7 +81,7 @@ public class Dist implements Feature {
             try {
                 zipFile(project.getRootNode().getPath().toString());
             } catch (IOException e) {
-                e.printStackTrace();
+                return new DistReport(false);
             }
         } else {
             String path = project.getRootNode().getPath().toString();
@@ -79,11 +93,11 @@ public class Dist implements Feature {
                 zipOut.close();
                 outputStream.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                return new DistReport(false);
             }
 
         }
-        return null;
+        return new DistReport(true);
     }
 
     @Override
