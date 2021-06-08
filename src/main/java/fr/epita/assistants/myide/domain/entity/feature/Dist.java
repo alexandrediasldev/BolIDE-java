@@ -10,19 +10,27 @@ import java.util.zip.ZipOutputStream;
 
 public class Dist implements Feature {
 
-    private void zipFile(String path) throws IOException {
+    /*
+        Annex for writing into zip files
+        does not close content
+     */
+    private void writeZip(ZipOutputStream zipOut, ZipEntry zipEntry, FileInputStream inputStream) throws IOException {
+        zipOut.putNextEntry(zipEntry);
+
+        byte[] bytes = new byte[1024];
+
+        for (int length = inputStream.read(bytes); length >= 0; length = inputStream.read(bytes))
+            zipOut.write(bytes, 0, length);
+    }
+
+    public void zipFile(String path) throws IOException {
         var file = new File(path);
         var fileOutputStream = new FileOutputStream(path + ".zip");
         var outputZip = new ZipOutputStream(fileOutputStream);
         var inputFileStream = new FileInputStream(file);
         var inputZip = new ZipEntry(file.getName());
 
-        outputZip.putNextEntry(inputZip);
-
-        byte[] bytes = new byte[1024];
-
-        for (int length = inputFileStream.read(bytes); length >= 0; length = inputFileStream.read(bytes))
-            outputZip.write(bytes, 0, length);
+        writeZip(outputZip, inputZip, inputFileStream);
 
         outputZip.close();
         inputFileStream.close();
@@ -37,18 +45,15 @@ public class Dist implements Feature {
             zipOut.putNextEntry(new ZipEntry(folder));
             zipOut.closeEntry();
             File[] files = file.listFiles();
+
             for (var child : files) {
                 zipFolder(folder + child.getName(), child, zipOut);
             }
         } else {
             var inputStream = new FileInputStream(file);
             var zip = new ZipEntry(folder);
-            zipOut.putNextEntry(zip);
-            var bytes = new byte[1024];
 
-            for (int length = inputStream.read(bytes); length >= 0; length = inputStream.read(bytes)) {
-                zipOut.write(bytes, 0, length);
-            }
+            writeZip(zipOut, zip, inputStream);
             inputStream.close();
         }
     }
@@ -73,8 +78,6 @@ public class Dist implements Feature {
                 zipFolder(file.getName(), file, zipOut);
                 zipOut.close();
                 outputStream.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
