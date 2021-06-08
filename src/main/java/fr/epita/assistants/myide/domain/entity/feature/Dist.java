@@ -35,12 +35,13 @@ public class Dist implements Feature {
 
       if (project.getRootNode().isFile())
       {
-          zipFile(project.getRootNode().)
+          //zipFile(project.getRootNode().)
       }
       else
       {
 
       }
+      return null;
     }
 
     @Override
