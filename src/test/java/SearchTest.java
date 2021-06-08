@@ -1,6 +1,5 @@
-package fr.epita.assistants.myide.domain.entity.feature;
-
 import fr.epita.assistants.myide.domain.entity.Node;
+import fr.epita.assistants.myide.domain.entity.feature.Search;
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -44,10 +43,11 @@ class SearchTest {
 
         StandardAnalyzer analyzer = new StandardAnalyzer();
         Directory directory = FSDirectory.open(Paths.get("./"));
-        var c1 = new File(Path.of("./sus.txt"));
+        var c1 = new File(Path.of("./test/testfiles/sus.txt"));
         List<Node> l = new ArrayList<>();
         l.add(c1);
         var node = new Folder(Path.of("./"),l);
+
 
 
         Search s =  new Search();
@@ -57,7 +57,7 @@ class SearchTest {
         var files = s.searchFiles("contents","AMOGUS");
         for (var file : files)
         {
-            System.out.println(file.get("filename"));
+            System.out.println(file.get("path"));
         }
     }
 
