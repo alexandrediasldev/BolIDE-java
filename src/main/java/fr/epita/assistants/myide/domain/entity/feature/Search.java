@@ -41,8 +41,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Search implements Feature {
-    public Directory rootDirectory;
-    public StandardAnalyzer analyzer;
+    public Directory rootDirectory = null;
+    public StandardAnalyzer analyzer = null;
     @Override
     public ExecutionReport execute(Project project, Object... params) {
 
@@ -70,9 +70,16 @@ public class Search implements Feature {
             var node = project.getRootNode();
 
             addAllFiles(node);
-            var listDoc = searchFiles("content","AMONGUS");
-            if(listDoc.isEmpty())
-                return report;
+            for (var param : params) {
+                var listDoc = searchFiles("content", param.toString());
+                if (!listDoc.isEmpty())
+                {
+                    System.out.println(param.toString()+"found in :\n");
+                    for (var doc : listDoc)
+                        System.out.println(doc.get("path")+"\n");
+                }
+            }
+
 
         } catch (IOException | ParseException e) {
             return report;
@@ -107,7 +114,7 @@ public class Search implements Feature {
             }
             return null;
         })
-                .collect(Collectors.toList());
+                .distinct().collect(Collectors.toList());
         return a;
 
 
