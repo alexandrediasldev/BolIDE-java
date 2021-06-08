@@ -54,8 +54,11 @@ class SearchTest {
         s.rootDirectory = directory;
         s.analyzer = analyzer;
         s.addAllFiles(node);
-        var files = s.searchFiles("filename","sus");
-        System.out.println(files);
+        var files = s.searchFiles("contents","AMOGUS");
+        for (var file : files)
+        {
+            System.out.println(file.get("filename"));
+        }
     }
 
     @Test
