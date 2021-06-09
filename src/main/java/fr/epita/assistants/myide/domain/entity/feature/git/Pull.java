@@ -31,6 +31,7 @@ public class Pull implements Feature {
     public ExecutionReport execute(Project project, Object... params) {
         String path = project.getRootNode().getPath().toAbsolutePath().toString();
         FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
+
         try {
             Repository repository = repositoryBuilder.setGitDir(new File(path))
                     .readEnvironment()

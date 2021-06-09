@@ -3,24 +3,23 @@ package fr.epita.assistants.myide.domain.entity.feature.git;
 import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Project;
+import org.eclipse.jgit.api.AddCommand;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.PullCommand;
-import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
-public class Push implements Feature{
+public class Add implements Feature {
 
-    public class PushReport implements Feature.ExecutionReport {
 
-        final boolean success;
+    public class AddReport implements ExecutionReport {
 
-        public PushReport(boolean success) {
+        final private boolean success;
+
+        public AddReport(boolean success) {
             this.success = success;
         }
 
@@ -29,10 +28,13 @@ public class Push implements Feature{
             return success;
         }
     }
+
     @Override
-    public Feature.ExecutionReport execute(Project project, Object... params) {
+    public ExecutionReport execute(Project project, Object... params) {
+
         String path = project.getRootNode().getPath().toAbsolutePath().toString();
         FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
+
         try {
             Repository repository = repositoryBuilder.setGitDir(new File(path))
                     .readEnvironment()
@@ -40,24 +42,25 @@ public class Push implements Feature{
                     .build();
 
             Git git = new Git(repository);
-            var listopt = Arrays.stream(params).map(obj -> (String) obj).toList();
+            AddCommand add = git.add();
 
-            if (params.length == 0){
-                PushCommand push = git.push();
-                push.call();
+            for (var file : params) {
+                if (file instanceof String)
+                    add.addFilepattern((String) file);
+                else
+                    return new AddReport(false);
             }
-            else{
-                PushCommand push = git.push(); //handle with parameters
-                push.call();
-            }
+
+            add.call();
         } catch (IOException | GitAPIException e) {
-            return new PushReport(false);
+            return new AddReport(false);
         }
-        return new PushReport(true);
+
+        return new AddReport(true);
     }
 
     @Override
-    public Feature.Type type() {
-        return Mandatory.Features.Git.PUSH;
+    public Type type() {
+        return Mandatory.Features.Git.ADD;
     }
 }
