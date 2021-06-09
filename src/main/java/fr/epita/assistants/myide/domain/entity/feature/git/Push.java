@@ -4,7 +4,6 @@ import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Project;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.PullCommand;
 import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
@@ -48,6 +47,7 @@ public class Push implements Feature{
             }
             else{
                 PushCommand push = git.push(); //handle with parameters
+                push.setPushOptions(listopt);
                 push.call();
             }
         } catch (IOException | GitAPIException e) {

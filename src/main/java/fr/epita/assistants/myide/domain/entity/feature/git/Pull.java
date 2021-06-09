@@ -40,7 +40,17 @@ public class Pull implements Feature {
 
             Git git = new Git(repository);
             PullCommand pull = git.pull();
-            pull.setFastForward(null).call();
+            pull.setFastForward(null);
+
+            if (params.length != 0)
+            {
+                //verifier si c'est bien des strings
+                pull.setRemote((String) params[0]);
+                if (params.length == 2){
+                    pull.setRemoteBranchName((String) params[1]);
+                }
+            }
+            pull.call();
 
         } catch (IOException | GitAPIException e) {
             return new PullReport(false);
