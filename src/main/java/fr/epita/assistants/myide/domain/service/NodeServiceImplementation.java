@@ -32,7 +32,7 @@ public class NodeServiceImplementation implements NodeService {
 
         if (type == Node.Types.FILE) {
 
-            File node = new File(Path.of(path));
+            File node = new File(Path.of(path), folder);
             folder.getChildren().add(node);
             new java.io.File(path);
 
@@ -40,11 +40,11 @@ public class NodeServiceImplementation implements NodeService {
 
         }
 
-            Folder node = new Folder(Path.of(path), new ArrayList<>());
-            folder.getChildren().add(node);
-            new java.io.File(path).mkdirs();
+        Folder node = new Folder(Path.of(path), new ArrayList<>(), folder);
+        folder.getChildren().add(node);
+        new java.io.File(path).mkdirs();
 
-            return node;
+        return node;
     }
 
     @Override
