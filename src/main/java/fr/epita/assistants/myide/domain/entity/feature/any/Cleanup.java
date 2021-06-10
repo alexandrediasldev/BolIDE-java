@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class Cleanup implements Feature {
-    boolean deleteDirectory(File file){
+    boolean deleteDirectory(File file) {
         File[] contents = file.listFiles();
 
         if (contents != null)
@@ -20,11 +20,11 @@ public class Cleanup implements Feature {
 
         return file.delete();
     }
+
     @Override
     public ExecutionReport execute(Project project, Object... params) {
 
-        class Report implements ExecutionReport
-        {
+        class Report implements ExecutionReport {
             private boolean success;
 
             public Report(boolean success) {
@@ -42,17 +42,16 @@ public class Cleanup implements Feature {
         }
         Report report = new Report(false);
 
-        try(Stream<String> stream = Files.lines(Paths.get(".myideignore"))){
+        try (Stream<String> stream = Files.lines(Paths.get(".myideignore"))) {
             stream.forEach(file -> {
-               File f = new File(file);
+                File f = new File(file);
 
-               if (! f.isDirectory()) {
-                   f.delete();
-               }
-               else {
-                   deleteDirectory(f);
-               }
-           });
+                if (!f.isDirectory()) {
+                    f.delete();
+                } else {
+                    deleteDirectory(f);
+                }
+            });
         } catch (IOException e) {
             return report;
         }

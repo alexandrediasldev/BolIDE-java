@@ -13,7 +13,7 @@ public class File implements Node {
     private final Type type = Types.FILE;
     private final List<@NotNull Node> children = Collections.emptyList();
 
-    public File(Path path, Node parent ) {
+    public File(Path path, Node parent) {
         this.path = path;
         this.parent = parent;
     }
@@ -34,7 +34,7 @@ public class File implements Node {
     }
 
     public void setParent(Node parent) {
-        this.parent =  parent;
+        this.parent = parent;
     }
 
     @Override

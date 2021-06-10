@@ -11,8 +11,7 @@ public class Compile implements Feature {
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {
-        class Report implements ExecutionReport
-        {
+        class Report implements ExecutionReport {
             private boolean success;
 
             public Report(boolean success) {
@@ -33,8 +32,8 @@ public class Compile implements Feature {
         try {
             var command = "mvn compile";
             var exe = MavenExecuter.mvnCommand(command, project.getRootNode().toString()
-            ,params);
-            if(exe != 0) {
+                    , params);
+            if (exe != 0) {
                 return report;
             }
         } catch (IOException | InterruptedException e) {

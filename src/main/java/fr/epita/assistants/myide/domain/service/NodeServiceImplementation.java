@@ -15,9 +15,8 @@ public class NodeServiceImplementation implements NodeService {
     @SneakyThrows
     @Override
     public Node update(Node node, int from, int to, byte[] insertedContent) {
-        if (!node.isFile())
-        {
-           throw new Exception("Update failure not a file");
+        if (!node.isFile()) {
+            throw new Exception("Update failure not a file");
         }
 
         Path path = node.getPath().toAbsolutePath();
@@ -77,20 +76,17 @@ public class NodeServiceImplementation implements NodeService {
     @Override
     public Node move(Node nodeToMove, Node destinationFolder) {
         Path pathToMove = nodeToMove.getPath().toAbsolutePath();
-        Path moveTo = Path.of(destinationFolder.getPath().toString() +"/"+ nodeToMove.getPath().getFileName().toString());
+        Path moveTo = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
 
-        ((Folder)destinationFolder).addChild(nodeToMove);
-        ((Folder)nodeToMove.getParent()).removeChild(nodeToMove);
-        try
-        {
+        ((Folder) destinationFolder).addChild(nodeToMove);
+        ((Folder) nodeToMove.getParent()).removeChild(nodeToMove);
+        try {
             Files.move(pathToMove, moveTo);
-        }
-        catch (Exception e)
-        {
-                throw new Exception("move: cannot move file" + e.getMessage());
+        } catch (Exception e) {
+            throw new Exception("move: cannot move file" + e.getMessage());
 
         }
-        Path p = Path.of(destinationFolder.getPath().toString() +"/"+ nodeToMove.getPath().getFileName().toString());
+        Path p = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
         File f = new File(p);
         return f;
     }

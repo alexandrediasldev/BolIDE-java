@@ -22,22 +22,23 @@ public class Folder implements Node {
         this.parent = parent;
         this.children = children;
     }
-    public void addChild(Node child)
-    {
+
+    public void addChild(Node child) {
 
         if (children == null)
             children = new ArrayList<>();
         children.add(child);
-        if(child.isFile())
-            ((File)child).setParent(this);
+        if (child.isFile())
+            ((File) child).setParent(this);
         else
-            ((Folder)child).setParent(this);
+            ((Folder) child).setParent(this);
     }
-    public void removeChild(Node child)
-    {
-        if(children != null)
+
+    public void removeChild(Node child) {
+        if (children != null)
             children.remove(child);
     }
+
     @Override
     public Node getParent() {
         return parent;

@@ -28,6 +28,7 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -43,6 +44,7 @@ import java.util.stream.Collectors;
 public class Search implements Feature {
     public Directory rootDirectory = null;
     public StandardAnalyzer analyzer = null;
+
     @Override
     public ExecutionReport execute(Project project, Object... params) {
 
@@ -72,11 +74,10 @@ public class Search implements Feature {
             addAllFiles(node);
             for (var param : params) {
                 var listDoc = searchFiles("content", param.toString());
-                if (!listDoc.isEmpty())
-                {
-                    System.out.println(param.toString()+"found in :\n");
+                if (!listDoc.isEmpty()) {
+                    System.out.println(param.toString() + "found in :\n");
                     for (var doc : listDoc)
-                        System.out.println(doc.get("path")+"\n");
+                        System.out.println(doc.get("path") + "\n");
                 }
             }
 
@@ -91,7 +92,7 @@ public class Search implements Feature {
     }
 
     public void addAllFiles(Node n) throws IOException {
-        if(n.isFile())
+        if (n.isFile())
             addFileToIndex(n.getPath().toString());
         else
             for (var a : n.getChildren())
@@ -105,7 +106,7 @@ public class Search implements Feature {
         IndexSearcher searcher = new IndexSearcher(rootReader);
         TopDocs topDocs = searcher.search(query, 10);
 
-        var a =  Arrays.stream(topDocs.scoreDocs).map(scoreDoc -> {
+        var a = Arrays.stream(topDocs.scoreDocs).map(scoreDoc -> {
             try {
                 var s = searcher.doc(scoreDoc.doc);
                 return s;
@@ -121,29 +122,29 @@ public class Search implements Feature {
     }
 
     public void addFileToIndex(String filepath) throws IOException {
-            Path path = Paths.get(filepath);
-            File file = path.toFile();
-           //writer
-            IndexWriterConfig indexWriterConfig
-                    = new IndexWriterConfig(analyzer);
-            IndexWriter indexWriter = new IndexWriter(
-                    rootDirectory, indexWriterConfig);
+        Path path = Paths.get(filepath);
+        File file = path.toFile();
+        //writer
+        IndexWriterConfig indexWriterConfig
+                = new IndexWriterConfig(analyzer);
+        IndexWriter indexWriter = new IndexWriter(
+                rootDirectory, indexWriterConfig);
 
 
-            Document document = new Document();
+        Document document = new Document();
 
-            FileReader fileReader = new FileReader(file);
-            document.add(
-                    new TextField("contents",
-                            fileReader));
-            document.add(
-                    new StringField("path", file.getPath(), Field.Store.YES));
-            document.add(
-                    new StringField("filename", file.getName(), Field.Store.YES));
+        FileReader fileReader = new FileReader(file);
+        document.add(
+                new TextField("contents",
+                        fileReader));
+        document.add(
+                new StringField("path", file.getPath(), Field.Store.YES));
+        document.add(
+                new StringField("filename", file.getName(), Field.Store.YES));
 
-            indexWriter.addDocument(document);
-            indexWriter.close();
-        }
+        indexWriter.addDocument(document);
+        indexWriter.close();
+    }
 
     @Override
     public Type type() {
