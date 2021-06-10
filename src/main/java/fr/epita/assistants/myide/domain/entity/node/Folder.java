@@ -21,7 +21,7 @@ public class Folder implements Node {
         this.parent = parent;
         this.children = children;
     }
-
+    @Override
     public Node getParent() {
         return parent;
     }
