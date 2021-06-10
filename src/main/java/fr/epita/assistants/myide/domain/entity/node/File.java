@@ -9,7 +9,7 @@ import java.util.List;
 
 public class File implements Node {
     private final Path path;
-    private Node parent;
+    public Node parent;
     private final Type type = Types.FILE;
     private final List<@NotNull Node> children = Collections.emptyList();
 
@@ -21,6 +21,7 @@ public class File implements Node {
     public File(Path path) {
         this.path = path;
     }
+
 
     @Override
     public Path getPath() {

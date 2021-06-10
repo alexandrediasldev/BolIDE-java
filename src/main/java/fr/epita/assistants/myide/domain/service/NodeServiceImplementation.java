@@ -73,8 +73,25 @@ public class NodeServiceImplementation implements NodeService {
         return node;
     }
 
+    @SneakyThrows
     @Override
     public Node move(Node nodeToMove, Node destinationFolder) {
-        return null;
+        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
+        Path moveTo = Path.of(destinationFolder.getPath().toString() +"/"+ nodeToMove.getPath().getFileName().toString());
+
+        ((Folder)destinationFolder).addChild(nodeToMove);
+        ((Folder)nodeToMove.getParent()).removeChild(nodeToMove);
+        try
+        {
+            Files.move(pathToMove, moveTo);
+        }
+        catch (Exception e)
+        {
+                throw new Exception("move: cannot move file" + e.getMessage());
+
+        }
+        Path p = Path.of(destinationFolder.getPath().toString() +"/"+ nodeToMove.getPath().getFileName().toString());
+        File f = new File(p);
+        return f;
     }
 }
