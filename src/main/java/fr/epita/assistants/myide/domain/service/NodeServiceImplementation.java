@@ -5,7 +5,6 @@ import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class NodeServiceImplementation implements NodeService {
@@ -17,7 +16,12 @@ public class NodeServiceImplementation implements NodeService {
 
     @Override
     public boolean delete(Node node) {
-        return false;
+        for (var child : node.getChildren())
+            delete(child);
+
+        node.getParent().getChildren().remove(node);
+
+        return node.getPath().toFile().delete();
     }
 
     @Override
