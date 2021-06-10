@@ -3,15 +3,41 @@ package fr.epita.assistants.myide.domain.service;
 import fr.epita.assistants.myide.domain.entity.Node;
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
+import lombok.SneakyThrows;
 
+import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class NodeServiceImplementation implements NodeService {
 
+    @SneakyThrows
     @Override
     public Node update(Node node, int from, int to, byte[] insertedContent) {
-        return null;
+        if (!node.isFile())
+        {
+           throw new Exception("Update failure not a file");
+        }
+
+        Path path = node.getPath().toAbsolutePath();
+        byte[] data = Files.readAllBytes(path);
+
+
+        try (FileOutputStream fos = new FileOutputStream(path.toString())) {
+
+            for (int i = 0; i < from; ++i) {
+                fos.write(data[i]);
+            }
+
+            fos.write(insertedContent);
+
+            for (int i = to; i < data.length; ++i) {
+                fos.write(data[i]);
+            }
+        }
+
+        return node;
     }
 
     @Override
