@@ -36,3 +36,6 @@ buildNumber.properties
 #other
 .idea/
 ping-ref.iml
+_*
+segments_q
+*.lock

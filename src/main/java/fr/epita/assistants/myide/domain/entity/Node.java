@@ -15,6 +15,12 @@ public interface Node {
     @NotNull Path getPath();
 
     /**
+     * @return The Node parent.
+     */
+    @NotNull Node getParent();
+
+
+    /**
      * @return The Node type.
      */
     @NotNull Type getType();
