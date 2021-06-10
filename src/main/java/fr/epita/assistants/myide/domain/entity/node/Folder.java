@@ -29,9 +29,9 @@ public class Folder implements Node {
             children = new ArrayList<>();
         children.add(child);
         if(child.isFile())
-            ((File)child).parent = this;
+            ((File)child).setParent(this);
         else
-            ((Folder)child).parent = this;
+            ((Folder)child).setParent(this);
     }
     public void removeChild(Node child)
     {

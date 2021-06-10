@@ -9,7 +9,7 @@ import java.util.List;
 
 public class File implements Node {
     private final Path path;
-    public Node parent;
+    private Node parent;
     private final Type type = Types.FILE;
     private final List<@NotNull Node> children = Collections.emptyList();
 
