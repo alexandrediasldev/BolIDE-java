@@ -1,7 +1,6 @@
-package fr.epita.assistants.myide.domain.service;
-
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
+import fr.epita.assistants.myide.domain.service.NodeServiceImplementation;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileWriter;
