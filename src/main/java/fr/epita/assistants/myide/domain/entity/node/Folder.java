@@ -5,6 +5,7 @@ import fr.epita.assistants.myide.domain.entity.Node;
 import javax.validation.constraints.NotNull;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Folder implements Node {
@@ -21,6 +22,12 @@ public class Folder implements Node {
         this.path = path;
         this.parent = parent;
         this.children = children;
+    }
+
+    public Folder(Path root) {
+        this.path = root;
+        this.parent = null;
+        this.children = Collections.emptyList();
     }
 
     public void addChild(Node child) {
