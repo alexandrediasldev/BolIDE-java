@@ -4,12 +4,13 @@ import fr.epita.assistants.myide.domain.entity.Node;
 
 import javax.validation.constraints.NotNull;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Folder implements Node {
     private Path path;
     private final Type type = Types.FOLDER;
-    private Node parent;
+    public Node parent;
 
     public Folder(Path path, List<@NotNull Node> children) {
         this.path = path;
@@ -20,6 +21,22 @@ public class Folder implements Node {
         this.path = path;
         this.parent = parent;
         this.children = children;
+    }
+    public void addChild(Node child)
+    {
+
+        if (children == null)
+            children = new ArrayList<>();
+        children.add(child);
+        if(child.isFile())
+            ((File)child).parent = this;
+        else
+            ((Folder)child).parent = this;
+    }
+    public void removeChild(Node child)
+    {
+        if(children != null)
+            children.remove(child);
     }
     @Override
     public Node getParent() {
