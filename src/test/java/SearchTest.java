@@ -1,5 +1,5 @@
 import fr.epita.assistants.myide.domain.entity.Node;
-import fr.epita.assistants.myide.domain.entity.feature.Search;
+import fr.epita.assistants.myide.domain.entity.feature.any.Search;
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -13,8 +13,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SearchTest {
 
