@@ -4,9 +4,10 @@ import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Project;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class Compile implements Feature {
+public class Package implements Feature {
     private InputStream stream;
 
     @Override
@@ -31,7 +32,7 @@ public class Compile implements Feature {
         Report report = new Report(false);
 
         try {
-            var command = "mvn compile";
+            var command = "mvn package";
             var exe = MavenExecuter.mvnCommand(command, project.getRootNode().toString()
             ,params);
             if(exe != 0) {
@@ -48,6 +49,6 @@ public class Compile implements Feature {
 
     @Override
     public Type type() {
-        return Mandatory.Features.Maven.COMPILE;
+        return Mandatory.Features.Maven.PACKAGE;
     }
 }

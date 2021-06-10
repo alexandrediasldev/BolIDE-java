@@ -32,8 +32,8 @@ public class Clean implements Feature {
         Report report = new Report(false);
 
         try {
-            var command = "mvn clean ";
-            var exe = MavenExecuter.mvnCommand(command, project.getRootNode().toString());
+            var command = "mvn clean";
+            var exe = MavenExecuter.mvnCommand(command, project.getRootNode().toString(), params);
             if(exe != 0) {
                 return report;
             }
