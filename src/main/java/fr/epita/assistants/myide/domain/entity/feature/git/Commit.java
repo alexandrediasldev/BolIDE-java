@@ -42,14 +42,15 @@ public class Commit implements Feature {
 
             Git git = new Git(repository);
             CommitCommand commit = git.commit();
-
+            commit.setMessage(params.toString());
+            /*
             for (var file : params) {
                 if (file instanceof String)
                     commit.setMessage((String) file);
                 else
                     return new CommitReport(false);
             }
-
+            */
             commit.call();
         } catch (IOException | GitAPIException e) {
             return new CommitReport(false);
