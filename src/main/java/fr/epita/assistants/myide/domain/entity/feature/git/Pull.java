@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Pull implements Feature {
 
-    public class PullReport implements ExecutionReport{
+    public class PullReport implements ExecutionReport {
 
         final boolean success;
 
@@ -27,6 +27,7 @@ public class Pull implements Feature {
             return success;
         }
     }
+
     @Override
     public ExecutionReport execute(Project project, Object... params) {
         String path = project.getRootNode().getPath().toAbsolutePath().toString();
@@ -42,11 +43,10 @@ public class Pull implements Feature {
             PullCommand pull = git.pull();
             pull.setFastForward(null);
 
-            if (params.length != 0)
-            {
+            if (params.length != 0) {
                 //verifier si c'est bien des strings
                 pull.setRemote((String) params[0]);
-                if (params.length == 2){
+                if (params.length == 2) {
                     pull.setRemoteBranchName((String) params[1]);
                 }
             }

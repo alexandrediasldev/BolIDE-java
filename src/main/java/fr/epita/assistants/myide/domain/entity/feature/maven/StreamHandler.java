@@ -19,8 +19,8 @@ class StreamHandler extends Thread {
             BufferedReader br = new BufferedReader(reader);
             String line = null;
             while ((line = br.readLine()) != null) {
-                if(isError)
-                    System.err.println("Err:"+line);
+                if (isError)
+                    System.err.println("Err:" + line);
                 else
                     System.out.println(line);
             }

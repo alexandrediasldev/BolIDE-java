@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Push implements Feature{
+public class Push implements Feature {
 
     public class PushReport implements Feature.ExecutionReport {
 
@@ -28,6 +28,7 @@ public class Push implements Feature{
             return success;
         }
     }
+
     @Override
     public Feature.ExecutionReport execute(Project project, Object... params) {
         String path = project.getRootNode().getPath().toAbsolutePath().toString();
@@ -41,11 +42,10 @@ public class Push implements Feature{
             Git git = new Git(repository);
             var listopt = Arrays.stream(params).map(obj -> (String) obj).toList();
 
-            if (params.length == 0){
+            if (params.length == 0) {
                 PushCommand push = git.push();
                 push.call();
-            }
-            else{
+            } else {
                 PushCommand push = git.push(); //handle with parameters
                 push.setPushOptions(listopt);
                 push.call();
