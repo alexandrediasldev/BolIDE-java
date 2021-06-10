@@ -9,10 +9,25 @@ import java.util.List;
 public class Folder implements Node {
     private Path path;
     private final Type type = Types.FOLDER;
+    private Node parent;
 
     public Folder(Path path, List<@NotNull Node> children) {
         this.path = path;
         this.children = children;
+    }
+
+    public Folder(Path path, List<@NotNull Node> children, Node parent) {
+        this.path = path;
+        this.parent = parent;
+        this.children = children;
+    }
+
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node parent) {
+        this.parent = parent;
     }
 
     private List<@NotNull Node> children;
