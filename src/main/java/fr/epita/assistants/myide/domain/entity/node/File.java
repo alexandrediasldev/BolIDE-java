@@ -9,11 +9,11 @@ import java.util.List;
 
 public class File implements Node {
     private final Path path;
-    private Node parent;
+    private Folder parent;
     private final Type type = Types.FILE;
     private final List<@NotNull Node> children = Collections.emptyList();
 
-    public File(Path path, Node parent) {
+    public File(Path path, Folder parent) {
         this.path = path;
         this.parent = parent;
     }
@@ -28,12 +28,11 @@ public class File implements Node {
         return path;
     }
 
-    @Override
-    public Node getParent() {
+    public Folder getParent() {
         return parent;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(Folder parent) {
         this.parent = parent;
     }
 

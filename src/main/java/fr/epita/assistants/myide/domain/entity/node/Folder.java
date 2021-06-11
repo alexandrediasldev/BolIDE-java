@@ -11,14 +11,14 @@ import java.util.List;
 public class Folder implements Node {
     private Path path;
     private final Type type = Types.FOLDER;
-    public Node parent;
+    public Folder parent;
 
     public Folder(Path path, List<@NotNull Node> children) {
         this.path = path;
         this.children = children;
     }
 
-    public Folder(Path path, List<@NotNull Node> children, Node parent) {
+    public Folder(Path path, List<@NotNull Node> children, Folder parent) {
         this.path = path;
         this.parent = parent;
         this.children = children;
@@ -46,12 +46,11 @@ public class Folder implements Node {
             children.remove(child);
     }
 
-    @Override
-    public Node getParent() {
+    public Folder getParent() {
         return parent;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(Folder parent) {
         this.parent = parent;
     }
 
