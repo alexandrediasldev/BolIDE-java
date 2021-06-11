@@ -50,8 +50,8 @@ public class Folder implements Node {
         return parent;
     }
 
-    public void setParent(Folder parent) {
-        this.parent = parent;
+    public void setParent(Node parent) {
+        this.parent = (Folder) parent;
     }
 
     private List<@NotNull Node> children;
