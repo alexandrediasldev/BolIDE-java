@@ -126,5 +126,43 @@ class NodeServiceImplementationTest {
         Files.delete(p2);
         assert (d);
     }
+    @Test
+    void createNodeTestFile() throws IOException {
+
+        Path proot = Path.of("./testfiles/");
+
+        Node.Type type = Node.Types.FILE;
+        String name = "TestFile.txt";
+        Folder root = new Folder(proot);
+
+        NodeServiceImplementation nodeServiceImplementation = new NodeServiceImplementation();
+        var new_node = nodeServiceImplementation.create(root, name, type);
+        boolean b = Files.exists(new_node.getPath());
+
+        Files.delete(new_node.getPath());
+
+        assert(b);
+    }
+
+    @Test
+    void createNodeTestFolder() throws IOException {
+
+        Path proot = Path.of("./testfiles/");
+
+        Node.Type type = Node.Types.FOLDER;
+        String name = "dirTest/";
+        Folder root = new Folder(proot);
+
+        if(Files.exists(Path.of(name)))
+            Files.delete(Path.of(name));
+
+        NodeServiceImplementation nodeServiceImplementation = new NodeServiceImplementation();
+        var new_node = nodeServiceImplementation.create(root, name, type);
+        boolean b = Files.exists(new_node.getPath());
+
+        Files.delete(new_node.getPath());
+
+        assert(b);
+    }
 
 }
