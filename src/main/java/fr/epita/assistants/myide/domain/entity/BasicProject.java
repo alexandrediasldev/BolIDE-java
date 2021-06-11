@@ -14,13 +14,16 @@ public class BasicProject implements Project{
     private Set<Aspect> aspects;
     private List<@NotNull Feature> features;
 
-    public BasicProject(Node rootNode) {
-        this.rootNode = rootNode;
+    public BasicProject() {
     }
 
     @Override
     public Node getRootNode() {
         return rootNode;
+    }
+
+    public void setRootNode(Node rootNode) {
+        this.rootNode = rootNode;
     }
 
     @Override
@@ -59,4 +62,5 @@ public class BasicProject implements Project{
             features.addAll(maven.getFeatureList());
         }
     }
+
 }
