@@ -78,16 +78,85 @@ public class NodeServiceImplementation implements NodeService {
     }
 
     @SneakyThrows
+    private Node moveFileToFile(Node nodeToMove, Node destinationNode){
+
+        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
+        Path pathDestination = destinationNode.getPath().toAbsolutePath();
+        File fileToMove = (File) nodeToMove;
+
+
+        ((Folder) fileToMove.getParent()).removeChild(fileToMove);
+        if(Files.exists(pathDestination))
+            Files.delete(pathDestination);
+        Files.move(pathToMove, pathDestination);
+
+        return destinationNode;
+    }
+
+    @SneakyThrows
+    private Node moveFileToDirectory(Node nodeToMove, Node destinationNode){
+
+        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
+        Path pathDestination = Path.of(destinationNode.getPath().toAbsolutePath() +
+                "/" + pathToMove.getFileName());
+        File fileToMove = (File) nodeToMove;
+
+
+        ((Folder)fileToMove.getParent()).removeChild(fileToMove);
+
+        fileToMove.setParent(destinationNode);
+        Files.move(pathToMove, pathDestination);
+
+        return destinationNode;
+    }
+
+    @SneakyThrows
+    private Node moveDirectoryToDirectory(Node nodeToMove, Node destinationNode){
+
+        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
+        Path pathDestination = Path.of(destinationNode.getPath().toAbsolutePath() +
+                "/" + pathToMove.getFileName());
+        Folder fileToMove = (Folder) nodeToMove;
+
+
+        ((Folder)fileToMove.getParent()).removeChild(fileToMove);
+
+        fileToMove.setParent(destinationNode);
+        Files.move(pathToMove, pathDestination);
+
+        return destinationNode;
+    }
+    @SneakyThrows
+    private Node moveDirectoryToFile(Node nodeToMove, Node destinationNode){
+        throw new Exception("Trying to move directory to File");
+    }
+
+    @SneakyThrows
     @Override
     public Node move(Node nodeToMove, Node destinationFolder) {
-        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
-        Path moveTo = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
+        if(nodeToMove.isFile() && destinationFolder.isFile())
+            return moveFileToFile(nodeToMove, destinationFolder);
+        else if(nodeToMove.isFolder() && destinationFolder.isFile())
+            return moveDirectoryToFile(nodeToMove,destinationFolder);
+        else if (nodeToMove.isFile() && destinationFolder.isFolder())
+            return moveFileToDirectory(nodeToMove,destinationFolder);
+        else
+            return moveDirectoryToDirectory(nodeToMove,destinationFolder);
 
-        ((Folder) destinationFolder).addChild(nodeToMove);
+
+        /*
+        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
+        Path moveTo;
+        moveTo = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
+
+        if(destinationFolder.isFolder())
+            ((Folder) destinationFolder).addChild(nodeToMove);
         Folder folderToMove = (Folder) nodeToMove;
         folderToMove.getParent().removeChild(nodeToMove);
         Files.move(pathToMove, moveTo);
         Path p = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
         return new File(p);
+        */
+
     }
 }
