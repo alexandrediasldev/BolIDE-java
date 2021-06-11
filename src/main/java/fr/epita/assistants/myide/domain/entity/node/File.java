@@ -35,7 +35,7 @@ public class File implements Node {
         return parent;
     }
 
-    public void setParent(Folder parent) {
+    public void setParent(Node parent) {
         this.parent = parent;
     }
 
