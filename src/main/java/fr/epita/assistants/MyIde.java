@@ -1,6 +1,7 @@
 package fr.epita.assistants;
 
 import fr.epita.assistants.myide.domain.service.ProjectService;
+import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import fr.epita.assistants.utils.Given;
 
 import java.nio.file.Path;
@@ -18,7 +19,9 @@ public class MyIde {
      * @return An implementation of {@link ProjectService}.
      */
     public static ProjectService init(final Configuration configuration) {
-        throw new UnsupportedOperationException("FIXME");
+        var res = new ProjectServiceImplementation();
+        //TODO : check what we have to do with configuration
+        return res;
     }
 
     /**
@@ -27,6 +30,5 @@ public class MyIde {
      */
     public static record Configuration(Path indexFile,
                                        Path tempFolder) {}
-
     ;
 }

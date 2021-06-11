@@ -4,15 +4,55 @@ import fr.epita.assistants.myide.domain.entity.Node;
 
 import javax.validation.constraints.NotNull;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Folder implements Node {
     private Path path;
     private final Type type = Types.FOLDER;
+    public Node parent;
 
     public Folder(Path path, List<@NotNull Node> children) {
         this.path = path;
         this.children = children;
+    }
+
+    public Folder(Path path, List<@NotNull Node> children, Node parent) {
+        this.path = path;
+        this.parent = parent;
+        this.children = children;
+    }
+
+    public Folder(Path root) {
+        this.path = root;
+        this.parent = null;
+        this.children = Collections.emptyList();
+    }
+
+    public void addChild(Node child) {
+
+        if (children == null)
+            children = new ArrayList<>();
+        children.add(child);
+        if (child.isFile())
+            ((File) child).setParent(this);
+        else
+            ((Folder) child).setParent(this);
+    }
+
+    public void removeChild(Node child) {
+        if (children != null)
+            children.remove(child);
+    }
+
+    @Override
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node parent) {
+        this.parent = parent;
     }
 
     private List<@NotNull Node> children;
