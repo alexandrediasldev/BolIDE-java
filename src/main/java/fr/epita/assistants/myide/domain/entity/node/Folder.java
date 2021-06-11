@@ -11,7 +11,7 @@ import java.util.List;
 public class Folder implements Node {
     private Path path;
     private final Type type = Types.FOLDER;
-    public Folder parent;
+    public Node parent;
 
     public Folder(Path path, List<@NotNull Node> children) {
         this.path = path;
@@ -22,6 +22,11 @@ public class Folder implements Node {
         this.path = path;
         this.parent = parent;
         this.children = children;
+    }
+    public Folder(Path path, Folder parent)
+    {
+        this.path = path;
+        this.parent = parent;
     }
 
     public Folder(Path root) {
@@ -46,7 +51,7 @@ public class Folder implements Node {
             children.remove(child);
     }
 
-    public Folder getParent() {
+    public Node getParent() {
         return parent;
     }
 
