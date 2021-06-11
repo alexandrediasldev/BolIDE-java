@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class File implements Node {
-    private final Path path;
-    private Folder parent;
+    private Path path;
+    private Node parent;
     private final Type type = Types.FILE;
     private final List<@NotNull Node> children = Collections.emptyList();
 
@@ -22,17 +22,20 @@ public class File implements Node {
         this.path = path;
     }
 
+    public void setPath(Path path) {
+        this.path = path;
+    }
 
     @Override
     public Path getPath() {
         return path;
     }
 
-    public Folder getParent() {
+    public Node getParent() {
         return parent;
     }
 
-    public void setParent(Folder parent) {
+    public void setParent(Node parent) {
         this.parent = parent;
     }
 
