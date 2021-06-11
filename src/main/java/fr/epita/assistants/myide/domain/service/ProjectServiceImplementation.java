@@ -2,8 +2,10 @@ package fr.epita.assistants.myide.domain.service;
 
 import fr.epita.assistants.myide.domain.entity.*;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 
 public class ProjectServiceImplementation implements ProjectService{
@@ -20,14 +22,13 @@ public class ProjectServiceImplementation implements ProjectService{
     }
 
     // add each children of the root to have complete project architecture
-    private Node buildArchitecture(BasicProject project, Path root){
+    // isRoot is used to detect if pom.xml is somewhere else than root directory
+    private Node buildArchitecture(BasicProject project, Path root, int depth){
         java.io.File file = new File(String.valueOf(root));
         var children = file.listFiles();
         if (children == null)
         {
-            if (String.valueOf(root).matches(".*[.]git"))
-                project.addAspect(Mandatory.Aspects.GIT);
-            if (String.valueOf(root).matches(".*pom.xml"))
+            if (depth==1 && String.valueOf(root).matches(".*./pom.xml"))
                 project.addAspect(Mandatory.Aspects.MAVEN);
            return new fr.epita.assistants.myide.domain.entity.node.File(root);
         }
@@ -35,7 +36,7 @@ public class ProjectServiceImplementation implements ProjectService{
         var res = new Folder(root);
         for (var child : children)
         {
-            res.addChild(buildArchitecture(project, child.toPath()));
+            res.addChild(buildArchitecture(project, child.toPath(), depth+1));
         }
         return res;
     }
@@ -44,7 +45,17 @@ public class ProjectServiceImplementation implements ProjectService{
     public Project load(Path root) {
         var res =  new BasicProject();
         res.addAspect(Mandatory.Aspects.ANY);
-        var node = buildArchitecture(res, root);
+        var node = buildArchitecture(res, root, 0);
+
+        FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
+        try {
+             repositoryBuilder.setGitDir(new File(String.valueOf(root)))
+                     .build();
+            res.addAspect(Mandatory.Aspects.GIT);
+        } catch (IOException e) {
+            res.setRootNode(node);
+            return res;
+        }
         res.setRootNode(node);
         return res;
     }
