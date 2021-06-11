@@ -80,6 +80,17 @@ public class NodeServiceImplementation implements NodeService {
     @SneakyThrows
     @Override
     public Node move(Node nodeToMove, Node destinationFolder) {
+        if(nodeToMove.isFile() && destinationFolder.isFile())
+            return moveFileToFile(nodeToMove, destinationFolder);
+        else if(nodeToMove.isFolder() && destinationFolder.isFile())
+            return moveDirectoryToFile(nodeToMove,destinationFolder);
+        else if (nodeToMove.isFile() && destinationFolder.isFolder())
+            return moveFileToDirectory(nodeToMove,destinationFolder);
+        else
+            return moveDirectoryToDirectory(nodeToMove,destinationFolder);
+
+
+        /*
         Path pathToMove = nodeToMove.getPath().toAbsolutePath();
         Path moveTo = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
 
