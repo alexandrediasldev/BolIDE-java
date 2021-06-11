@@ -10,10 +10,12 @@ import java.util.*;
 public class BasicProject implements Project{
     private Node rootNode;
     private Set<Aspect> aspects;
+    private Set<Aspect.Type> aspectsType;
     private List<@NotNull Feature> features;
 
     public BasicProject() {
         aspects = new HashSet<>();
+        aspectsType = new HashSet<>();
         features = new ArrayList<>();
     }
 
@@ -48,6 +50,9 @@ public class BasicProject implements Project{
 
     public void addAspect(Aspect.Type aspectType)
     {
+        if (aspectsType.contains(aspectType))
+            return;
+
         if (Mandatory.Aspects.ANY.equals(aspectType)) {
             var any = new Any();
             aspects.add(any);
@@ -61,6 +66,7 @@ public class BasicProject implements Project{
             aspects.add(maven);
             features.addAll(maven.getFeatureList());
         }
+        aspectsType.add(aspectType);
     }
 
 }
