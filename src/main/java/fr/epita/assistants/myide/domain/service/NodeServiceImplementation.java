@@ -54,6 +54,7 @@ public class NodeServiceImplementation implements NodeService {
         return node.getPath().toFile().delete();
     }
 
+    @SneakyThrows
     @Override
     public Node create(Node folder, String name, Node.Type type) {
 
@@ -64,7 +65,8 @@ public class NodeServiceImplementation implements NodeService {
 
             File node = new File(Path.of(path),(Folder) folder);
             folder.getChildren().add(node);
-            new java.io.File(path);
+
+            Files.createFile(Path.of(path));
 
             return node;
 
