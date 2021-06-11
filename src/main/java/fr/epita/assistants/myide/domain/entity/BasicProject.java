@@ -26,7 +26,12 @@ public class BasicProject implements Project{
 
     @Override
     public Optional<Feature> getFeature(Feature.Type featureType) {
-        return Optional.empty();
+       for (var feature : features)
+       {
+           if (feature.type()==featureType)
+               return Optional.of(feature);
+       }
+       return Optional.empty();
     }
 
     @Override
