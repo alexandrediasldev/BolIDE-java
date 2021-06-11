@@ -44,7 +44,12 @@ public class NodeServiceImplementation implements NodeService {
         for (var child : node.getChildren())
             delete(child);
 
-        node.getParent().getChildren().remove(node);
+        if (node.isFile()) {
+            ((File) node).getParent().getChildren().remove(node);
+        }
+        else {
+            ((Folder) node).getParent().getChildren().remove(node);
+        }
 
         return node.getPath().toFile().delete();
     }
@@ -57,7 +62,7 @@ public class NodeServiceImplementation implements NodeService {
 
         if (type == Node.Types.FILE) {
 
-            File node = new File(Path.of(path), folder);
+            File node = new File(Path.of(path),(Folder) folder);
             folder.getChildren().add(node);
             new java.io.File(path);
 
@@ -65,7 +70,7 @@ public class NodeServiceImplementation implements NodeService {
 
         }
 
-        Folder node = new Folder(Path.of(path), new ArrayList<>(), folder);
+        Folder node = new Folder(Path.of(path), new ArrayList<>(), (Folder) folder);
         folder.getChildren().add(node);
         new java.io.File(path).mkdirs();
 
@@ -79,7 +84,8 @@ public class NodeServiceImplementation implements NodeService {
         Path moveTo = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
 
         ((Folder) destinationFolder).addChild(nodeToMove);
-        ((Folder) nodeToMove.getParent()).removeChild(nodeToMove);
+        Folder folderToMove = (Folder) nodeToMove;
+        folderToMove.getParent().removeChild(nodeToMove);
         Files.move(pathToMove, moveTo);
         Path p = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
         return new File(p);
