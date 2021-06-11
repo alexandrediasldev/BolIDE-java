@@ -9,6 +9,9 @@ import java.io.InputStream;
 
 public class Exec implements Feature {
     private InputStream stream;
+    public Exec()
+    {
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

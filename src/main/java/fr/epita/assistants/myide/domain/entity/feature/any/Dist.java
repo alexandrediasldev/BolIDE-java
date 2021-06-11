@@ -10,6 +10,10 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class Dist implements Feature {
+    public Dist()
+    {
+
+    }
 
     public class DistReport implements ExecutionReport {
 

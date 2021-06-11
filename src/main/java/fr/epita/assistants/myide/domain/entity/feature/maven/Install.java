@@ -9,6 +9,10 @@ import java.io.InputStream;
 
 public class Install implements Feature {
     private InputStream stream;
+    public Install()
+    {
+
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

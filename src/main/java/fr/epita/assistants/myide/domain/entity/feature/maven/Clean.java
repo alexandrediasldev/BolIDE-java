@@ -9,6 +9,10 @@ import java.io.InputStream;
 
 public class Clean implements Feature {
     private InputStream stream;
+    public Clean()
+    {
+
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

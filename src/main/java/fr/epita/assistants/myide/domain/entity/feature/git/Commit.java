@@ -14,6 +14,11 @@ import java.io.IOException;
 
 public class Commit implements Feature {
 
+    public Commit()
+    {
+
+    }
+
     public class CommitReport implements Feature.ExecutionReport {
 
         final boolean success;

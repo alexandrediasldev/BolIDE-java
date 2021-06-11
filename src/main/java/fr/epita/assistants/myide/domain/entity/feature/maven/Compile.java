@@ -8,6 +8,10 @@ import java.io.*;
 
 public class Compile implements Feature {
     private InputStream stream;
+    public Compile()
+    {
+
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

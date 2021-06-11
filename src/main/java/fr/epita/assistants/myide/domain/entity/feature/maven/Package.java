@@ -9,6 +9,10 @@ import java.io.InputStream;
 
 public class Package implements Feature {
     private InputStream stream;
+    public Package()
+    {
+
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

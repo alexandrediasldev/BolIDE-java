@@ -9,6 +9,10 @@ import java.io.InputStream;
 
 public class Tree implements Feature {
     private InputStream stream;
+    public Tree()
+    {
+
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {
