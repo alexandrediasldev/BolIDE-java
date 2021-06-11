@@ -165,4 +165,31 @@ class NodeServiceImplementationTest {
         assert(b);
     }
 
+    @SneakyThrows
+    @Test
+    void deleteNodeMouliTest(){
+        NodeServiceImplementation nsi = new NodeServiceImplementation();
+        Path proot = Path.of("./testfiles/");
+        Folder root = new Folder(proot);
+        Node.Type type1 = Node.Types.FOLDER;
+        String name = "dir/";
+
+        Node.Type type2 = Node.Types.FILE;
+        String name2 = "file";
+
+        if(Files.exists(Path.of("./testfiles/dir/"+name2)))
+            Files.delete(Path.of("./testfiles/dir/" + name2));
+
+
+        if(Files.exists(Path.of("./testfiles/"+name)))
+            Files.delete(Path.of("./testfiles/" + name));
+
+
+        Node new_node = nsi.create(root, name, type1);
+        Node new_file = nsi.create(new_node, name2,type2);
+
+        nsi.delete(new_node);
+        assert(!Files.exists(Path.of("./testfiles/dir/"+name2)));
+
+    }
 }
