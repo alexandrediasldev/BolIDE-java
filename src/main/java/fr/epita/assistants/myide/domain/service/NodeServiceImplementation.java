@@ -38,11 +38,15 @@ public class NodeServiceImplementation implements NodeService {
 
         return node;
     }
+    private boolean deleteRecursive(Node node)
+    {
+        for (var child : node.getChildren())
+            deleteRecursive(child);
 
+        return node.getPath().toFile().delete();
+    }
     @Override
     public boolean delete(Node node) {
-        for (var child : node.getChildren())
-            delete(child);
 
         if (node.isFile()) {
             ((File) node).getParent().getChildren().remove(node);
@@ -51,9 +55,10 @@ public class NodeServiceImplementation implements NodeService {
             ((Folder) node).getParent().getChildren().remove(node);
         }
 
-        return node.getPath().toFile().delete();
+        return deleteRecursive(node);
     }
 
+    @SneakyThrows
     @Override
     public Node create(Node folder, String name, Node.Type type) {
 
@@ -64,7 +69,8 @@ public class NodeServiceImplementation implements NodeService {
 
             File node = new File(Path.of(path),(Folder) folder);
             folder.getChildren().add(node);
-            new java.io.File(path);
+
+            Files.createFile(Path.of(path));
 
             return node;
 
