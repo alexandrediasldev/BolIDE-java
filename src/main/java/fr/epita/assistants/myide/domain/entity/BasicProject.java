@@ -5,9 +5,7 @@ import fr.epita.assistants.myide.domain.entity.aspect.Git;
 import fr.epita.assistants.myide.domain.entity.aspect.Maven;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class BasicProject implements Project{
     private Node rootNode;
@@ -15,6 +13,8 @@ public class BasicProject implements Project{
     private List<@NotNull Feature> features;
 
     public BasicProject() {
+        aspects = new HashSet<>();
+        features = new ArrayList<>();
     }
 
     @Override
