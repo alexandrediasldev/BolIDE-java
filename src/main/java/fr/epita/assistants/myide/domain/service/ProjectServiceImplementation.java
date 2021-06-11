@@ -11,6 +11,15 @@ import java.nio.file.Path;
 public class ProjectServiceImplementation implements ProjectService{
     private NodeService nodeService;
 
+
+    // default report when a non implemented feature is searched
+    public class ProjectReport implements Feature.ExecutionReport {
+
+        @Override
+        public boolean isSuccess() {
+            return false;
+        }
+    }
     @Override
     public Project load(Path root) {
         Folder node = new Folder(root);
@@ -19,8 +28,11 @@ public class ProjectServiceImplementation implements ProjectService{
 
     @Override
     public Feature.ExecutionReport execute(Project project, Feature.Type featureType, Object... params) {
-
-        return null;
+ 
+        var feature = project.getFeature(featureType);
+        if (feature.isPresent())
+            return feature.get().execute(project, params);
+        return new ProjectReport();
     }
 
     @Override
