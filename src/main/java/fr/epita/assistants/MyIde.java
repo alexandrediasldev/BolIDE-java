@@ -19,9 +19,8 @@ public class MyIde {
      * @return An implementation of {@link ProjectService}.
      */
     public static ProjectService init(final Configuration configuration) {
-        var res = new  ProjectServiceImplementation();
-        var project = res.load(configuration.indexFile);
-
+        var res = new ProjectServiceImplementation();
+        //TODO : check what we have to do with configuration
         return res;
     }
 
@@ -31,6 +30,5 @@ public class MyIde {
      */
     public static record Configuration(Path indexFile,
                                        Path tempFolder) {}
-
     ;
 }
