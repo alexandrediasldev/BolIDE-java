@@ -27,7 +27,7 @@ public class ProjectServiceImplementation implements ProjectService{
         {
             if (String.valueOf(root).matches(".*[.]git"))
                 project.addAspect(Mandatory.Aspects.GIT);
-            if (String.valueOf(root).equals("pom.xml"))
+            if (String.valueOf(root).matches(".*pom.xml"))
                 project.addAspect(Mandatory.Aspects.MAVEN);
            return new fr.epita.assistants.myide.domain.entity.node.File(root);
         }

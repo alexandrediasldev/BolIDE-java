@@ -27,7 +27,7 @@ public class Folder implements Node {
     public Folder(Path root) {
         this.path = root;
         this.parent = null;
-        this.children = Collections.emptyList();
+        this.children = new ArrayList<>();
     }
 
     public void addChild(Node child) {
