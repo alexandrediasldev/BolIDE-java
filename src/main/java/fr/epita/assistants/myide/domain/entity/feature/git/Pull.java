@@ -14,6 +14,11 @@ import java.io.IOException;
 
 public class Pull implements Feature {
 
+    public Pull()
+    {
+
+    }
+
     public class PullReport implements ExecutionReport {
 
         final boolean success;

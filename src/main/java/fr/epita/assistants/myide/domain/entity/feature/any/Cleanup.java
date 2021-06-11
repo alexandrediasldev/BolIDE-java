@@ -11,6 +11,9 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class Cleanup implements Feature {
+    public Cleanup() {
+    }
+
     boolean deleteDirectory(File file) {
         File[] contents = file.listFiles();
 
@@ -20,6 +23,7 @@ public class Cleanup implements Feature {
 
         return file.delete();
     }
+
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

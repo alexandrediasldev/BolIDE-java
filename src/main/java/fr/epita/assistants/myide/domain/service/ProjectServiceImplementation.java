@@ -9,7 +9,7 @@ import fr.epita.assistants.myide.domain.entity.node.Folder;
 import java.nio.file.Path;
 
 public class ProjectServiceImplementation implements ProjectService{
-    private NodeService nodeService;
+    private final NodeService nodeService = new NodeServiceImplementation();
 
 
     // default report when a non implemented feature is searched

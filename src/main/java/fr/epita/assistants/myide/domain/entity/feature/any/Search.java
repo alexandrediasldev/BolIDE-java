@@ -34,6 +34,10 @@ import java.util.stream.Collectors;
 public class Search implements Feature {
     public Directory rootDirectory = null;
     public StandardAnalyzer analyzer = null;
+    public Search()
+    {
+
+    }
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {

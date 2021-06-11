@@ -15,6 +15,11 @@ import java.util.Arrays;
 
 public class Push implements Feature {
 
+    public Push()
+    {
+
+    }
+
     public class PushReport implements Feature.ExecutionReport {
 
         final boolean success;

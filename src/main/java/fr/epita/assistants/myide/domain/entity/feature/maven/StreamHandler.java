@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 class StreamHandler extends Thread {
 
-    private final InputStream inputStream;
+    private InputStream inputStream;
 
     public StreamHandler(InputStream inputStream) {
         this.inputStream = inputStream;
