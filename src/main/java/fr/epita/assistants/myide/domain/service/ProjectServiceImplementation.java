@@ -28,8 +28,10 @@ public class ProjectServiceImplementation implements ProjectService{
         var children = file.listFiles();
         if (children == null)
         {
-            if (depth==1 && String.valueOf(root).matches(".*./pom.xml"))
+            if (depth==1 && String.valueOf(root).matches(".*/pom.xml"))
                 project.addAspect(Mandatory.Aspects.MAVEN);
+            if (depth==1 && String.valueOf(root).matches(".*/[.]git"))
+                project.addAspect(Mandatory.Aspects.GIT);
            return new fr.epita.assistants.myide.domain.entity.node.File(root);
         }
 
