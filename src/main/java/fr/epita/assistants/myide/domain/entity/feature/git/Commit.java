@@ -11,6 +11,7 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Commit implements Feature {
 
@@ -40,14 +41,12 @@ public class Commit implements Feature {
         FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
 
         try {
-            Repository repository = repositoryBuilder.setGitDir(new File(path))
-                    .readEnvironment()
-                    .findGitDir()
-                    .build();
 
-            Git git = new Git(repository);
+            Git git = Git.open(new File(path));
             CommitCommand commit = git.commit();
-            commit.setMessage(params.toString());
+            StringBuilder message = new StringBuilder();
+            Arrays.stream(params).forEach(msg -> message.append(msg.toString()));
+            commit.setMessage(message.toString());
             /*
             for (var file : params) {
                 if (file instanceof String)

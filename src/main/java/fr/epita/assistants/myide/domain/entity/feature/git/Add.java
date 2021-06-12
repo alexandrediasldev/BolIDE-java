@@ -39,17 +39,19 @@ public class Add implements Feature {
         FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
 
         try {
+            /*
             Repository repository = repositoryBuilder.setGitDir(new File(path))
                     .readEnvironment()
                     .findGitDir()
                     .build();
-
-            Git git = new Git(repository);
+*/
+            Git git =Git.open(new File(path));
+                    //new Git(repository);
             AddCommand add = git.add();
 
             for (var file : params) {
                 if (file instanceof String)
-                    add.addFilepattern((String) file);
+                    add = add.addFilepattern((String) file);
                 else
                     return new AddReport(false);
             }
