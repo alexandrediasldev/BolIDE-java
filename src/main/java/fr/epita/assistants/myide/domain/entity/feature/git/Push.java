@@ -39,12 +39,8 @@ public class Push implements Feature {
         String path = project.getRootNode().getPath().toAbsolutePath().toString();
         FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
         try {
-            Repository repository = repositoryBuilder.setGitDir(new File(path))
-                    .readEnvironment()
-                    .findGitDir()
-                    .build();
 
-            Git git = new Git(repository);
+            Git git =Git.open(new File(path));
             var listopt = Arrays.stream(params).map(obj -> (String) obj).toList();
 
             if (params.length == 0) {
