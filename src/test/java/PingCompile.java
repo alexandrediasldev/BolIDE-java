@@ -7,7 +7,7 @@ public class PingCompile {
 
     public static void main(String[] args) {
         var projectService = MyIde.init(new MyIde.Configuration(null, null));
-        var project = projectService.load(Path.of("./testfiles"));
+        var project = projectService.load(Path.of("../helloWorld/"));
 
         /*
         if (project.getAspects().stream().noneMatch(e ->e.getType().toString().equals("MAVEN")));
