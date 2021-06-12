@@ -46,9 +46,9 @@ public class Cleanup implements Feature {
         }
         Report report = new Report(false);
 
-        try (Stream<String> stream = Files.lines(Paths.get(".myideignore"))) {
+        try (Stream<String> stream = Files.lines(Paths.get(project.getRootNode().getPath().toAbsolutePath() + File.separator+ ".myideignore"))) {
             stream.forEach(file -> {
-                File f = new File(file);
+                File f = new File(project.getRootNode().getPath().toAbsolutePath() + File.separator + file);
 
                 if (!f.isDirectory()) {
                     f.delete();
