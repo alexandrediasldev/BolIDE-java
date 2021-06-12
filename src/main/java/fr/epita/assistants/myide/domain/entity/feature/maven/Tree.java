@@ -35,8 +35,8 @@ public class Tree implements Feature {
         Report report = new Report(false);
 
         try {
-            var command = "mvn dependency:tree";
-            var exe = MavenExecuter.mvnCommand(command, project.getRootNode().toString()
+            var command = "dependency:tree";
+            var exe = MavenExecuter.mvnCommand(command, project.getRootNode().getPath().toString()
                     , params);
             if (exe != 0) {
                 return report;

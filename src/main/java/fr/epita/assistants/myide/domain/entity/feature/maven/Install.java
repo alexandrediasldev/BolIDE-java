@@ -35,8 +35,8 @@ public class Install implements Feature {
         Report report = new Report(false);
 
         try {
-            var command = "mvn install";
-            var exe = MavenExecuter.mvnCommand(command, project.getRootNode().toString()
+            var command = "install";
+            var exe = MavenExecuter.mvnCommand(command, project.getRootNode().getPath().toString()
                     , params);
             if (exe != 0) {
                 return report;
