@@ -22,7 +22,7 @@ public class ProjectServiceImplementation implements ProjectService{
     }
 
     // add each children of the root to have complete project architecture
-    // isRoot is used to detect if pom.xml is somewhere else than root directory
+    // depth is used to detect if pom.xml is somewhere else than root directory
     private Node buildArchitecture(BasicProject project, Path root, int depth){
         java.io.File file = new File(String.valueOf(root));
         var children = file.listFiles();
@@ -30,8 +30,6 @@ public class ProjectServiceImplementation implements ProjectService{
         {
             if (depth==1 && String.valueOf(root).matches(".*/pom.xml"))
                 project.addAspect(Mandatory.Aspects.MAVEN);
-            if (depth==1 && String.valueOf(root).matches(".*/[.]git"))
-                project.addAspect(Mandatory.Aspects.GIT);
            return new fr.epita.assistants.myide.domain.entity.node.File(root);
         }
 
@@ -43,11 +41,31 @@ public class ProjectServiceImplementation implements ProjectService{
         return res;
     }
 
+
+    private boolean isGitProject(File root){
+        if(root == null)
+            return false;
+
+        var children = root.listFiles();
+
+        if (children != null) {
+            for (var child : children) {
+                if (child.getPath().matches(".*/[.]git")) {
+                    return true;
+                }
+            }
+        }
+        return isGitProject(root.getParentFile());
+    }
+
     @Override
     public Project load(Path root) {
         var res =  new BasicProject();
         res.addAspect(Mandatory.Aspects.ANY);
         var node = buildArchitecture(res, root, 0);
+
+        if (isGitProject(new File(root.toString())))
+            res.addAspect(Mandatory.Aspects.GIT);
 
         res.setRootNode(node);
         return res;

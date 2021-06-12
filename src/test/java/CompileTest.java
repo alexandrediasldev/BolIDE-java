@@ -13,6 +13,7 @@ class CompileTest {
     @Test
     void compile() {
         try {
+
             int err = MavenExecuter.mvnCommand("compile", "../helloWorld/");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
