@@ -33,6 +33,10 @@ public class BasicProject implements Project{
         return aspects;
     }
 
+    public Set<Aspect.Type> getAspectsType() {
+        return aspectsType;
+    }
+
     @Override
     public Optional<Feature> getFeature(Feature.Type featureType) {
        for (var feature : features)
