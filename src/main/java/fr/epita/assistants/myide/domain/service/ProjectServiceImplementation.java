@@ -47,15 +47,6 @@ public class ProjectServiceImplementation implements ProjectService{
         res.addAspect(Mandatory.Aspects.ANY);
         var node = buildArchitecture(res, root, 0);
 
-        FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
-        try {
-             repositoryBuilder.setGitDir(new File(String.valueOf(root)))
-                     .build();
-            res.addAspect(Mandatory.Aspects.GIT);
-        } catch (IOException e) {
-            res.setRootNode(node);
-            return res;
-        }
         res.setRootNode(node);
         return res;
     }
