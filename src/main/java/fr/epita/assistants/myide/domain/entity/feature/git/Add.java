@@ -49,7 +49,7 @@ public class Add implements Feature {
 
             for (var file : params) {
                 if (file instanceof String)
-                    add.addFilepattern((String) file);
+                    add = add.addFilepattern((String) file);
                 else
                     return new AddReport(false);
             }
