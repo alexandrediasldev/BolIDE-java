@@ -16,19 +16,19 @@ public class Ui {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Simple Title");
-        FlowLayout flowLayout = new FlowLayout();
 
-        JPanel pane = new JPanel();
-        JTextField field = new JTextField(); //texte
+        GridLayout gridText = new GridLayout(2,1);
+        GridLayout buttomLayout = new GridLayout();
 
-        JPanel textpanel = new JPanel(new GridLayout(13,13));
-        textpanel.add(field);
-        JButton button = new JButton("Exit");
+        JTextField field = new JTextField();
 
+        JButton button = new JButton("Exite Here");
         button.addActionListener(new exit_listener());
 
-        frame.add(textpanel);
-        frame.add(pane);
+        frame.setLayout(gridText);
+        frame.add(field);
+        frame.add(button);
+
         frame.pack(); //auto size
         frame.setVisible(true);
     }
