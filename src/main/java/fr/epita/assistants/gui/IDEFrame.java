@@ -30,6 +30,7 @@ public class IDEFrame extends JFrame {
         add(greenPanel, BorderLayout.NORTH);
         add(redPanel, BorderLayout.SOUTH);
 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setVisible(true);
     }
