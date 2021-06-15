@@ -13,7 +13,7 @@ public class IDENodes implements TreeNode {
 
     public IDENodes(Node node){
         this.node = node;
-        this.parent = new IDENodes(node.getParent());
+        this.parent = null;
         node.getChildren().forEach(n -> children.add(new IDENodes(n, this)));
     }
 

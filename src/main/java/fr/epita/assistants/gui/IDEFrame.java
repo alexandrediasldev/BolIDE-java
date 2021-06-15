@@ -32,7 +32,7 @@ public class IDEFrame extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
-        setVisible(true);
+        //setVisible(true);
     }
 
     private void actionPerformed()
