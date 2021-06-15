@@ -17,8 +17,21 @@ public class CompilePanel extends JMenuBar {
         JMenuItem theme = new JMenuItem("theme");
         menu2.add(color);
         menu2.add(theme);
+        JPanel pan = new JPanel();
+        JPanel pan2 = new JPanel();
 
+
+
+
+        JButton button = new JButton("Compile");
+        JButton fermer = new JButton("X");
         add(menu2);
+        add(pan);
+        //add(new JPanel()); //moving compile button a bit to the right
+        //add(new JPanel());
+        add(button);
+        add(pan2);
+        add(fermer);
     }
 
 }
