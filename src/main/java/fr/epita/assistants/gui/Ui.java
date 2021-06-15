@@ -24,7 +24,7 @@ public class Ui {
 
         JTextField field = new JTextField();
 
-        JButton button = new JButton("Exite Here");
+        JButton button = new JButton("Exit Here");
         button.addActionListener(new exit_listener());
 
         frame.setLayout(gridText);
