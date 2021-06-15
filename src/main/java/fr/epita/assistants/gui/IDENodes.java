@@ -1,9 +1,8 @@
 package fr.epita.assistants.gui;
 
 import fr.epita.assistants.myide.domain.entity.Node;
+
 import javax.swing.tree.TreeNode;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -60,5 +59,10 @@ public class IDENodes implements TreeNode {
     public Enumeration<? extends javax.swing.tree.TreeNode> children() {
 
         return children.elements();
+    }
+
+    @Override
+    public String toString(){
+        return node.getPath().getFileName().toString();
     }
 }
