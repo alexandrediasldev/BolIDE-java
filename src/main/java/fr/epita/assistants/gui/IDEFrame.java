@@ -27,10 +27,18 @@ public class IDEFrame extends JFrame {
 
         add(blackPanel, BorderLayout.EAST);
         add(bluePanel, BorderLayout.WEST);
-        add(greenPanel, BorderLayout.NORTH);
+//        add(greenPanel, BorderLayout.NORTH);
         add(redPanel, BorderLayout.SOUTH);
 
-        pack();
+        TextEditor txt = new TextEditor();
+        add(txt, BorderLayout.CENTER);
+        CompilePanel Bar = new CompilePanel();
+        setJMenuBar(Bar);
+        setSize(512,512 );
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+//        pack();
         setVisible(true);
     }
 
