@@ -31,7 +31,9 @@ public class IDEFrame extends JFrame {
         add(blackPanel, BorderLayout.EAST);
 //        add(bluePanel, BorderLayout.WEST);
 //        add(greenPanel, BorderLayout.NORTH);
-        add(redPanel, BorderLayout.SOUTH);
+        //add(redPanel, BorderLayout.SOUTH);
+        IDEShell shell = new IDEShell();
+        add(shell, BorderLayout.SOUTH);
 
         TextEditor txt = new TextEditor();
         add(txt, BorderLayout.CENTER);
