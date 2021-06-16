@@ -13,10 +13,9 @@ public class TextEditor extends JPanel {
         text.setFont(font);
         text.setForeground(Color.white);
         text.setBackground(Color.darkGray);
-
+        text.setColumns(80);
         JScrollPane scrollpane = new JScrollPane(text);
         scrollpane.setPreferredSize(new Dimension(1570, 650));
-
 
         JPanel pan = new JPanel();
         pan.add(scrollpane);
