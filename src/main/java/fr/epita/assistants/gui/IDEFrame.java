@@ -36,10 +36,8 @@ public class IDEFrame extends JFrame {
         setJMenuBar(Bar);
         setSize(512,512 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-//        pack();
-        setVisible(true);
+        pack();
+        //setVisible(true);
     }
 
     private void actionPerformed()
