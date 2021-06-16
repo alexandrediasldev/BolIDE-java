@@ -1,6 +1,8 @@
 package fr.epita.assistants.gui;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
+import lombok.SneakyThrows;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +10,13 @@ import java.nio.file.Path;
 
 public class IDEFrame extends JFrame {
 
+    @SneakyThrows
     public IDEFrame() // add options to the constructor
     {
+        FlatLightLaf.install();
+        UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
         setLayout(new BorderLayout());
+
 
         Panel blackPanel = new Panel();
         blackPanel.setBackground(Color.BLACK);
@@ -46,6 +52,7 @@ public class IDEFrame extends JFrame {
         add(panel , BorderLayout.WEST);
 
         setSize(512,512 );
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);

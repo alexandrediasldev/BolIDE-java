@@ -1,11 +1,14 @@
 package fr.epita.assistants.gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class CompilePanel extends JMenuBar {
 
     public CompilePanel(){
         JMenu menu = new JMenu("File");
+        Color royal_blue = new Color(0, 35 , 102);
+        setBackground(royal_blue);
         JMenuItem item = new JMenuItem("open");
         JMenuItem item1 = new JMenuItem("git");
         menu.add(item);
@@ -18,13 +21,17 @@ public class CompilePanel extends JMenuBar {
         menu2.add(color);
         menu2.add(theme);
         JPanel pan = new JPanel();
+        pan.setBackground(royal_blue);
         JPanel pan2 = new JPanel();
+        pan2.setBackground(royal_blue);
 
 
 
 
         JButton button = new JButton("Compile");
+        button.setBackground(royal_blue);
         JButton fermer = new JButton("X");
+        fermer.setBackground(royal_blue);
         add(menu2);
         add(pan);
         //add(new JPanel()); //moving compile button a bit to the right
