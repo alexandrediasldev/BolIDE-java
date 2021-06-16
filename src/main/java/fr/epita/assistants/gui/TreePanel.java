@@ -33,16 +33,13 @@ public class TreePanel extends JPanel {
        add(scrollpane);
    }
 
+   /*
     public static void main(String[] args) {
-        ProjectServiceImplementation p = new ProjectServiceImplementation();
-        var project = p.load(Path.of("./"));
-        IDEFrame frame = new IDEFrame();
-
-        var panel =new TreePanel(project.getRootNode());
 
         frame.setForeground(Color.black);
         frame.setBackground(Color.lightGray);
         frame.add(panel, BorderLayout.WEST);
         frame.setVisible(true);
     }
+    */
 }

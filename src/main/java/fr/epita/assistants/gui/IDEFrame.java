@@ -1,7 +1,10 @@
 package fr.epita.assistants.gui;
 
+import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
+
 import javax.swing.*;
 import java.awt.*;
+import java.nio.file.Path;
 
 public class IDEFrame extends JFrame {
 
@@ -26,7 +29,7 @@ public class IDEFrame extends JFrame {
         redPanel.setVisible(true);
 
         add(blackPanel, BorderLayout.EAST);
-        add(bluePanel, BorderLayout.WEST);
+//        add(bluePanel, BorderLayout.WEST);
 //        add(greenPanel, BorderLayout.NORTH);
         add(redPanel, BorderLayout.SOUTH);
 
@@ -34,10 +37,16 @@ public class IDEFrame extends JFrame {
         add(txt, BorderLayout.CENTER);
         CompilePanel Bar = new CompilePanel();
         setJMenuBar(Bar);
+
+        ProjectServiceImplementation p = new ProjectServiceImplementation();
+        var project = p.load(Path.of("./"));
+        var panel =new TreePanel(project.getRootNode());
+        add(panel , BorderLayout.WEST);
+
         setSize(512,512 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-        //setVisible(true);
+        setVisible(true);
     }
 
     private void actionPerformed()
