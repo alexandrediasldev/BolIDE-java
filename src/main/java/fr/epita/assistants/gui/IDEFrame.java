@@ -15,7 +15,11 @@ public class IDEFrame extends JFrame {
     {
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
-        setLayout(new BorderLayout());
+
+        var layout = new BorderLayout();
+        layout.setHgap(2);
+        layout.setVgap(2);
+        setLayout(layout);
 
 
         Panel blackPanel = new Panel();
@@ -51,7 +55,7 @@ public class IDEFrame extends JFrame {
         var panel =new TreePanel(project.getRootNode());
         add(panel , BorderLayout.WEST);
 
-        setSize(512,512 );
+        //setSize(512,512 );
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
