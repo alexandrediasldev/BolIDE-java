@@ -22,7 +22,7 @@ public class IDEFrame extends JFrame {
         setLayout(layout);
 
 
-        Panel blackPanel = new Panel();
+/*        Panel blackPanel = new Panel();
         blackPanel.setBackground(Color.BLACK);
         blackPanel.setVisible(true);
 
@@ -37,8 +37,8 @@ public class IDEFrame extends JFrame {
         Panel redPanel = new Panel();
         redPanel.setBackground(Color.RED);
         redPanel.setVisible(true);
-
-        add(blackPanel, BorderLayout.EAST);
+*/
+ //       add(blackPanel, BorderLayout.EAST);
 //        add(bluePanel, BorderLayout.WEST);
 //        add(greenPanel, BorderLayout.NORTH);
         //add(redPanel, BorderLayout.SOUTH);
