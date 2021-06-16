@@ -46,7 +46,7 @@ public class IDEFrame extends JFrame {
         var panel =new TreePanel(project.getRootNode());
         add(panel , BorderLayout.WEST);
 
-        setSize(512,512 );
+        //setSize(512,512 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
