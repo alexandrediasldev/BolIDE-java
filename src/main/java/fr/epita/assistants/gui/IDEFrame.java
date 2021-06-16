@@ -10,7 +10,10 @@ public class IDEFrame extends JFrame {
 
     public IDEFrame() // add options to the constructor
     {
-        setLayout(new BorderLayout());
+        var layout = new BorderLayout();
+        layout.setHgap(2);
+        layout.setVgap(2);
+        setLayout(layout);
 
         Panel blackPanel = new Panel();
         blackPanel.setBackground(Color.BLACK);
