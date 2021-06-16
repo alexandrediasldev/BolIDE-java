@@ -28,17 +28,21 @@ public class TreePanel extends JPanel {
        });
        JScrollPane scrollpane = new JScrollPane();
        scrollpane.getViewport().add(treeFile);
-       add(BorderLayout.CENTER, scrollpane);
+       // check more precisely later
+       scrollpane.setPreferredSize(new Dimension(300, 1000));
+       add(scrollpane);
    }
 
     public static void main(String[] args) {
         ProjectServiceImplementation p = new ProjectServiceImplementation();
         var project = p.load(Path.of("./"));
         IDEFrame frame = new IDEFrame();
+
+        var panel =new TreePanel(project.getRootNode());
+
         frame.setForeground(Color.black);
         frame.setBackground(Color.lightGray);
-
-        frame.add(new TreePanel(project.getRootNode()), BorderLayout.WEST);
+        frame.add(panel, BorderLayout.WEST);
         frame.setVisible(true);
     }
 }
