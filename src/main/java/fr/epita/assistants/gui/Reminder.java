@@ -1,6 +1,10 @@
 package fr.epita.assistants.gui;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class Reminder {
     private final String message;
@@ -17,7 +21,12 @@ public class Reminder {
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
-                        JOptionPane.showMessageDialog(null, message, "BolIDE: pause", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane pane = new JOptionPane(message);
+                        Dialog dialog = pane.createDialog("BolIDE");
+                        dialog.setModal(false);
+                        dialog.setLocation(0, 0);
+                        dialog.show();
+
                         scheduler();
                     }
                 },
