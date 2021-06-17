@@ -17,8 +17,8 @@ public class IDEFrame extends JFrame {
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
 
         var layout = new BorderLayout();
-        layout.setHgap(2);
-        layout.setVgap(2);
+        //layout.setHgap(2);
+        //layout.setVgap(2);
         setLayout(layout);
 
 
@@ -43,6 +43,7 @@ public class IDEFrame extends JFrame {
 //        add(greenPanel, BorderLayout.NORTH);
         //add(redPanel, BorderLayout.SOUTH);
         IDEShell shell = new IDEShell();
+        shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
 
         TextEditor txt = new TextEditor();
