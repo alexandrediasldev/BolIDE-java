@@ -30,15 +30,15 @@ public class CompilePanel extends JMenuBar {
 
         JButton button = new JButton("Compile");
         button.setBackground(royal_blue);
-        JButton fermer = new JButton("X");
-        fermer.setBackground(royal_blue);
+        //JButton fermer = new JButton("X");
+       // fermer.setBackground(royal_blue);
         add(menu2);
         add(pan);
         //add(new JPanel()); //moving compile button a bit to the right
         //add(new JPanel());
-        add(button);
         add(pan2);
-        add(fermer);
+        add(button);
+        //add(fermer);
     }
 
 }

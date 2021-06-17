@@ -1,6 +1,8 @@
 package fr.epita.assistants.gui;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class TextEditor extends JPanel {
@@ -14,12 +16,12 @@ public class TextEditor extends JPanel {
         text.setForeground(Color.white);
         text.setBackground(Color.darkGray);
         text.setColumns(80);
+        text.setLineWrap(true);
         JScrollPane scrollpane = new JScrollPane(text);
-        scrollpane.setPreferredSize(new Dimension(1570, 650));
 
-        JPanel pan = new JPanel();
-        pan.add(scrollpane);
-        Tabs.add(pan, "MAIN");
+        Tabs.addTab("MAIN", scrollpane);
         add(Tabs);
+
+
     }
 }
