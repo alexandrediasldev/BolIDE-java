@@ -19,7 +19,6 @@ public class TextEditor extends JPanel {
         RSyntaxTextArea text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
-        Theme theme = Theme.load(getClass().getResourceAsStream( "light.xml" ));
         Font font = new Font("Comic Sans MS", Font.PLAIN, 24);
 
         text.setFont(font);

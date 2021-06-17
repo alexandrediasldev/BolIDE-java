@@ -63,6 +63,7 @@ public class IDEFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+        var reminder = new Reminder("amogus");
     }
 
     private void actionPerformed()
