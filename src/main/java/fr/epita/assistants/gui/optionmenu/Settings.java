@@ -6,7 +6,7 @@ import java.awt.*;
 public class Settings extends JDialog {
     public Settings(Frame parent)
     {
-        super(parent,true);
+        super(parent,false);
         var pan = new JPanel();
         var layout = new BoxLayout(pan, BoxLayout.Y_AXIS);
         pan.setLayout(layout);
