@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import fr.epita.assistants.gui.optionmenu.Settings;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
 
@@ -21,27 +22,6 @@ public class IDEFrame extends JFrame {
         //layout.setVgap(2);
         setLayout(layout);
 
-
-/*        Panel blackPanel = new Panel();
-        blackPanel.setBackground(Color.BLACK);
-        blackPanel.setVisible(true);
-
-        Panel bluePanel = new Panel();
-        bluePanel.setBackground(Color.BLUE);
-        bluePanel.setVisible(true);
-
-        Panel greenPanel = new Panel();
-        greenPanel.setBackground(Color.GREEN);
-        greenPanel.setVisible(true);
-
-        Panel redPanel = new Panel();
-        redPanel.setBackground(Color.RED);
-        redPanel.setVisible(true);
-*/
- //       add(blackPanel, BorderLayout.EAST);
-//        add(bluePanel, BorderLayout.WEST);
-//        add(greenPanel, BorderLayout.NORTH);
-        //add(redPanel, BorderLayout.SOUTH);
         IDEShell shell = new IDEShell();
         shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
@@ -61,6 +41,12 @@ public class IDEFrame extends JFrame {
         //setSize(512,512 );
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        var setting = new Settings(this);
+        setting.show();
+        setting.setMaximumSize(new Dimension(300,300));
+
         pack();
         setVisible(true);
         var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness", 10);
