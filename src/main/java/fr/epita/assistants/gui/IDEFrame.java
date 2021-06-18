@@ -14,6 +14,8 @@ public class IDEFrame extends JFrame {
     @SneakyThrows
     public IDEFrame() // add options to the constructor
     {
+
+        super("BolIDE");
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
 
@@ -49,6 +51,7 @@ public class IDEFrame extends JFrame {
 
 
         pack();
+        setIconImage(Toolkit.getDefaultToolkit().getImage("./resources/logo.png"));
         setVisible(true);
         var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
                 , 120);
