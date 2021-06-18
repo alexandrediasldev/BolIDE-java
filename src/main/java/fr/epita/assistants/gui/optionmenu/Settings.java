@@ -11,12 +11,20 @@ public class Settings extends JDialog {
         var pan = new JPanel();
         var layout = new BoxLayout(pan, BoxLayout.Y_AXIS);
         pan.setLayout(layout);
-        var b1 = new Button("a");
-        var b2 = new Button("b");
-        var b3 = new Button("c");
-        pan.add(b1);
-        pan.add(b2);
-        pan.add(b3);
+
+        var pauseOptionPanel =  new Reminder();
+
+        pan.add(pauseOptionPanel);
+
+        var quit = new JButton("Quitter");
+        var discardQuit = new JButton("Discard changes");
+        var saveQuit = new JButton("Save & exit");
+
+        var pannelQuit = new JPanel();
+
+        pannelQuit.add(discardQuit);
+        pannelQuit.add(saveQuit);
+        pan.add(pannelQuit);
         add(pan);
 
 
