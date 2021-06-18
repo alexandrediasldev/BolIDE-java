@@ -47,9 +47,11 @@ public class IDEFrame extends JFrame {
         setting.show();
         setting.setMaximumSize(new Dimension(300,300));
 
+
         pack();
         setVisible(true);
-        var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness", 10);
+        var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
+                , 120);
         reminder.scheduler();
     }
 
