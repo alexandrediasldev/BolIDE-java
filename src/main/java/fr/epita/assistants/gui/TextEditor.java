@@ -16,14 +16,12 @@ public class TextEditor extends JPanel {
     public TextEditor() {
         JTabbedPane Tabs = new JTabbedPane();
 
-        /*
         RSyntaxTextArea text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
-        */
-        //Font font = new Font("Comic Sans MS", Font.PLAIN, 24);
 
-        var text = new JTextArea();
+        Font font = new Font("Comic Sans MS", Font.PLAIN, 24);
+
         //text.setFont(font);
         text.setForeground(Color.white);
         text.setBackground(Color.darkGray);
