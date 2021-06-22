@@ -15,6 +15,7 @@ public class FontSettings extends JFrame {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String[] fontsAvailable = ge.getAvailableFontFamilyNames();
         JComboBox<String> fontBox = new JComboBox<String>(fontsAvailable);
+        AutoCompletion.enable(fontBox);
 
         fontBox.setEditable(true);
         pannel.add(fontBox);
