@@ -3,6 +3,7 @@ package fr.epita.assistants.gui;
 import fr.epita.assistants.myide.domain.entity.Node;
 import fr.epita.assistants.myide.domain.entity.node.Folder;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -23,7 +24,13 @@ public class TreePanel extends JPanel {
            public void valueChanged(TreeSelectionEvent e) {
                IDENodes node = (IDENodes) e
                        .getPath().getLastPathComponent();
-               System.out.println(node);
+
+               if (node.getNode().isFile())
+               {
+                   var load = new LoadFile(node.getNode(), IDEFrame.getText());
+                   load.loadText();
+               }
+
            }
        });
        JScrollPane scrollpane = new JScrollPane();
@@ -32,6 +39,8 @@ public class TreePanel extends JPanel {
        scrollpane.setPreferredSize(new Dimension(300, 1000));
        add(scrollpane);
    }
+
+
 
    /*
     public static void main(String[] args) {

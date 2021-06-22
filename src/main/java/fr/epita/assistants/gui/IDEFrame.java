@@ -2,14 +2,18 @@ package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import fr.epita.assistants.gui.optionmenu.Settings;
+import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import java.awt.*;
 import java.nio.file.Path;
 
 public class IDEFrame extends JFrame {
+
+    static public RSyntaxTextArea text;
 
     @SneakyThrows
     public IDEFrame() // add options to the constructor
@@ -30,6 +34,7 @@ public class IDEFrame extends JFrame {
 
         TextEditor txt = new TextEditor();
         txt.setLayout(new GridLayout());
+        text = txt.text;
         add(txt, BorderLayout.CENTER);
 
         CompilePanel Bar = new CompilePanel();
@@ -56,6 +61,11 @@ public class IDEFrame extends JFrame {
         var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
                 , 120);
         reminder.scheduler();
+    }
+
+    static public RSyntaxTextArea getText()
+    {
+        return text;
     }
 
     private void actionPerformed()
