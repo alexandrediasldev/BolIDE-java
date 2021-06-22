@@ -3,9 +3,9 @@ package fr.epita.assistants.gui.optionmenu;
 import javax.swing.*;
 import java.awt.*;
 
-public class Reminder extends JPanel{
+public class ReminderSettings extends JPanel{
 
-    public Reminder() {
+    public ReminderSettings() {
         var grid = new BoxLayout(this, BoxLayout.Y_AXIS);
 
         setLayout(grid);
