@@ -27,9 +27,8 @@ public class FontSettings extends JFrame {
                     var selected  = fontBox.getItemAt
                             (fontBox.getSelectedIndex());
                     var text = textEditor.getText();
-                    text.setFont(new Font(selected, Font.PLAIN, 24));
+                    text.setFont(new Font(selected, Font.PLAIN, 23));
                 }
-                //set font with res
             }
         });
         pannel.add(selectButton);
