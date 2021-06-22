@@ -32,7 +32,7 @@ public class IDEFrame extends JFrame {
         txt.setLayout(new GridLayout());
         add(txt, BorderLayout.CENTER);
 
-        CompilePanel Bar = new CompilePanel();
+        CompilePanel Bar = new CompilePanel(txt);
         setJMenuBar(Bar);
 
         ProjectServiceImplementation p = new ProjectServiceImplementation();

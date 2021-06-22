@@ -1,11 +1,14 @@
 package fr.epita.assistants.gui;
 
+import fr.epita.assistants.gui.optionmenu.FontSettings;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class CompilePanel extends JMenuBar {
 
-    public CompilePanel(){
+    public CompilePanel(TextEditor textEditor){
         JMenu menu = new JMenu("File");
         Color royal_blue = new Color(0, 35 , 102);
         setBackground(royal_blue);
@@ -16,10 +19,17 @@ public class CompilePanel extends JMenuBar {
         add(menu);
 
         JMenu menu2 = new JMenu("Settings");
+        JMenuItem font = new JMenuItem(new AbstractAction("My Menu Item") {
+            public void actionPerformed(ActionEvent e) {
+                    FontSettings f = new FontSettings(textEditor);
+                    f.setVisible(true);
+            }
+        });
         JMenuItem color = new JMenuItem("color");
         JMenuItem theme = new JMenuItem("theme");
         menu2.add(color);
         menu2.add(theme);
+        menu2.add(font);
         JPanel pan = new JPanel();
         pan.setBackground(royal_blue);
         JPanel pan2 = new JPanel();

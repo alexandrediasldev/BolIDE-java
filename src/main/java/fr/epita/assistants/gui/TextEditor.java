@@ -12,19 +12,22 @@ import java.awt.*;
 
 public class TextEditor extends JPanel {
 
+    private RSyntaxTextArea text;
+
     @SneakyThrows
     public TextEditor() {
         JTabbedPane Tabs = new JTabbedPane();
 
-        RSyntaxTextArea text = new RSyntaxTextArea();
+        text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
 
         Font font = new Font("Comic Sans MS", Font.PLAIN, 24);
         Theme theme = Theme.load(getClass().getResourceAsStream(
                 "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
+
         theme.apply(text);
-        //text.setFont(font);
+        text.setFont(font);
         text.setForeground(Color.white);
         text.setBackground(Color.darkGray);
         text.setColumns(80);
@@ -35,5 +38,9 @@ public class TextEditor extends JPanel {
         add(Tabs);
 
 
+    }
+
+    public RSyntaxTextArea getText() {
+        return text;
     }
 }
