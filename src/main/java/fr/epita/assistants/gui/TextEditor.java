@@ -21,7 +21,9 @@ public class TextEditor extends JPanel {
         text.setCodeFoldingEnabled(true);
 
         Font font = new Font("Comic Sans MS", Font.PLAIN, 24);
-
+        Theme theme = Theme.load(getClass().getResourceAsStream(
+                "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
+        theme.apply(text);
         //text.setFont(font);
         text.setForeground(Color.white);
         text.setBackground(Color.darkGray);
