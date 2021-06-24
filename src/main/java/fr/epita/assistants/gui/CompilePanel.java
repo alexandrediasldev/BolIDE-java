@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 
 public class CompilePanel extends JMenuBar {
 
-    public CompilePanel(TextEditor textEditor){
+    public CompilePanel(){
         JMenu menu = new JMenu("File");
         Color royal_blue = new Color(0, 35 , 102);
         setBackground(royal_blue);
@@ -20,7 +20,7 @@ public class CompilePanel extends JMenuBar {
 
         JMenu menu2 = new JMenu("Settings");
         JMenuItem font = new JMenuItem(new AbstractAction("My Menu Item") {
-           FontSettings f = new FontSettings(textEditor);
+           FontSettings f = new FontSettings();
             public void actionPerformed(ActionEvent e) {
                     f.setVisible(true);
             }
