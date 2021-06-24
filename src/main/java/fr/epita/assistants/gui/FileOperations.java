@@ -2,15 +2,18 @@ package fr.epita.assistants.gui;
 
 import fr.epita.assistants.myide.domain.entity.Node;
 import fr.epita.assistants.myide.domain.entity.node.File;
+import fr.epita.assistants.myide.domain.service.NodeServiceImplementation;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-public class LoadFile {
+public class FileOperations {
 
     private File file;
+    private String content = "";
 
-    public LoadFile(Node file) {
+    public FileOperations(Node file) {
 
         if (!(file instanceof File))
             throw new IncompatibleClassChangeError("Node is not a File!");
@@ -27,8 +30,6 @@ public class LoadFile {
     }
 
     private String loadNodeContent() {
-        String content = "";
-
         try {
             content = new String(Files.readAllBytes(file.getPath()));
         } catch (IOException e) {
@@ -40,5 +41,10 @@ public class LoadFile {
 
     public void loadText() {
         IDEConfig.INSTANCE.setContent(loadNodeContent());
+    }
+
+    public void saveText(String content) throws IOException {
+        var path = file.getPath().toAbsolutePath();
+        Files.writeString(path, content);
     }
 }
