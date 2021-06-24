@@ -13,6 +13,10 @@ public class IDENodes implements TreeNode {
     private final Vector<TreeNode> children =  new Vector<>();
     private final Comparator compare = Comparator.comparing(Node::getPath);
 
+    public Node getNode() {
+        return node;
+    }
+
     public IDENodes(Node node){
         this.node = node;
         this.parent = null;
