@@ -16,7 +16,6 @@ public class LoadFile {
             throw new IncompatibleClassChangeError("Node is not a File!");
 
         this.file = (File) file;
-        this.textArea = textArea;
     }
 
     public File getFile() {
@@ -25,10 +24,6 @@ public class LoadFile {
 
     public void setFile(File file) {
         this.file = file;
-    }
-
-    public void setTextArea(RSyntaxTextArea textArea) {
-        this.textArea = textArea;
     }
 
     private String loadNodeContent() {
@@ -44,6 +39,6 @@ public class LoadFile {
     }
 
     public void loadText() {
-        textArea.setText(loadNodeContent());
+        IDEConfig.INSTANCE.setContent(loadNodeContent());
     }
 }
