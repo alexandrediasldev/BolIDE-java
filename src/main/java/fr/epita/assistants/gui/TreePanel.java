@@ -31,6 +31,7 @@ public class TreePanel extends JPanel  implements TreeSelectionListener{
         if (node.getNode().isFile())
         {
             var load = new FileOperations(node.getNode());
+            IDEConfig.INSTANCE.getNodes().add(node.getNode());
             load.loadText();
         }
     }
