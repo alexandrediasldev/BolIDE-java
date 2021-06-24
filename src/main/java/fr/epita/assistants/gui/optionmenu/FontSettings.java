@@ -22,7 +22,7 @@ public class FontSettings extends JFrame {
 
         fontBox.setEditable(true);
         pannel.add(fontBox);
-        var size = new JSpinner();
+        var size = new JSpinner(new SpinnerNumberModel(24, 2, 80, 2));
         var selectButton = new JButton("SELECT");
 
         selectButton.addActionListener(new ActionListener() {
