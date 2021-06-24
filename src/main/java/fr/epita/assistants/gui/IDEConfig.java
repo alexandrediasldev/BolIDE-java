@@ -19,8 +19,8 @@ public enum IDEConfig {
 
     }
 
-    public void setContent()
+    public void setContent(String content)
     {
-
+        frame.getTxt().getText().setText(content);
     }
 }
