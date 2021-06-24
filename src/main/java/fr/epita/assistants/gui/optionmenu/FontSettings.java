@@ -36,6 +36,12 @@ public class FontSettings extends JFrame {
             }
 
         });
+        size.addChangeListener(new ChangeListener() {
+                                   public void stateChanged(ChangeEvent e) {
+                                       JSpinner s = (JSpinner) e.getSource();
+                                       IDEConfig.INSTANCE.setTextSize((int) s.getValue());
+                                   }
+                               });
 
         pannel.add(size);
         pannel.add(selectButton);
