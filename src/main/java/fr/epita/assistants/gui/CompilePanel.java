@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui;
 
 import lombok.SneakyThrows;
+import fr.epita.assistants.gui.optionmenu.FontSettings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,10 +21,17 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         add(menu);
 
         JMenu menu2 = new JMenu("Settings");
+        JMenuItem font = new JMenuItem(new AbstractAction("Font") {
+           FontSettings f = new FontSettings();
+            public void actionPerformed(ActionEvent e) {
+                    f.setVisible(true);
+            }
+        });
         JMenuItem color = new JMenuItem("color");
         JMenuItem theme = new JMenuItem("theme");
         menu2.add(color);
         menu2.add(theme);
+        menu2.add(font);
         JPanel pan = new JPanel();
         pan.setBackground(royal_blue);
         JPanel pan2 = new JPanel();

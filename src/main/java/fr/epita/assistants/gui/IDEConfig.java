@@ -3,6 +3,7 @@ package fr.epita.assistants.gui;
 import fr.epita.assistants.myide.domain.entity.Node;
 
 import java.util.ArrayList;
+import java.awt.*;
 
 public enum IDEConfig {
     INSTANCE;
@@ -14,14 +15,14 @@ public enum IDEConfig {
         return frame;
     }
 
-    public void setFont()
+    public void setFont(String font)
     {
+        frame.getTxt().setFont(font);
 
     }
-
-    public void setTextSize()
+    public void setTextSize(int textSize)
     {
-
+        frame.getTxt().setTextSize(textSize);
     }
 
     public void setContent(String content)
