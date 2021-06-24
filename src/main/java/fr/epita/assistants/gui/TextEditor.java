@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class TextEditor extends JPanel {
 
-    private RSyntaxTextArea text;
+    private final RSyntaxTextArea text;
     private String font;
     private int textSize;
 
@@ -26,12 +26,13 @@ public class TextEditor extends JPanel {
 
         this.font = "Comic Sans MS";
         this.textSize = 24;
-        setFont(font);
 
+        Font font = new Font(this.font, Font.PLAIN, textSize);
         Theme theme = Theme.load(getClass().getResourceAsStream(
                 "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
 
         theme.apply(text);
+        text.setFont(font);
         text.setForeground(Color.white);
         text.setBackground(Color.darkGray);
         text.setColumns(80);
