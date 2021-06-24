@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class mainIde {
     public static void main(String[] args) {
-        new IDEFrame();
+        IDEConfig.INSTANCE.getFrame();
 /*
         JFrame frame = new JFrame();
 
