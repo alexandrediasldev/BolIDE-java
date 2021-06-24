@@ -1,11 +1,15 @@
 package fr.epita.assistants.gui;
 
+import lombok.SneakyThrows;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CompilePanel extends JMenuBar {
+public class CompilePanel extends JMenuBar implements ActionListener {
 
-    public CompilePanel(){
+    public CompilePanel() {
         JMenu menu = new JMenu("File");
         Color royal_blue = new Color(0, 35 , 102);
         setBackground(royal_blue);
@@ -27,6 +31,9 @@ public class CompilePanel extends JMenuBar {
 
 
 
+        JButton saveButton = new JButton("Save");
+        saveButton.setBackground(royal_blue);
+        saveButton.addActionListener(this);
 
         JButton button = new JButton("Compile");
         button.setBackground(royal_blue);
@@ -41,4 +48,16 @@ public class CompilePanel extends JMenuBar {
         //add(fermer);
     }
 
+    @SneakyThrows
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Save"))
+        {
+            for (var n : IDEConfig.INSTANCE.getNodes())
+            {
+                var save = new FileOperations(n);
+                save.saveText(IDEConfig.INSTANCE.getFrame().getTxt().getText().getText());
+            }
+        }
+    }
 }
