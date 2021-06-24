@@ -53,6 +53,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         //add(new JPanel());
         add(pan2);
         add(button);
+        add(saveButton);
         //add(fermer);
     }
 
