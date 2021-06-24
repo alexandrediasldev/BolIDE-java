@@ -2,7 +2,6 @@ package fr.epita.assistants.gui;
 
 import fr.epita.assistants.myide.domain.entity.Node;
 import fr.epita.assistants.myide.domain.entity.node.File;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,9 +9,8 @@ import java.nio.file.Files;
 public class LoadFile {
 
     private File file;
-    private RSyntaxTextArea textArea;
 
-    public LoadFile(Node file, RSyntaxTextArea textArea) {
+    public LoadFile(Node file) {
 
         if (!(file instanceof File))
             throw new IncompatibleClassChangeError("Node is not a File!");
