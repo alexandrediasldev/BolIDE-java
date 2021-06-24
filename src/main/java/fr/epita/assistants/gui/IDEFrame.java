@@ -2,8 +2,10 @@ package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import fr.epita.assistants.gui.optionmenu.Settings;
+import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +33,7 @@ public class IDEFrame extends JFrame {
 
         txt = new TextEditor();
         txt.setLayout(new GridLayout());
+        text = txt.text;
         add(txt, BorderLayout.CENTER);
 
         CompilePanel Bar = new CompilePanel();

@@ -10,11 +10,21 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class LoadFile implements TreeSelectionListener {
+
     private File file;
+
+    public void setTextArea(RSyntaxTextArea textArea) {
+        this.textArea = textArea;
+    }
+
     private RSyntaxTextArea textArea;
 
-    public LoadFile(File file, RSyntaxTextArea textArea) {
-        this.file = file;
+    public LoadFile(Node file, RSyntaxTextArea textArea) {
+
+        if (!(file instanceof File))
+            throw new IncompatibleClassChangeError("Node is not a File!");
+
+        this.file = (File)file;
         this.textArea = textArea;
     }
 
