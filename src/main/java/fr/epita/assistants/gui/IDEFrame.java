@@ -11,6 +11,7 @@ import java.nio.file.Path;
 
 public class IDEFrame extends JFrame {
 
+    private TextEditor txt;
     @SneakyThrows
     public IDEFrame() // add options to the constructor
     {
@@ -28,7 +29,7 @@ public class IDEFrame extends JFrame {
         shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
 
-        TextEditor txt = new TextEditor();
+        txt = new TextEditor();
         txt.setLayout(new GridLayout());
         add(txt, BorderLayout.CENTER);
 
@@ -56,6 +57,10 @@ public class IDEFrame extends JFrame {
         var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
                 , 120);
         reminder.scheduler();
+    }
+
+    public TextEditor getTxt() {
+        return txt;
     }
 
     private void actionPerformed()

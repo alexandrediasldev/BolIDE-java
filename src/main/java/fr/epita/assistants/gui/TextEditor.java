@@ -12,11 +12,13 @@ import java.awt.*;
 
 public class TextEditor extends JPanel {
 
+    private RSyntaxTextArea text;
+
     @SneakyThrows
     public TextEditor() {
         JTabbedPane Tabs = new JTabbedPane();
 
-        RSyntaxTextArea text = new RSyntaxTextArea();
+        text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
 
@@ -31,7 +33,9 @@ public class TextEditor extends JPanel {
 
         Tabs.addTab("MAIN", scrollpane);
         add(Tabs);
+    }
 
-
+    public RSyntaxTextArea getText() {
+        return text;
     }
 }
