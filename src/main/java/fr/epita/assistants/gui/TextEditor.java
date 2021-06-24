@@ -36,8 +36,10 @@ public class TextEditor extends JPanel {
 
         Tabs.addTab("MAIN", scrollpane);
         add(Tabs);
+    }
 
-
+    public RSyntaxTextArea getText() {
+        return text;
     }
 
     public RSyntaxTextArea getText() {
