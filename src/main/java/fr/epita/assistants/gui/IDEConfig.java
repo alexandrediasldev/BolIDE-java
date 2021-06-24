@@ -21,8 +21,8 @@ public enum IDEConfig {
         frame.getTxt().setTextSize(textSize);
     }
 
-    public void setContent()
+    public void setContent(String content)
     {
-
+        frame.getTxt().getText().setText(content);
     }
 }
