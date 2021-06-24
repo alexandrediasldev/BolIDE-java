@@ -19,7 +19,7 @@ public class CompilePanel extends JMenuBar {
         add(menu);
 
         JMenu menu2 = new JMenu("Settings");
-        JMenuItem font = new JMenuItem(new AbstractAction("My Menu Item") {
+        JMenuItem font = new JMenuItem(new AbstractAction("Font") {
            FontSettings f = new FontSettings();
             public void actionPerformed(ActionEvent e) {
                     f.setVisible(true);

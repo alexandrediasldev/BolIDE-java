@@ -4,6 +4,8 @@ import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.gui.TextEditor;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,17 +22,22 @@ public class FontSettings extends JFrame {
 
         fontBox.setEditable(true);
         pannel.add(fontBox);
+        var size = new JSpinner();
         var selectButton = new JButton("SELECT");
 
         selectButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (fontBox.getSelectedIndex() != -1) {
-                    var selected  = fontBox.getItemAt
+                    var selected = fontBox.getItemAt
                             (fontBox.getSelectedIndex());
                     IDEConfig.INSTANCE.setFont(selected);
+                    IDEConfig.INSTANCE.setTextSize((int) size.getValue());
                 }
             }
+
         });
+
+        pannel.add(size);
         pannel.add(selectButton);
 
 
