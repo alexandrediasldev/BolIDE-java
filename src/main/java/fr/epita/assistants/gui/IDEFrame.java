@@ -58,7 +58,7 @@ public class IDEFrame extends JFrame {
 
 
         pack();
-        setIconImage(Toolkit.getDefaultToolkit().getImage("./resources/logo.png"));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
         setVisible(true);
         var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
                 , 120);
