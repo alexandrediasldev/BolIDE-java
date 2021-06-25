@@ -31,6 +31,7 @@ public class gitButtons extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String msg = JOptionPane.showInputDialog("Enter a commit message");
+                IDEConfig.INSTANCE.commit(msg);
             }
         });
         pull.addActionListener(new ActionListener() {

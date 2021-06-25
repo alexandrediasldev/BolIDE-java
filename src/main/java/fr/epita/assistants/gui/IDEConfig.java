@@ -33,7 +33,7 @@ public enum IDEConfig {
 
     public void commit(String msg)
     {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.COMMIT, "-m", msg);
+        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.COMMIT, msg);
     }
 
     public void setFont(String font)
