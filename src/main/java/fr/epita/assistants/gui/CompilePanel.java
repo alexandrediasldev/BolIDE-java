@@ -28,7 +28,15 @@ public class CompilePanel extends JMenuBar implements ActionListener {
             }
         });
         JMenuItem color = new JMenuItem("color");
-        JMenuItem theme = new JMenuItem("theme");
+
+        JMenuItem theme = new JMenuItem("Switchtheme");
+        theme.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IDEConfig.INSTANCE.switchTheme();
+            }
+        });
+
         menu2.add(color);
         menu2.add(theme);
         menu2.add(font);

@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class FontSettings extends JFrame {
     public FontSettings() {
         super("Font settings");
-        var pannel = new JPanel();
+        var panel = new JPanel();
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String[] fontsAvailable = ge.getAvailableFontFamilyNames();
@@ -21,7 +21,7 @@ public class FontSettings extends JFrame {
         AutoCompletion.enable(fontBox);
 
         fontBox.setEditable(true);
-        pannel.add(fontBox);
+        panel.add(fontBox);
         var size = new JSpinner(new SpinnerNumberModel(24, 2, 80, 2));
         var selectButton = new JButton("SELECT");
 
@@ -43,11 +43,12 @@ public class FontSettings extends JFrame {
                                    }
                                });
 
-        pannel.add(size);
-        pannel.add(selectButton);
+        panel.add(size);
+        panel.add(selectButton);
 
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
 
-        add(pannel);
+        add(panel);
         pack();
     }
 }

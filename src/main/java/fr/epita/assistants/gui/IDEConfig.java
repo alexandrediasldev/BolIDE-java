@@ -5,11 +5,15 @@ import java.awt.*;
 import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
+import lombok.SneakyThrows;
+
+import javax.swing.*;
 import java.util.ArrayList;
 
 public enum IDEConfig {
     INSTANCE;
 
+    private boolean darkmode = true;
     private final IDEFrame frame = new IDEFrame();
     private final ArrayList<Node> nodes = new ArrayList<>();
 
@@ -53,5 +57,25 @@ public enum IDEConfig {
 
     public ArrayList<Node> getNodes() {
         return nodes;
+    }
+
+    @SneakyThrows
+    public void switchTheme()
+    {
+        if (darkmode) {
+            UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
+            SwingUtilities.updateComponentTreeUI(frame);
+            frame.getTxt().switchTheme();
+            frame.pack();
+            darkmode = false;
+        }
+        else
+        {
+            UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
+            SwingUtilities.updateComponentTreeUI(frame);
+            frame.getTxt().switchTheme();
+            frame.pack();
+            darkmode = true;
+        }
     }
 }

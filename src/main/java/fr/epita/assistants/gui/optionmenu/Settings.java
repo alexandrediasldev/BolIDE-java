@@ -26,7 +26,8 @@ public class Settings extends JDialog {
         pan.add(pannelQuit);
         add(pan);
 
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
+        setSize(400,200);
         setVisible(true);
     }
 }

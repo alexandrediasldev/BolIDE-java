@@ -6,15 +6,16 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rsyntaxtextarea.Theme;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.io.IOException;
 
 public class TextEditor extends JPanel {
 
     private final RSyntaxTextArea text;
     private String font;
     private int textSize;
+    private boolean isdarkmode = true;
+    private Theme theme;
 
     @SneakyThrows
     public TextEditor() {
@@ -27,7 +28,7 @@ public class TextEditor extends JPanel {
         this.font = "Comic Sans MS";
         this.textSize = 24;
 
-        Theme theme = Theme.load(getClass().getResourceAsStream(
+        theme = Theme.load(getClass().getResourceAsStream(
                 "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
 
         theme.apply(text);
@@ -44,15 +45,37 @@ public class TextEditor extends JPanel {
 
     public void setFont(String font) {
         this.font = font;
-        text.setFont( new Font(font, Font.PLAIN, textSize));
+        text.setFont(new Font(font, Font.PLAIN, textSize));
     }
-    public void setTextSize(int textSize)
-    {
+
+    public void setTextSize(int textSize) {
         this.textSize = textSize;
-        text.setFont( new Font(font, Font.PLAIN, textSize));
+        text.setFont(new Font(font, Font.PLAIN, textSize));
     }
 
     public RSyntaxTextArea getText() {
         return text;
+    }
+
+    public void switchTheme() {
+        if (isdarkmode) {
+            try {
+                theme = Theme.load(getClass().getResourceAsStream(
+                        "/org/fife/ui/rsyntaxtextarea/themes/idea.xml"));
+            } catch (IOException e) {
+                System.err.println("Could not load the xml file");
+            }
+            theme.apply(text);
+            isdarkmode = false;
+        } else {
+            try {
+                theme = Theme.load(getClass().getResourceAsStream(
+                        "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
+            } catch (IOException e) {
+                System.err.println("Could not load syntax theme");
+            }
+            theme.apply(text);
+            isdarkmode = true;
+        }
     }
 }
