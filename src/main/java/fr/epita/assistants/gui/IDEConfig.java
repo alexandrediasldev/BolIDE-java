@@ -13,7 +13,10 @@ public enum IDEConfig {
     public IDEFrame getFrame() {
         return frame;
     }
-
+    public void add()
+    {
+        
+    }
     public void setFont(String font)
     {
         frame.getTxt().setFont(font);
