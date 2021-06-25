@@ -21,7 +21,11 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         setBackground(royal_blue);
         JMenuItem item = new JMenuItem("open");
         JMenuItem item1 = new JMenuItem("git");
+
+
+
         JMenuItem item2 = new JMenuItem("music");
+
         final boolean[] music = {false};
         File f = new File("sussy.wav");
         final Player p = Manager.createRealizedPlayer(f.toURI().toURL());
@@ -43,9 +47,12 @@ public class CompilePanel extends JMenuBar implements ActionListener {
                 }
             }
         });
+
         menu.add(item);
         menu.add(item1);
+
         menu.add(item2);
+
         add(menu);
 
         JMenu menu2 = new JMenu("Settings");
@@ -71,8 +78,8 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         saveButton.setBackground(royal_blue);
         saveButton.addActionListener(this);
 
-        JButton button = new JButton("Compile");
-        button.setBackground(royal_blue);
+        //JButton button = new JButton("Compile");
+        //button.setBackground(royal_blue);
         //JButton fermer = new JButton("X");
        // fermer.setBackground(royal_blue);
         add(menu2);
@@ -80,7 +87,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         //add(new JPanel()); //moving compile button a bit to the right
         //add(new JPanel());
         add(pan2);
-        add(button);
+        //add(button);
         add(saveButton);
         //add(fermer);
     }
