@@ -23,7 +23,7 @@ public enum IDEConfig {
 
     public void push()
     {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH);
+        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
     }
 
     public void pull()
@@ -41,6 +41,7 @@ public enum IDEConfig {
         frame.getTxt().setFont(font);
 
     }
+
     public void setTextSize(int textSize)
     {
         frame.getTxt().setTextSize(textSize);

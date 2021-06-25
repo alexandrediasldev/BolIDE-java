@@ -65,7 +65,11 @@ public class IDEFrame extends JFrame {
         reminder.scheduler();
 
         gitButtons gitbutton = new gitButtons();
-        add(gitbutton, BorderLayout.EAST);
+        mavenButton mavenbutton = new mavenButton();
+        JPanel panele = new JPanel();
+        panele.add(mavenbutton);
+        panele.add(gitbutton);
+        add(panele, BorderLayout.EAST);
     }
 
     public TextEditor getTxt() {
