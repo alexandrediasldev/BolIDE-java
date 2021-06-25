@@ -6,6 +6,7 @@ import fr.epita.assistants.myide.domain.entity.Project;
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
+import org.assertj.core.util.Files;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
@@ -42,7 +43,7 @@ public class IDEFrame extends JFrame {
         setJMenuBar(Bar);
 
         p = new ProjectServiceImplementation();
-        currentProject = p.load(Path.of("./"));
+        currentProject = p.load(Files.currentFolder().toPath());
         var panel =new TreePanel(currentProject.getRootNode());
         add(panel , BorderLayout.WEST);
 
@@ -62,6 +63,9 @@ public class IDEFrame extends JFrame {
         var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
                 , 120);
         reminder.scheduler();
+
+        gitButtons gitbutton = new gitButtons();
+        add(gitbutton, BorderLayout.EAST);
     }
 
     public TextEditor getTxt() {
@@ -72,6 +76,9 @@ public class IDEFrame extends JFrame {
         return p;
     }
 
+    public Project getCurrentProject() {
+        return currentProject;
+    }
 
     private void actionPerformed()
     {
