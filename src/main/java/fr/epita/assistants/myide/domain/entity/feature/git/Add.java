@@ -34,9 +34,9 @@ public class Add implements Feature {
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {
-
         String path = project.getRootNode().getPath().toAbsolutePath().toString();
         FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
+
 
         try {
             /*
@@ -45,7 +45,7 @@ public class Add implements Feature {
                     .findGitDir()
                     .build();
 */
-            Git git =Git.open(new File(path));
+            Git git = Git.open(new File(path));
                     //new Git(repository);
             AddCommand add = git.add();
 
@@ -60,6 +60,7 @@ public class Add implements Feature {
         } catch (IOException | GitAPIException e) {
             return new AddReport(false);
         }
+
 
         return new AddReport(true);
     }
