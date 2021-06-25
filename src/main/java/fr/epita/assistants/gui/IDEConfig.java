@@ -64,18 +64,16 @@ public enum IDEConfig {
     {
         if (darkmode) {
             UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
-            SwingUtilities.updateComponentTreeUI(frame);
-            frame.getTxt().switchTheme();
-            frame.pack();
             darkmode = false;
         }
         else
         {
             UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
-            SwingUtilities.updateComponentTreeUI(frame);
-            frame.getTxt().switchTheme();
-            frame.pack();
             darkmode = true;
         }
+        SwingUtilities.updateComponentTreeUI(frame);
+        frame.getTxt().switchTheme();
+        frame.getShell().switchTheme();
+        frame.pack();
     }
 }
