@@ -50,7 +50,8 @@ public class ProjectServiceImplementation implements ProjectService{
 
         if (children != null) {
             for (var child : children) {
-                if (child.getPath().matches(".*/[.]git")) {
+                System.out.println(child.toPath());
+                if (child.getPath().toString().endsWith("/.git") || child.getPath().toString().endsWith("\\.git")) {
                     return true;
                 }
             }
@@ -60,6 +61,7 @@ public class ProjectServiceImplementation implements ProjectService{
 
     @Override
     public Project load(Path root) {
+        System.out.println(root.toString());
         var res =  new BasicProject();
         res.addAspect(Mandatory.Aspects.ANY);
         var node = buildArchitecture(res, root, 0);
@@ -68,15 +70,18 @@ public class ProjectServiceImplementation implements ProjectService{
             res.addAspect(Mandatory.Aspects.GIT);
 
         res.setRootNode(node);
+        System.out.println(res.getAspects());
         return res;
     }
 
     @Override
     public Feature.ExecutionReport execute(Project project, Feature.Type featureType, Object... params) {
- 
+
         var feature = project.getFeature(featureType);
-        if (feature.isPresent())
+        System.out.println(feature);
+        if (feature.isPresent()) {
             return feature.get().execute(project, params);
+        }
         return new ProjectReport();
     }
 

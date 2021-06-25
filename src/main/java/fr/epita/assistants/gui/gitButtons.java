@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class gitButtons {
+public class gitButtons extends JPanel {
     public gitButtons() {
         JButton add = new JButton("add");
         JButton push = new JButton("push");
@@ -23,22 +23,27 @@ public class gitButtons {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //your actions
+                IDEConfig.INSTANCE.push();
             }
         });
         commit.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //your actions
+                String msg = JOptionPane.showInputDialog("Enter a commit message");
             }
         });
         pull.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //your actions
+                IDEConfig.INSTANCE.pull();
             }
         });
+
+        add(add);
+        add(push);
+        add(pull);
+        add(commit);
     }
-    }
+}
