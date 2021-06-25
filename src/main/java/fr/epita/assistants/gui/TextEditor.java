@@ -77,5 +77,6 @@ public class TextEditor extends JPanel {
             theme.apply(text);
             isdarkmode = true;
         }
+        setTextSize(textSize);
     }
 }
