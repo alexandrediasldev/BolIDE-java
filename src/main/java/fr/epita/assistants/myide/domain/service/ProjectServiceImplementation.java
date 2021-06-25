@@ -28,7 +28,7 @@ public class ProjectServiceImplementation implements ProjectService{
         var children = file.listFiles();
         if (children == null)
         {
-            if (depth==1 && String.valueOf(root).matches(".*" + File.separator +  "pom.xml"))
+            if (depth==1 && String.valueOf(root).endsWith(File.separator +  "pom.xml")/*.matches(".*" + File.separator +  "pom.xml")*/)
                 project.addAspect(Mandatory.Aspects.MAVEN);
            return new fr.epita.assistants.myide.domain.entity.node.File(root);
         }
