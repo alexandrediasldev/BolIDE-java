@@ -16,6 +16,7 @@ import java.nio.file.Path;
 public class IDEFrame extends JFrame {
 
     private TextEditor txt;
+    private IDEShell shell;
     private ProjectServiceImplementation p;
     private Project currentProject;
     @SneakyThrows
@@ -31,7 +32,7 @@ public class IDEFrame extends JFrame {
         //layout.setVgap(2);
         setLayout(layout);
 
-        IDEShell shell = new IDEShell();
+        shell = new IDEShell();
         shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
 
@@ -65,7 +66,7 @@ public class IDEFrame extends JFrame {
         reminder.scheduler();
 
         gitButtons gitbutton = new gitButtons();
-        add(gitbutton, BorderLayout.EAST);
+        add(gitbutton, BorderLayout.NORTH);
     }
 
     public TextEditor getTxt() {
@@ -83,6 +84,10 @@ public class IDEFrame extends JFrame {
     private void actionPerformed()
     {
         // add action to perform on click
+    }
+
+    public IDEShell getShell() {
+        return shell;
     }
 
     /*
