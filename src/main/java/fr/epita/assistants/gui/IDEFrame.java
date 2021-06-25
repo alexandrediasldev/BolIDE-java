@@ -2,6 +2,7 @@ package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import fr.epita.assistants.gui.optionmenu.Settings;
+import fr.epita.assistants.myide.domain.entity.Project;
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
@@ -14,6 +15,8 @@ import java.nio.file.Path;
 public class IDEFrame extends JFrame {
 
     private TextEditor txt;
+    private ProjectServiceImplementation p;
+    private Project currentProject;
     @SneakyThrows
     public IDEFrame() // add options to the constructor
     {
@@ -38,9 +41,9 @@ public class IDEFrame extends JFrame {
         CompilePanel Bar = new CompilePanel();
         setJMenuBar(Bar);
 
-        ProjectServiceImplementation p = new ProjectServiceImplementation();
-        var project = p.load(Path.of("./"));
-        var panel =new TreePanel(project.getRootNode());
+        p = new ProjectServiceImplementation();
+        currentProject = p.load(Path.of("./"));
+        var panel =new TreePanel(currentProject.getRootNode());
         add(panel , BorderLayout.WEST);
 
         //setSize(512,512 );
@@ -64,6 +67,11 @@ public class IDEFrame extends JFrame {
     public TextEditor getTxt() {
         return txt;
     }
+
+    public ProjectServiceImplementation getP() {
+        return p;
+    }
+
 
     private void actionPerformed()
     {
