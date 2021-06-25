@@ -3,21 +3,49 @@ package fr.epita.assistants.gui;
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import lombok.SneakyThrows;
 
+import javax.media.Manager;
+import javax.media.Player;
+import javax.print.attribute.standard.Media;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class CompilePanel extends JMenuBar implements ActionListener {
 
+    @SneakyThrows
     public CompilePanel() {
         JMenu menu = new JMenu("File");
         Color royal_blue = new Color(0, 35 , 102);
         setBackground(royal_blue);
         JMenuItem item = new JMenuItem("open");
         JMenuItem item1 = new JMenuItem("git");
+        JMenuItem item2 = new JMenuItem("music");
+        final boolean[] music = {false};
+        File f = new File("sussy.wav");
+        final Player p = Manager.createRealizedPlayer(f.toURI().toURL());
+        item2.addActionListener(new ActionListener() {
+
+            @SneakyThrows
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (!music[0])
+                {
+                    music[0] = true;
+                    p.start();
+                }
+                else
+                {
+                    music[0] = false;
+                    p.stop();
+                }
+            }
+        });
         menu.add(item);
         menu.add(item1);
+        menu.add(item2);
         add(menu);
 
         JMenu menu2 = new JMenu("Settings");
@@ -68,5 +96,6 @@ public class CompilePanel extends JMenuBar implements ActionListener {
                 save.saveText(IDEConfig.INSTANCE.getFrame().getTxt().getText().getText());
             }
         }
+
     }
 }
