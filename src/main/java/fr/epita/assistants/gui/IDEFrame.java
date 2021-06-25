@@ -69,7 +69,7 @@ public class IDEFrame extends JFrame {
         JPanel panele = new JPanel();
         panele.add(mavenbutton);
         panele.add(gitbutton);
-        add(panele, BorderLayout.EAST);
+        add(panele, BorderLayout.NORTH);
     }
 
     public TextEditor getTxt() {
