@@ -25,6 +25,7 @@ public class Reminder {
                         Dialog dialog = pane.createDialog("BolIDE");
                         dialog.setModal(false);
                         dialog.setLocation(0, 0);
+                        dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
                         dialog.show();
 
                         scheduler();
