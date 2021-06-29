@@ -3,21 +3,60 @@ package fr.epita.assistants.gui;
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import lombok.SneakyThrows;
 
+import javax.media.Manager;
+import javax.media.Player;
+import javax.print.attribute.standard.Media;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class CompilePanel extends JMenuBar implements ActionListener {
 
+    @SneakyThrows
     public CompilePanel() {
         JMenu menu = new JMenu("File");
         Color royal_blue = new Color(0, 35 , 102);
         setBackground(royal_blue);
         JMenuItem item = new JMenuItem("open");
         JMenuItem item1 = new JMenuItem("git");
+
+
+
+        JMenuItem item2 = new JMenuItem("music");
+
+        final boolean[] music = {false};
+        ClassLoader classLoader = getClass().getClassLoader();
+        var res = classLoader.getResource("sussy.wav");
+
+
+        final Player p = Manager.createRealizedPlayer(res);
+        item2.addActionListener(new ActionListener() {
+
+            @SneakyThrows
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (!music[0])
+                {
+                    System.out.println("playing music");
+                    music[0] = true;
+                    p.start();
+                }
+                else
+                {
+                    music[0] = false;
+                    p.stop();
+                }
+            }
+        });
+
         menu.add(item);
         menu.add(item1);
+
+        menu.add(item2);
+
         add(menu);
 
         JMenu menu2 = new JMenu("Settings");
@@ -51,8 +90,8 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         saveButton.setBackground(royal_blue);
         saveButton.addActionListener(this);
 
-        JButton button = new JButton("Compile");
-        button.setBackground(royal_blue);
+        //JButton button = new JButton("Compile");
+        //button.setBackground(royal_blue);
         //JButton fermer = new JButton("X");
        // fermer.setBackground(royal_blue);
         add(menu2);
@@ -60,7 +99,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         //add(new JPanel()); //moving compile button a bit to the right
         //add(new JPanel());
         add(pan2);
-        add(button);
+        //add(button);
         add(saveButton);
         //add(fermer);
     }
@@ -76,5 +115,6 @@ public class CompilePanel extends JMenuBar implements ActionListener {
                 save.saveText(IDEConfig.INSTANCE.getFrame().getTxt().getText().getText());
             }
         }
+
     }
 }
