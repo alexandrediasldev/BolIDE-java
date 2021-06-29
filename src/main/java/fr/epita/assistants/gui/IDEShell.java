@@ -1,13 +1,9 @@
 package fr.epita.assistants.gui;
 
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.terminal.swing.SwingTerminal;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFrame;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static com.googlecode.lanterna.terminal.swing.TerminalEmulatorAutoCloseTrigger.CloseOnEscape;
 
 public class IDEShell extends JPanel {
     public IDEShell()

@@ -27,8 +27,11 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         JMenuItem item2 = new JMenuItem("music");
 
         final boolean[] music = {false};
-        File f = new File("sussy.wav");
-        final Player p = Manager.createRealizedPlayer(f.toURI().toURL());
+        ClassLoader classLoader = getClass().getClassLoader();
+        var res = classLoader.getResource("sussy.wav");
+
+
+        final Player p = Manager.createRealizedPlayer(res);
         item2.addActionListener(new ActionListener() {
 
             @SneakyThrows
@@ -37,6 +40,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
 
                 if (!music[0])
                 {
+                    System.out.println("playing music");
                     music[0] = true;
                     p.start();
                 }
