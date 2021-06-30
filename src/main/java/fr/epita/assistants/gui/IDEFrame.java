@@ -25,8 +25,8 @@ public class IDEFrame extends JFrame {
 
         super("BolIDE");
         FlatLightLaf.install();
+        //FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
-
         var layout = new BorderLayout();
         //layout.setHgap(2);
         //layout.setVgap(2);
