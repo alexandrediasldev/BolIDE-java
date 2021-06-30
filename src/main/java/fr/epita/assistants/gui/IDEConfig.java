@@ -14,12 +14,18 @@ public enum IDEConfig {
     INSTANCE;
 
     private boolean darkmode = true;
-    private final IDEFrame frame = new IDEFrame();
+    private IDEFrame frame;
     private final ArrayList<Node> nodes = new ArrayList<>();
 
     public IDEFrame getFrame() {
         return frame;
     }
+
+    public void createFrame(String path)
+    {
+        frame = new IDEFrame(path);
+    }
+
     public void add()
     {
         frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, ".");

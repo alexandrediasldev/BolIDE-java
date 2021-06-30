@@ -20,7 +20,7 @@ public class IDEFrame extends JFrame {
     private ProjectServiceImplementation p;
     private Project currentProject;
     @SneakyThrows
-    public IDEFrame() // add options to the constructor
+    public IDEFrame(String path) // add options to the constructor
     {
 
         super("BolIDE");
@@ -44,7 +44,7 @@ public class IDEFrame extends JFrame {
         setJMenuBar(Bar);
 
         p = new ProjectServiceImplementation();
-        currentProject = p.load(Files.currentFolder().toPath());
+        currentProject = p.load(Path.of(path));
         var panel =new TreePanel(currentProject.getRootNode());
         add(panel , BorderLayout.WEST);
 

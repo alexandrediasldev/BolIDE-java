@@ -32,9 +32,9 @@ public class Intro extends JFrame {
                 if(option == JFileChooser.APPROVE_OPTION){
 
                     File file = fileChooser.getSelectedFile();
-                    System.out.println(file.getPath());
                     UIManager.setLookAndFeel(
                             UIManager.getSystemLookAndFeelClassName());
+                    IDEConfig.INSTANCE.createFrame(file.getPath());
                     IDEConfig.INSTANCE.getFrame();
                     setVisible(false);
                 }
