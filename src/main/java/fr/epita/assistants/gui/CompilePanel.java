@@ -17,8 +17,9 @@ public class CompilePanel extends JMenuBar implements ActionListener {
     @SneakyThrows
     public CompilePanel() {
         JMenu menu = new JMenu("File");
-        Color royal_blue = new Color(0, 35 , 102);
-        setBackground(royal_blue);
+        Color royal_blue = new Color(65, 105 , 225);
+
+
         JMenuItem item = new JMenuItem("open");
         JMenuItem item1 = new JMenuItem("git");
 
@@ -101,6 +102,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         add(pan2);
         //add(button);
         add(saveButton);
+        setBackground(royal_blue);
         //add(fermer);
     }
 
