@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui;
 
 import fr.epita.assistants.gui.optionmenu.FontSettings;
+import fr.epita.assistants.gui.optionmenu.Settings;
 import lombok.SneakyThrows;
 
 import javax.media.Manager;
@@ -17,8 +18,10 @@ public class CompilePanel extends JMenuBar implements ActionListener {
     @SneakyThrows
     public CompilePanel() {
         JMenu menu = new JMenu("File");
-        Color royal_blue = new Color(0, 35 , 102);
-        setBackground(royal_blue);
+        var reminder = new Settings();
+        Color royal_blue = new Color(65, 105 , 225);
+
+
         JMenuItem item = new JMenuItem("open");
         JMenuItem item1 = new JMenuItem("git");
 
@@ -67,6 +70,15 @@ public class CompilePanel extends JMenuBar implements ActionListener {
             }
         });
         JMenuItem color = new JMenuItem("color");
+        JMenuItem pause = new JMenuItem("pause");
+
+        pause.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                reminder.setVisible(true);
+            }
+        });
 
         JMenuItem theme = new JMenuItem("Switchtheme");
         theme.addActionListener(new ActionListener() {
@@ -76,6 +88,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
             }
         });
 
+        menu2.add(pause);
         menu2.add(color);
         menu2.add(theme);
         menu2.add(font);
@@ -101,6 +114,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
         add(pan2);
         //add(button);
         add(saveButton);
+        setBackground(royal_blue);
         //add(fermer);
     }
 

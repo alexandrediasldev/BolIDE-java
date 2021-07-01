@@ -14,12 +14,27 @@ public enum IDEConfig {
     INSTANCE;
 
     private boolean darkmode = true;
-    private final IDEFrame frame = new IDEFrame();
+    private IDEFrame frame;
     private final ArrayList<Node> nodes = new ArrayList<>();
+    private Reminder reminder;
+
+    public void setMs(long ms) {
+        this.reminder.setMs(ms);
+    }
+    public void setReminder(Reminder reminder)
+    {
+        this.reminder = reminder;
+    }
 
     public IDEFrame getFrame() {
         return frame;
     }
+
+    public void createFrame(String path)
+    {
+        frame = new IDEFrame(path);
+    }
+
     public void add()
     {
         frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, ".");
@@ -64,6 +79,7 @@ public enum IDEConfig {
     public void switchTheme()
     {
         if (darkmode) {
+
             UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
             darkmode = false;
         }
@@ -77,4 +93,6 @@ public enum IDEConfig {
         frame.getShell().switchTheme();
         frame.pack();
     }
+
+
 }
