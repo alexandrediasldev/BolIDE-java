@@ -20,13 +20,12 @@ public class IDEFrame extends JFrame {
     private ProjectServiceImplementation p;
     private Project currentProject;
     @SneakyThrows
-    public IDEFrame() // add options to the constructor
+    public IDEFrame(String path) // add options to the constructor
     {
 
         super("BolIDE");
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
-
         var layout = new BorderLayout();
         //layout.setHgap(2);
         //layout.setVgap(2);
@@ -44,7 +43,7 @@ public class IDEFrame extends JFrame {
         setJMenuBar(Bar);
 
         p = new ProjectServiceImplementation();
-        currentProject = p.load(Files.currentFolder().toPath());
+        currentProject = p.load(Path.of(path));
         var panel =new TreePanel(currentProject.getRootNode());
         add(panel , BorderLayout.WEST);
 
@@ -53,17 +52,16 @@ public class IDEFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        var setting = new Settings(this);
-        setting.show();
-        setting.setMaximumSize(new Dimension(300,300));
+
 
 
         pack();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
         setVisible(true);
-        var reminder = new Reminder("Remember to take a (15 minutes state mandated) break for your happiness"
-                , 120);
+        var reminder = new Reminder("Remember to take a break for your happiness"
+                , 15);
         reminder.scheduler();
+        IDEConfig.INSTANCE.setReminder(reminder);
 
         gitButtons gitbutton = new gitButtons();
         add(gitbutton, BorderLayout.NORTH);
