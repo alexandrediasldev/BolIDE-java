@@ -3,10 +3,10 @@ package fr.epita.assistants.gui.optionmenu;
 import javax.swing.*;
 import java.awt.*;
 
-public class Settings extends JDialog {
-    public Settings(Frame parent)
+public class Settings extends JFrame {
+    public Settings()
     {
-        super(parent);
+
         var pan = new JPanel();
         var layout = new BoxLayout(pan, BoxLayout.Y_AXIS);
         pan.setLayout(layout);

@@ -25,7 +25,6 @@ public class IDEFrame extends JFrame {
 
         super("BolIDE");
         FlatLightLaf.install();
-        //FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
         var layout = new BorderLayout();
         //layout.setHgap(2);
@@ -53,9 +52,7 @@ public class IDEFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        var setting = new Settings(this);
-        setting.show();
-        setting.setMaximumSize(new Dimension(300,300));
+
 
 
         pack();
