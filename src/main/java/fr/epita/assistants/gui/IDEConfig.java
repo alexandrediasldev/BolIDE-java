@@ -70,6 +70,7 @@ public enum IDEConfig {
     public void switchTheme()
     {
         if (darkmode) {
+
             UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
             darkmode = false;
         }
