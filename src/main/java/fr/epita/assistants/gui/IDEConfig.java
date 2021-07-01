@@ -16,6 +16,15 @@ public enum IDEConfig {
     private boolean darkmode = true;
     private IDEFrame frame;
     private final ArrayList<Node> nodes = new ArrayList<>();
+    private Reminder reminder;
+
+    public void setMs(long ms) {
+        this.reminder.setMs(ms);
+    }
+    public void setReminder(Reminder reminder)
+    {
+        this.reminder = reminder;
+    }
 
     public IDEFrame getFrame() {
         return frame;
@@ -84,4 +93,6 @@ public enum IDEConfig {
         frame.getShell().switchTheme();
         frame.pack();
     }
+
+
 }
