@@ -8,6 +8,7 @@ import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
 import lombok.SneakyThrows;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -22,7 +23,19 @@ public enum IDEConfig {
     private final ArrayList<Node> nodes = new ArrayList<>();
     private final EditorPane editorPane = frame.getEditorPane();
 
-
+    public EditorPane getEditorPane() {
+        return editorPane;
+    }
+    public TextEditor getTextEditor(String name)
+    {
+        var editors = editorPane.getTextEditors();
+        for(var editor : editors)
+        {
+            if(editor.getName().equals(name))
+                return editor;
+        }
+        throw new IllegalArgumentException("Name of text editors not found");
+    }
     public boolean getDarkMode()
     {
         return darkmode;
@@ -92,7 +105,7 @@ public enum IDEConfig {
         editorPane.addPane(editor);
 
         editor.getText().setText(content);
-       // frame.getTxt().getText().setText(content);
+
     }
 
     public ArrayList<Node> getNodes() {
@@ -112,7 +125,7 @@ public enum IDEConfig {
             darkmode = true;
         }
         SwingUtilities.updateComponentTreeUI(frame);
-//        frame.getEditorPane().switchTheme();
+
         frame.getShell().switchTheme();
         frame.pack();
     }
