@@ -1,4 +1,4 @@
-package fr.epita.assistants.gui;
+package fr.epita.assistants.gui.editor;
 
 import lombok.SneakyThrows;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
