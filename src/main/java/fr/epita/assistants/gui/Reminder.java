@@ -15,7 +15,7 @@ public class Reminder {
 
 
     public void setMs(long ms) {
-        this.ms = ms * 1000;
+        this.ms = ms * 1000* 60;
         //System.out.println(this.ms);
         timer.cancel();
         timer.purge();
@@ -23,7 +23,7 @@ public class Reminder {
     }
 
     public Reminder(String message, long minutes) {
-        this.ms = minutes * 1000;
+        this.ms = minutes * 1000 * 60;
         this.message = message;
         timer = new Timer();
     }
