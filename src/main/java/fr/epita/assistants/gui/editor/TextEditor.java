@@ -19,7 +19,6 @@ public class TextEditor extends JPanel {
 
     @SneakyThrows
     public TextEditor() {
-        JTabbedPane Tabs = new JTabbedPane();
 
         text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -39,8 +38,7 @@ public class TextEditor extends JPanel {
         text.setLineWrap(true);
         JScrollPane scrollpane = new JScrollPane(text);
 
-        Tabs.addTab("MAIN", scrollpane);
-        add(Tabs);
+        add(scrollpane);
     }
 
     public void setFont(String font) {
