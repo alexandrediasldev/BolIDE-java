@@ -1,5 +1,6 @@
 package fr.epita.assistants.gui.editor;
 
+import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.gui.editor.EditorPane;
 
 import javax.swing.*;
@@ -27,6 +28,7 @@ public class EditorTab implements ActionListener{
         exit_button.addActionListener(this);
         tabpane.addTab(name, textEditor);
         tabpane.setTabComponentAt(tabpane.getIndex(), exit_button);
+        tabpane.setSelectedIndex(tabpane.getIndex());
     }
 
     public EditorPane getTabpane() {
@@ -35,7 +37,7 @@ public class EditorTab implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        IDEConfig.INSTANCE.removeNode(name);
         var index = tabpane.indexOfTab(name);
         tabpane.removeTabAt(index);
         tabpane.removeTab();
