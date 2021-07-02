@@ -126,6 +126,8 @@ public enum IDEConfig {
         }
         SwingUtilities.updateComponentTreeUI(frame);
 
+        for(var editor : editorPane.getTextEditors())
+            editor.switchTheme();
         frame.getShell().switchTheme();
         frame.pack();
     }
