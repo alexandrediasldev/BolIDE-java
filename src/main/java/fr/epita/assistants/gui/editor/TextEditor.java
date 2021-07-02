@@ -38,6 +38,7 @@ public class TextEditor extends JPanel {
         text.setLineWrap(true);
         JScrollPane scrollpane = new JScrollPane(text);
 
+
         add(scrollpane);
     }
 

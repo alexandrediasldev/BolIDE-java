@@ -17,6 +17,8 @@ public class EditorTab implements ActionListener{
 
     public EditorTab(EditorPane tabpane, TextEditor textEditor)
     {
+
+
         this.tabpane = tabpane;
         this.name = textEditor.getName();
 
@@ -35,5 +37,6 @@ public class EditorTab implements ActionListener{
 
         var index = tabpane.indexOfTab(name);
         tabpane.removeTabAt(index);
+        tabpane.removeTab();
     }
 }
