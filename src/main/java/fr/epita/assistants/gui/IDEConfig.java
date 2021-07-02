@@ -56,7 +56,12 @@ public enum IDEConfig {
 
     public void setContent(String content, String fileName)
     {
-
+        int index = editorPane.indexOfTab(fileName);
+        if(index >= 0)
+        {
+            editorPane.setSelectedIndex(index);
+            return;
+        }
         TextEditor editor = new TextEditor();
         editor.setName(fileName);
         editorPane.addPane(editor);
