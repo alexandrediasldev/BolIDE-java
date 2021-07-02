@@ -33,6 +33,7 @@ public class TreePanel extends JPanel  implements TreeSelectionListener{
             var load = new FileOperations(node.getNode());
             IDEConfig.INSTANCE.getNodes().clear();
             IDEConfig.INSTANCE.getNodes().add(node.getNode());
+
             load.loadText();
         }
     }

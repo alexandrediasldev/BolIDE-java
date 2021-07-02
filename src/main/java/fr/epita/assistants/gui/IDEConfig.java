@@ -54,11 +54,13 @@ public enum IDEConfig {
         //frame.getTxt().setTextSize(textSize);
     }
 
-    public void setContent(String content)
+    public void setContent(String content, String fileName)
     {
-        TextEditor editor = new TextEditor();
 
+        TextEditor editor = new TextEditor();
+        editor.setName(fileName);
         editorPane.addPane(editor);
+
         editor.getText().setText(content);
        // frame.getTxt().getText().setText(content);
     }
