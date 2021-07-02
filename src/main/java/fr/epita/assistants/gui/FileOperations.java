@@ -40,7 +40,7 @@ public class FileOperations {
     }
 
     public void loadText() {
-        IDEConfig.INSTANCE.setContent(loadNodeContent());
+        IDEConfig.INSTANCE.setContent(loadNodeContent(), String.valueOf(file.getPath().getFileName()));
     }
 
     public void saveText(String content) throws IOException {
