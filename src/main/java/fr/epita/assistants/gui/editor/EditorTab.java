@@ -23,11 +23,14 @@ public class EditorTab implements ActionListener{
 
         this.tabpane = tabpane;
         this.name = textEditor.getName();
-
+        JPanel pannel = new JPanel();
         JButton exit_button = new JButton("x");
+        pannel.add(new JLabel(name));
+        pannel.add(exit_button);
         exit_button.addActionListener(this);
         tabpane.addTab(name, textEditor);
-        tabpane.setTabComponentAt(tabpane.getIndex(), exit_button);
+        tabpane.setTabComponentAt(tabpane.getIndex(), pannel);
+
         tabpane.setSelectedIndex(tabpane.getIndex());
     }
 

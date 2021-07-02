@@ -27,7 +27,9 @@ public class IDEFrame extends JFrame {
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
 
+
         var layout = new BorderLayout();
+
         //layout.setHgap(2);
         //layout.setVgap(2);
         setLayout(layout);
@@ -38,6 +40,7 @@ public class IDEFrame extends JFrame {
 
 
         editorPane = new EditorPane();
+
 
         add(editorPane, BorderLayout.CENTER);
 
@@ -69,6 +72,7 @@ public class IDEFrame extends JFrame {
 
         gitButtons gitbutton = new gitButtons();
         add(gitbutton, BorderLayout.NORTH);
+
     }
 
     public ProjectServiceImplementation getP() {
