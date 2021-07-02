@@ -1,17 +1,15 @@
 package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.Settings;
 import fr.epita.assistants.myide.domain.entity.Project;
-import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
 import org.assertj.core.util.Files;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import java.awt.*;
-import java.nio.file.Path;
 
 public class IDEFrame extends JFrame {
 
