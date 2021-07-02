@@ -129,4 +129,19 @@ public enum IDEConfig {
         frame.getShell().switchTheme();
         frame.pack();
     }
+
+    public void removeNode(String name) {
+        Node node = null;
+        for(var n : nodes)
+        {
+            if(String.valueOf(n.getPath().getFileName()) == name);
+            {
+                System.out.println(name);
+                node = n;
+                break;
+            }
+        }
+        if(node != null)
+            nodes.remove(node);
+    }
 }
