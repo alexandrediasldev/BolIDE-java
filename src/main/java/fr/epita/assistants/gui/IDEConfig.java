@@ -57,8 +57,9 @@ public enum IDEConfig {
     public void setContent(String content)
     {
         TextEditor editor = new TextEditor();
-        editor.getText().setText(content);
+
         editorPane.addPane(editor);
+        editor.getText().setText(content);
        // frame.getTxt().getText().setText(content);
     }
 

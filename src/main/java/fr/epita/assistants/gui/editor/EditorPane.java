@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui.editor;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,7 @@ public class EditorPane extends JTabbedPane {
 
     private int index = 0;
     public EditorPane() {
+        //setLayout(new BorderLayout()); //Here
         index = 0;
     }
 
@@ -20,6 +22,10 @@ public class EditorPane extends JTabbedPane {
     {
         EditorTab tab = new EditorTab(this, editor);
         index++;
+    }
+    public void removeTab()
+    {
+        index--;
     }
 
 }

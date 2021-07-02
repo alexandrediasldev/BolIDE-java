@@ -36,8 +36,11 @@ public class IDEFrame extends JFrame {
         shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
 
+
         editorPane = new EditorPane();
+
         add(editorPane, BorderLayout.CENTER);
+
 
         CompilePanel Bar = new CompilePanel();
         setJMenuBar(Bar);
