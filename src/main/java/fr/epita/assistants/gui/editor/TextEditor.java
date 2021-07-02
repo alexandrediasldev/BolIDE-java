@@ -1,5 +1,6 @@
 package fr.epita.assistants.gui.editor;
 
+import fr.epita.assistants.gui.IDEConfig;
 import lombok.SneakyThrows;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
@@ -14,7 +15,7 @@ public class TextEditor extends JPanel {
     private final RSyntaxTextArea text;
     private String font;
     private int textSize;
-    private boolean isdarkmode = true;
+
     private Theme theme;
 
     @SneakyThrows
@@ -24,20 +25,21 @@ public class TextEditor extends JPanel {
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
 
-        this.font = "Comic Sans MS";
-        this.textSize = 24;
-
+        this.font = IDEConfig.INSTANCE.getFont();
+        this.textSize = IDEConfig.INSTANCE.getTextSize();
+/*
         theme = Theme.load(getClass().getResourceAsStream(
                 "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
 
         theme.apply(text);
-        setFont(font);
+
         text.setForeground(Color.white);
-        text.setBackground(Color.darkGray);
+        text.setBackground(Color.darkGray);*/
+        setFont(font);
         text.setColumns(80);
         text.setLineWrap(true);
         JScrollPane scrollpane = new JScrollPane(text);
-
+        switchTheme();
 
         add(scrollpane);
     }
@@ -57,7 +59,7 @@ public class TextEditor extends JPanel {
     }
 
     public void switchTheme() {
-        if (isdarkmode) {
+        if (!IDEConfig.INSTANCE.getDarkMode()) {
             try {
                 theme = Theme.load(getClass().getResourceAsStream(
                         "/org/fife/ui/rsyntaxtextarea/themes/idea.xml"));
@@ -65,7 +67,7 @@ public class TextEditor extends JPanel {
                 System.err.println("Could not load the xml file");
             }
             theme.apply(text);
-            isdarkmode = false;
+
         } else {
             try {
                 theme = Theme.load(getClass().getResourceAsStream(
@@ -74,7 +76,7 @@ public class TextEditor extends JPanel {
                 System.err.println("Could not load syntax theme");
             }
             theme.apply(text);
-            isdarkmode = true;
+
         }
         setTextSize(textSize);
     }
