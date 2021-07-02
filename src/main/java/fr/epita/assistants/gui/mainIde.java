@@ -13,7 +13,7 @@ public class mainIde {
 
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
-
+        System.setProperty( "flatlaf.menuBarEmbedded", "false" );
 
 
         //IDEConfig.INSTANCE.getFrame();
