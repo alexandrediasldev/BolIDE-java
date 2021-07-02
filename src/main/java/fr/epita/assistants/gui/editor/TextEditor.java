@@ -19,7 +19,7 @@ public class TextEditor extends JPanel {
 
     @SneakyThrows
     public TextEditor() {
-
+        setLayout(new GridLayout());
         text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
