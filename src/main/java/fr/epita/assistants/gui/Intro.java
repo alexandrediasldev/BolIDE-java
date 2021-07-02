@@ -36,6 +36,7 @@ public class Intro extends JFrame {
                     //        UIManager.getSystemLookAndFeelClassName());
                     IDEConfig.INSTANCE.createFrame(file.getPath());
                     IDEConfig.INSTANCE.getFrame();
+                    IDEConfig.INSTANCE.switchTheme();
                     setVisible(false);
                 }
             }

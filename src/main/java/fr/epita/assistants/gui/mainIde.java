@@ -10,6 +10,7 @@ public class mainIde {
     @SneakyThrows
     public static void main(String[] args) {
 
+
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
 
@@ -22,7 +23,11 @@ public class mainIde {
 
 
 
+
         intro.pack();
+
+
+
 /*
         JFrame frame = new JFrame();
 

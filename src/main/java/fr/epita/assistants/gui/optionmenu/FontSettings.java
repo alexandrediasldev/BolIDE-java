@@ -1,7 +1,6 @@
 package fr.epita.assistants.gui.optionmenu;
 
 import fr.epita.assistants.gui.IDEConfig;
-import fr.epita.assistants.gui.TextEditor;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

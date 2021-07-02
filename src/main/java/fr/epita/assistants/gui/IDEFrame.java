@@ -1,13 +1,13 @@
 package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import fr.epita.assistants.gui.editor.EditorPane;
+import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.Settings;
 import fr.epita.assistants.myide.domain.entity.Project;
-import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
 import org.assertj.core.util.Files;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,8 @@ import java.nio.file.Path;
 
 public class IDEFrame extends JFrame {
 
-    private TextEditor txt;
+    private EditorPane editorPane;
+
     private IDEShell shell;
     private ProjectServiceImplementation p;
     private Project currentProject;
@@ -26,7 +27,9 @@ public class IDEFrame extends JFrame {
         super("BolIDE");
         FlatLightLaf.install();
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
+
         var layout = new BorderLayout();
+
         //layout.setHgap(2);
         //layout.setVgap(2);
         setLayout(layout);
@@ -35,9 +38,12 @@ public class IDEFrame extends JFrame {
         shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
 
-        txt = new TextEditor();
-        txt.setLayout(new GridLayout());
-        add(txt, BorderLayout.CENTER);
+
+        editorPane = new EditorPane();
+
+
+        add(editorPane, BorderLayout.CENTER);
+
 
         CompilePanel Bar = new CompilePanel();
         setJMenuBar(Bar);
@@ -65,10 +71,7 @@ public class IDEFrame extends JFrame {
 
         gitButtons gitbutton = new gitButtons();
         add(gitbutton, BorderLayout.NORTH);
-    }
 
-    public TextEditor getTxt() {
-        return txt;
     }
 
     public ProjectServiceImplementation getP() {
@@ -86,6 +89,10 @@ public class IDEFrame extends JFrame {
 
     public IDEShell getShell() {
         return shell;
+    }
+
+    public EditorPane getEditorPane() {
+        return editorPane;
     }
 
     /*
