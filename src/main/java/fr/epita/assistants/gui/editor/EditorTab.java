@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 public class EditorTab implements ActionListener{
     private EditorPane tabpane;
+
     private String name;
 
     public EditorTab(EditorPane tabpane, String name) {

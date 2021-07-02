@@ -16,10 +16,17 @@ public enum IDEConfig {
     INSTANCE;
 
     private boolean darkmode = true;
+    private String font = "Comic Sans MS";
+    private int textSize = 24;
     private final IDEFrame frame = new IDEFrame();
     private final ArrayList<Node> nodes = new ArrayList<>();
     private final EditorPane editorPane = frame.getEditorPane();
 
+
+    public boolean getDarkMode()
+    {
+        return darkmode;
+    }
     public IDEFrame getFrame() {
         return frame;
     }
@@ -45,13 +52,31 @@ public enum IDEConfig {
 
     public void setFont(String font)
     {
-       // frame.getTxt().setFont(font);
+
+        this.font = font;
+        for(var editor : editorPane.getTextEditors())
+        {
+            editor.setFont(font);
+        }
 
     }
 
     public void setTextSize(int textSize)
     {
-        //frame.getTxt().setTextSize(textSize);
+        this.textSize = textSize;
+        for(var editor : editorPane.getTextEditors())
+        {
+            editor.setTextSize(textSize);
+        }
+
+    }
+
+    public String getFont() {
+        return font;
+    }
+
+    public int getTextSize() {
+        return textSize;
     }
 
     public void setContent(String content, String fileName)
