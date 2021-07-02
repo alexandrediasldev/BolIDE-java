@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public enum IDEConfig {
     INSTANCE;
 
-    private boolean darkmode = true;
+    private boolean darkmode = false;
     private String font = "Comic Sans MS";
     private int textSize = 24;
     private final IDEFrame frame = new IDEFrame();

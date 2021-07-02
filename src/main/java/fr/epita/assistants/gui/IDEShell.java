@@ -7,7 +7,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class IDEShell extends JPanel {
-    private boolean isdarkmode = true;
+
     private JTextArea text;
 
     public IDEShell()
@@ -21,14 +21,14 @@ public class IDEShell extends JPanel {
         add(text);
     }
     public void switchTheme() {
-        if (isdarkmode) {
+        if (!IDEConfig.INSTANCE.getDarkMode()) {
             text.setBackground(Color.lightGray);
             text.setForeground(Color.darkGray);
-            isdarkmode = false;
+
         } else {
             text.setForeground(Color.lightGray);
             text.setBackground(Color.darkGray);
-            isdarkmode = true;
+
         }
     }
 }

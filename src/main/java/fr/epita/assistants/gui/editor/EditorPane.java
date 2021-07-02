@@ -13,6 +13,7 @@ public class EditorPane extends JTabbedPane {
     public EditorPane() {
         //setLayout(new BorderLayout()); //Here
         index = 0;
+
     }
 
     public ArrayList<TextEditor> getTextEditors() {

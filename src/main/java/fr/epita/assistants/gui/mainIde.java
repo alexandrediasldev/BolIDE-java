@@ -7,6 +7,8 @@ import javax.swing.*;
 public class mainIde {
     public static void main(String[] args) {
         IDEConfig.INSTANCE.getFrame();
+
+        IDEConfig.INSTANCE.switchTheme();
 /*
         JFrame frame = new JFrame();
 
