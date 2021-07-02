@@ -2,6 +2,8 @@ package fr.epita.assistants.gui;
 
 import java.awt.*;
 
+import fr.epita.assistants.gui.editor.EditorPane;
+import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
@@ -16,6 +18,7 @@ public enum IDEConfig {
     private boolean darkmode = true;
     private final IDEFrame frame = new IDEFrame();
     private final ArrayList<Node> nodes = new ArrayList<>();
+    private final EditorPane editorPane = frame.getEditorPane();
 
     public IDEFrame getFrame() {
         return frame;
@@ -42,18 +45,21 @@ public enum IDEConfig {
 
     public void setFont(String font)
     {
-        frame.getTxt().setFont(font);
+       // frame.getTxt().setFont(font);
 
     }
 
     public void setTextSize(int textSize)
     {
-        frame.getTxt().setTextSize(textSize);
+        //frame.getTxt().setTextSize(textSize);
     }
 
     public void setContent(String content)
     {
-        frame.getTxt().getText().setText(content);
+        TextEditor editor = new TextEditor();
+        editor.getText().setText(content);
+        editorPane.addPane(editor);
+       // frame.getTxt().getText().setText(content);
     }
 
     public ArrayList<Node> getNodes() {
@@ -73,7 +79,7 @@ public enum IDEConfig {
             darkmode = true;
         }
         SwingUtilities.updateComponentTreeUI(frame);
-        frame.getTxt().switchTheme();
+//        frame.getEditorPane().switchTheme();
         frame.getShell().switchTheme();
         frame.pack();
     }

@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.Settings;
 import fr.epita.assistants.myide.domain.entity.Project;
@@ -13,7 +14,8 @@ import java.awt.*;
 
 public class IDEFrame extends JFrame {
 
-    private TextEditor txt;
+    private EditorPane editorPane;
+
     private IDEShell shell;
     private ProjectServiceImplementation p;
     private Project currentProject;
@@ -34,9 +36,8 @@ public class IDEFrame extends JFrame {
         shell.setLayout(new GridLayout());
         add(shell, BorderLayout.SOUTH);
 
-        txt = new TextEditor();
-        txt.setLayout(new GridLayout());
-        add(txt, BorderLayout.CENTER);
+        editorPane = new EditorPane();
+        add(editorPane, BorderLayout.CENTER);
 
         CompilePanel Bar = new CompilePanel();
         setJMenuBar(Bar);
@@ -67,10 +68,6 @@ public class IDEFrame extends JFrame {
         add(gitbutton, BorderLayout.NORTH);
     }
 
-    public TextEditor getTxt() {
-        return txt;
-    }
-
     public ProjectServiceImplementation getP() {
         return p;
     }
@@ -86,6 +83,10 @@ public class IDEFrame extends JFrame {
 
     public IDEShell getShell() {
         return shell;
+    }
+
+    public EditorPane getEditorPane() {
+        return editorPane;
     }
 
     /*

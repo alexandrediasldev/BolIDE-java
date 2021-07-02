@@ -112,7 +112,7 @@ public class CompilePanel extends JMenuBar implements ActionListener {
             for (var n : IDEConfig.INSTANCE.getNodes())
             {
                 var save = new FileOperations(n);
-                save.saveText(IDEConfig.INSTANCE.getFrame().getTxt().getText().getText());
+               // save.saveText(IDEConfig.INSTANCE.getFrame().getTxt().getText().getText());
             }
         }
 

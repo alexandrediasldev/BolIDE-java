@@ -6,7 +6,11 @@ import java.awt.event.ActionListener;
 
 public class EditorPane extends JTabbedPane {
 
-    private int index  = 0;
+    private int index = 0;
+    public EditorPane() {
+        index = 0;
+    }
+
 
     public int getIndex() {
         return index;
