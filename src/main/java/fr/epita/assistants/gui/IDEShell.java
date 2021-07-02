@@ -27,7 +27,7 @@ public class IDEShell extends JPanel {
         text = new JTextArea();
         Font font = new Font("ARIAL", Font.PLAIN, 24);
         text.setFont(font);
-        text.setPreferredSize(new Dimension(1000,200));
+        //text.setPreferredSize(new Dimension(1000,1000));
         text.setForeground(Color.lightGray);
         text.setBackground(Color.darkGray);
         //add(text);
@@ -68,7 +68,7 @@ class ConsolePane extends JPanel implements CommandListener, Terminal {
         cmd = new Command(this);
 
         setLayout(new BorderLayout());
-        textArea = new JTextArea(20, 30);
+        textArea = new JTextArea(10, 30);
 
         ((AbstractDocument) textArea.getDocument()).setDocumentFilter(new ProtectedDocumentFilter(this));
         add(new JScrollPane(textArea));
