@@ -36,6 +36,7 @@ public class IDEFrame extends JFrame {
 
         shell = new IDEShell();
         shell.setLayout(new GridLayout());
+
         add(shell, BorderLayout.SOUTH);
 
 
@@ -52,6 +53,7 @@ public class IDEFrame extends JFrame {
         currentProject = p.load(Path.of(path));
         var panel =new TreePanel(currentProject.getRootNode());
         add(panel , BorderLayout.WEST);
+        panel.setLayout(new GridLayout());
 
         //setSize(512,512 );
 
