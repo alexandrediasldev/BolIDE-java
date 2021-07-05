@@ -13,7 +13,7 @@ public class IDEIntro extends JFrame {
     @SneakyThrows
     public IDEIntro()
     {
-
+        JFrame f = this;
 
         JPanel mainPanel = new JPanel();
         BorderLayout box = new BorderLayout();
@@ -24,19 +24,13 @@ public class IDEIntro extends JFrame {
         loadProject.addActionListener(new ActionListener() {
             @SneakyThrows
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                int option = fileChooser.showOpenDialog(mainPanel);
-                if(option == JFileChooser.APPROVE_OPTION){
+                JProjectChooser projectChooser = new JProjectChooser(f);
+                if(projectChooser.choose()) {
 
-                    File file = fileChooser.getSelectedFile();
-                    //UIManager.setLookAndFeel(
-                    //        UIManager.getSystemLookAndFeelClassName());
-                    IDEConfig.INSTANCE.createFrame(file.getPath());
-                    IDEConfig.INSTANCE.getFrame();
-                    IDEConfig.INSTANCE.switchTheme();
                     setVisible(false);
+                    IDEConfig.INSTANCE.switchTheme();
                 }
+
             }
         });
         mainPanel.add(loadProject, BorderLayout.SOUTH);

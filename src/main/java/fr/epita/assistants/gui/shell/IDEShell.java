@@ -123,7 +123,6 @@ class ConsolePane extends JPanel implements CommandListener, Terminal {
         int pos = textArea.getCaretPosition();
         textArea.setCaretPosition(textArea.getText().length());
         userInputStart = pos;
-
     }
 
     @Override

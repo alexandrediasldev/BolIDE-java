@@ -16,12 +16,26 @@ public class IDEMenu extends JMenuBar implements ActionListener {
 
     @SneakyThrows
     public IDEMenu() {
+
         JMenu menu = new JMenu("File");
         var reminder = new ReminderSettings();
         Color royal_blue = new Color(65, 105 , 225);
 
 
         JMenuItem item = new JMenuItem("open");
+
+        item.addActionListener(new ActionListener() {
+            @SneakyThrows
+            public void actionPerformed(ActionEvent e) {
+                JFrame mainFrame = IDEConfig.INSTANCE.getFrame();
+                JProjectChooser projectChooser = new JProjectChooser(mainFrame);
+
+                if(projectChooser.choose())
+
+                    mainFrame.setVisible(false);
+
+            }
+        });
         JMenuItem item1 = new JMenuItem("git");
 
 
