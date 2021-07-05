@@ -8,6 +8,7 @@ import org.fife.ui.rsyntaxtextarea.Theme;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class TextEditor extends JPanel {
@@ -20,6 +21,7 @@ public class TextEditor extends JPanel {
 
     @SneakyThrows
     public TextEditor() {
+
         setLayout(new GridLayout());
         text = new RSyntaxTextArea();
         text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
