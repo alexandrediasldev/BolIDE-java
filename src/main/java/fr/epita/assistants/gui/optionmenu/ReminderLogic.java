@@ -1,4 +1,4 @@
-package fr.epita.assistants.gui;
+package fr.epita.assistants.gui.optionmenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Timer;
 
-public class Reminder {
+public class ReminderLogic {
     private final String message;
     private long ms;
     private Timer timer;
@@ -22,7 +22,7 @@ public class Reminder {
         scheduler();
     }
 
-    public Reminder(String message, long minutes) {
+    public ReminderLogic(String message, long minutes) {
         this.ms = minutes * 1000 * 60;
         this.message = message;
         timer = new Timer();

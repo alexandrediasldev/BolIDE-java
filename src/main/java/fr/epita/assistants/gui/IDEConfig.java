@@ -1,14 +1,11 @@
 package fr.epita.assistants.gui;
 
-import java.awt.*;
-
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.TextEditor;
-import fr.epita.assistants.myide.domain.entity.Feature;
+import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
 import lombok.SneakyThrows;
-import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -22,12 +19,12 @@ public enum IDEConfig {
     private IDEFrame frame;
     private final ArrayList<Node> nodes = new ArrayList<>();
     private EditorPane editorPane;
-    private Reminder reminder;
+    private ReminderLogic reminder;
 
     public void setMs(long ms) {
         this.reminder.setMs(ms);
     }
-    public void setReminder(Reminder reminder)
+    public void setReminder(ReminderLogic reminder)
     {
         this.reminder = reminder;
     }

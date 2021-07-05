@@ -1,24 +1,23 @@
 package fr.epita.assistants.gui;
 
 import fr.epita.assistants.gui.optionmenu.FontSettings;
-import fr.epita.assistants.gui.optionmenu.Settings;
+import fr.epita.assistants.gui.optionmenu.ReminderSettings;
+import fr.epita.assistants.gui.utils.FileOperations;
 import lombok.SneakyThrows;
 
 import javax.media.Manager;
 import javax.media.Player;
-import javax.print.attribute.standard.Media;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-public class CompilePanel extends JMenuBar implements ActionListener {
+public class IDEMenu extends JMenuBar implements ActionListener {
 
     @SneakyThrows
-    public CompilePanel() {
+    public IDEMenu() {
         JMenu menu = new JMenu("File");
-        var reminder = new Settings();
+        var reminder = new ReminderSettings();
         Color royal_blue = new Color(65, 105 , 225);
 
 

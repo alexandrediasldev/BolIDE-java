@@ -4,9 +4,8 @@ import com.formdev.flatlaf.FlatLightLaf;
 import lombok.SneakyThrows;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class mainIde {
+public class Main {
     @SneakyThrows
     public static void main(String[] args) {
 
@@ -17,7 +16,7 @@ public class mainIde {
 
 
         //IDEConfig.INSTANCE.getFrame();
-        Intro intro = new Intro();
+        IDEIntro intro = new IDEIntro();
 
         intro.setVisible(true);
 
