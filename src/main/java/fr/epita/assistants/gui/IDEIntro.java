@@ -1,19 +1,17 @@
 package fr.epita.assistants.gui;
 
-import com.formdev.flatlaf.FlatLightLaf;
+import fr.epita.assistants.gui.utils.JImage;
 import lombok.SneakyThrows;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class Intro extends JFrame {
+public class IDEIntro extends JFrame {
     @SneakyThrows
-    public Intro()
+    public IDEIntro()
     {
 
 

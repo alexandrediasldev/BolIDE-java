@@ -2,12 +2,12 @@ package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import fr.epita.assistants.gui.editor.EditorPane;
-import fr.epita.assistants.gui.editor.TextEditor;
-import fr.epita.assistants.gui.optionmenu.Settings;
+import fr.epita.assistants.gui.optionmenu.ReminderLogic;
+import fr.epita.assistants.gui.shell.IDEShell;
+import fr.epita.assistants.gui.tree.TreePanel;
 import fr.epita.assistants.myide.domain.entity.Project;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
 import lombok.SneakyThrows;
-import org.assertj.core.util.Files;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,7 +46,7 @@ public class IDEFrame extends JFrame {
         add(editorPane, BorderLayout.CENTER);
 
 
-        CompilePanel Bar = new CompilePanel();
+        IDEMenu Bar = new IDEMenu();
         setJMenuBar(Bar);
 
         p = new ProjectServiceImplementation();
@@ -66,7 +66,7 @@ public class IDEFrame extends JFrame {
         pack();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
         setVisible(true);
-        var reminder = new Reminder("Remember to take a break for your happiness"
+        var reminder = new ReminderLogic("Remember to take a break for your happiness"
                 , 15);
         reminder.scheduler();
         IDEConfig.INSTANCE.setReminder(reminder);
