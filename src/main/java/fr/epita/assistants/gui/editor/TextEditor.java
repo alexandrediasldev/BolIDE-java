@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +41,7 @@ public class TextEditor extends JPanel {
         setFont(font);
         text.setColumns(80);
         text.setLineWrap(true);
-        JScrollPane scrollpane = new JScrollPane(text);
+        RTextScrollPane scrollpane = new RTextScrollPane(text);
         switchTheme();
 
         add(scrollpane);
