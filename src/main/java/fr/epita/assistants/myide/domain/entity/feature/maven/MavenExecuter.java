@@ -10,20 +10,24 @@ public class MavenExecuter {
 
     public static int mvnCommand(String command, String project, Object... args) throws IOException, InterruptedException {
         var commands = new ArrayList<String>();
+        String str = (String) Arrays.stream(args).toList().get(0);
+
         commands.add("mvn");
         commands.add(command);
         int i = 0;
-        for (var e : args) {
-
+        for (var e : str.split(" ")) {
+            System.out.println("/"+e.toString()+"/");
             if(i == 0 && e.toString().startsWith(":")) {
                 commands.set(1, commands.get(1) + e.toString());
             }
             else
-                commands.add(e.toString());
+                if(e.toString() != "" && e.toString() != null && e != null && !e.toString().isBlank()) {
+                    commands.add(e.toString());
+                }
             i +=1;
         }
 
-        commands.remove(commands.size()-1);
+        //commands.remove(commands.size()-1);
         System.out.println(commands);
         ProcessBuilder pb = new ProcessBuilder(commands);
         System.out.println(project);
