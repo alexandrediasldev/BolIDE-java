@@ -15,7 +15,12 @@ public class gitButtons extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.add();
+
+
+                ArgumentDialog argDialog = new ArgumentDialog( "Add");
+                var s = argDialog.getArg();
+                if(s != null)
+                    IDEConfig.INSTANCE.add(s);
             }
         });
 
@@ -23,22 +28,34 @@ public class gitButtons extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.push();
+                //IDEConfig.INSTANCE.push();
+                ArgumentDialog argDialog = new ArgumentDialog( "Push");
+                var s = argDialog.getArg();
+                if(s != null)
+                    IDEConfig.INSTANCE.push(s);
             }
         });
         commit.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String msg = JOptionPane.showInputDialog("Enter a commit message");
-                IDEConfig.INSTANCE.commit(msg);
+                //String msg = JOptionPane.showInputDialog("Enter a commit message");
+                //
+                ArgumentDialog argDialog = new ArgumentDialog( "Commit");
+                var s = argDialog.getArg();
+                if(s != null)
+                    IDEConfig.INSTANCE.commit(s);
+
             }
         });
         pull.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.pull();
+                ArgumentDialog argDialog = new ArgumentDialog( "Pull");
+                var s = argDialog.getArg();
+                if(s != null)
+                    IDEConfig.INSTANCE.pull(s);
             }
         });
 
