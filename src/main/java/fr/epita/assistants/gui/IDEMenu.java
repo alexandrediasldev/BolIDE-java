@@ -45,8 +45,8 @@ public class IDEMenu extends JMenuBar implements ActionListener {
 
         final boolean[] music = {false};
         ClassLoader classLoader = getClass().getClassLoader();
-        var res = classLoader.getResource("sussy.wav");
-
+        var res =  classLoader.getResource("sussy.wav");
+        System.out.println(res.getPath());
 
         final Player p = Manager.createRealizedPlayer(res);
         item2.addActionListener(new ActionListener() {
@@ -59,12 +59,12 @@ public class IDEMenu extends JMenuBar implements ActionListener {
                 {
                     System.out.println("playing music");
                     music[0] = true;
-                    p.start();
+          //          p.start();
                 }
                 else
                 {
                     music[0] = false;
-                    p.stop();
+            //        p.stop();
                 }
             }
         });
