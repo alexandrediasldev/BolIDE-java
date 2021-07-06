@@ -1,20 +1,19 @@
 package fr.epita.assistants.gui;
 
-import com.formdev.flatlaf.FlatLightLaf;
+import fr.epita.assistants.gui.utils.JImage;
+import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
-public class Intro extends JFrame {
+public class IDEIntro extends JFrame {
     @SneakyThrows
-    public Intro()
+    public IDEIntro()
     {
+        JFrame f = this;
 
 
         JPanel mainPanel = new JPanel();
@@ -26,19 +25,13 @@ public class Intro extends JFrame {
         loadProject.addActionListener(new ActionListener() {
             @SneakyThrows
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                int option = fileChooser.showOpenDialog(mainPanel);
-                if(option == JFileChooser.APPROVE_OPTION){
+                JProjectChooser projectChooser = new JProjectChooser(f);
+                if(projectChooser.choose()) {
 
-                    File file = fileChooser.getSelectedFile();
-                    //UIManager.setLookAndFeel(
-                    //        UIManager.getSystemLookAndFeelClassName());
-                    IDEConfig.INSTANCE.createFrame(file.getPath());
-                    IDEConfig.INSTANCE.getFrame();
-                    IDEConfig.INSTANCE.switchTheme();
                     setVisible(false);
+                    IDEConfig.INSTANCE.switchTheme();
                 }
+
             }
         });
         mainPanel.add(loadProject, BorderLayout.SOUTH);
