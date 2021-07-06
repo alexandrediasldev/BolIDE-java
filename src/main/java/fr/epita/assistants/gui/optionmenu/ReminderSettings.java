@@ -1,59 +1,54 @@
 package fr.epita.assistants.gui.optionmenu;
 
 import fr.epita.assistants.gui.IDEConfig;
-import fr.epita.assistants.gui.Reminder;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ReminderSettings extends JPanel{
-     Integer ms = null;
-    public ReminderSettings() {
-        var grid = new BoxLayout(this, BoxLayout.Y_AXIS);
+public class ReminderSettings extends JFrame {
+    public ReminderSettings()
+    {
 
-        setLayout(grid);
-        var slider = new JSlider(JSlider.HORIZONTAL, 0,240,15);
-        var labelSlider = new JLabel("Pause Interval");
-        var checkBoxPause =  new JCheckBox("Pause Reminder");
+        var pan = new JPanel();
+        var layout = new BoxLayout(pan, BoxLayout.Y_AXIS);
+        pan.setLayout(layout);
 
-        checkBoxPause.addActionListener(new ActionListener() {
+        var pauseOptionPanel =  new ReminderSliderPanel();
+
+        pan.add(pauseOptionPanel);
+
+        var quit = new JButton("Quitter");
+        /*var discardQuit = new JButton("Discard changes");
+        discardQuit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(checkBoxPause.isSelected()) {
-                    ms = 9999999;
-                }
-                else {
-                    ms = slider.getValue();
-                }
+                setVisible(false);
+            }
+        });*/
+
+
+
+        var saveQuit = new JButton("Save & exit");
+
+        saveQuit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IDEConfig.INSTANCE.setMs(pauseOptionPanel.getMs());
+                setVisible(false);
             }
         });
 
+        var pannelQuit = new JPanel();
 
-        slider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                if(!checkBoxPause.isSelected()) {
-                    ms = ((JSlider) e.getSource()).getValue();
-                }
-            }
-        });
+        //pannelQuit.add(discardQuit);
+        pannelQuit.add(saveQuit);
+        pan.add(pannelQuit);
+        add(pan);
 
-        slider.setMinorTickSpacing(10);
-        slider.setMajorTickSpacing(60);
-
-        slider.setPaintTicks(true);
-        slider.setPaintLabels(true);
-
-
-        add(labelSlider);
-        add(slider);
-        add(checkBoxPause);
-    }
-    public int getMs()
-    {
-        return ms;
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
+        setSize(400,200);
+        setVisible(true);
     }
 }

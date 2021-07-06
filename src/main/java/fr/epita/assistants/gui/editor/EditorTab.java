@@ -4,13 +4,15 @@ import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.gui.editor.EditorPane;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class EditorTab implements ActionListener{
     private EditorPane tabpane;
-
     private String name;
+
 
     public EditorTab(EditorPane tabpane, String name) {
         this.tabpane = tabpane;

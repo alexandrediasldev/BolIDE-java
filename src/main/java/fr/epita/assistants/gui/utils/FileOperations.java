@@ -1,5 +1,6 @@
-package fr.epita.assistants.gui;
+package fr.epita.assistants.gui.utils;
 
+import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.myide.domain.entity.Node;
 import fr.epita.assistants.myide.domain.entity.node.File;
 import fr.epita.assistants.myide.domain.service.NodeServiceImplementation;

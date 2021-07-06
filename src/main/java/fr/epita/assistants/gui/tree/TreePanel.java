@@ -1,5 +1,7 @@
-package fr.epita.assistants.gui;
+package fr.epita.assistants.gui.tree;
 
+import fr.epita.assistants.gui.IDEConfig;
+import fr.epita.assistants.gui.utils.FileOperations;
 import fr.epita.assistants.myide.domain.entity.Node;
 
 import javax.swing.*;

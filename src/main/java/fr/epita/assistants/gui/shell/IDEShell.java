@@ -1,6 +1,6 @@
-package fr.epita.assistants.gui;
+package fr.epita.assistants.gui.shell;
 
-import org.fife.ui.rsyntaxtextarea.Theme;
+import fr.epita.assistants.gui.IDEConfig;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.swing.*;
 import javax.swing.text.*;
 
 public class IDEShell extends JPanel {
@@ -126,7 +123,6 @@ class ConsolePane extends JPanel implements CommandListener, Terminal {
         int pos = textArea.getCaretPosition();
         textArea.setCaretPosition(textArea.getText().length());
         userInputStart = pos;
-
     }
 
     @Override

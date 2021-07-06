@@ -1,28 +1,42 @@
 package fr.epita.assistants.gui;
 
 import fr.epita.assistants.gui.optionmenu.FontSettings;
-import fr.epita.assistants.gui.optionmenu.Settings;
+import fr.epita.assistants.gui.optionmenu.ReminderSettings;
+import fr.epita.assistants.gui.utils.FileOperations;
+import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
 
 import javax.media.Manager;
 import javax.media.Player;
-import javax.print.attribute.standard.Media;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-public class CompilePanel extends JMenuBar implements ActionListener {
+public class IDEMenu extends JMenuBar implements ActionListener {
 
     @SneakyThrows
-    public CompilePanel() {
+    public IDEMenu() {
+
         JMenu menu = new JMenu("File");
-        var reminder = new Settings();
+        var reminder = new ReminderSettings();
         Color royal_blue = new Color(65, 105 , 225);
 
 
         JMenuItem item = new JMenuItem("open");
+
+        item.addActionListener(new ActionListener() {
+            @SneakyThrows
+            public void actionPerformed(ActionEvent e) {
+                JFrame mainFrame = IDEConfig.INSTANCE.getFrame();
+                JProjectChooser projectChooser = new JProjectChooser(mainFrame);
+
+                if(projectChooser.choose())
+
+                    mainFrame.setVisible(false);
+
+            }
+        });
         JMenuItem item1 = new JMenuItem("git");
 
 
