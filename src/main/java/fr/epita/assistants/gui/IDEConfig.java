@@ -21,6 +21,8 @@ public enum IDEConfig {
     private EditorPane editorPane;
     private ReminderLogic reminder;
 
+    private String addArgument = "";
+
     public void setMs(long ms) {
         this.reminder.setMs(ms);
     }
@@ -35,6 +37,15 @@ public enum IDEConfig {
     public EditorPane getEditorPane() {
         return editorPane;
     }
+
+    public void setAddArgument(String addArgument) {
+        this.addArgument = addArgument;
+    }
+
+    public String getAddArgument() {
+        return addArgument;
+    }
+
     public TextEditor getTextEditor(String name)
     {
         var editors = editorPane.getTextEditors();
@@ -59,24 +70,32 @@ public enum IDEConfig {
         editorPane = frame.getEditorPane();
     }
 
-    public void add()
+    public void add(String args)
     {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, ".");
+        if(args != null)
+            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, ".");
+        else
+            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, args);
+
     }
 
-    public void push()
+    public void push(String args)
     {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
+        if(args != null)
+            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
+        else
+            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, args);
+
     }
 
-    public void pull()
+    public void pull(String args)
     {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PULL);
+        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PULL, args);
     }
 
-    public void commit(String msg)
+    public void commit(String args)
     {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.COMMIT, msg);
+        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.COMMIT, args);
     }
 
     public void setFont(String font)
