@@ -81,7 +81,7 @@ public class mavenButton extends JPanel {
                 ArgumentDialog argDialog = new ArgumentDialog( "Exec");
                 var args = argDialog.getArg();
                 if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC,args.split(" "));
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC,args);
             }
         });
 
