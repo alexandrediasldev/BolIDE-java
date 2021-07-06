@@ -12,11 +12,21 @@ public class MavenExecuter {
         var commands = new ArrayList<String>();
         commands.add("mvn");
         commands.add(command);
+        int i = 0;
+        for (var e : args) {
 
-        for (var e : args)
-            commands.add(e.toString());
+            if(i == 0 && e.toString().startsWith(":")) {
+                commands.set(1, commands.get(1) + e.toString());
+            }
+            else
+                commands.add(e.toString());
+            i +=1;
+        }
 
+        commands.remove(commands.size()-1);
+        System.out.println(commands);
         ProcessBuilder pb = new ProcessBuilder(commands);
+        System.out.println(project);
         pb.directory(new File(project));
         Process p = pb.start();
 

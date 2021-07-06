@@ -34,8 +34,10 @@ public class mavenButton extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Clean");
                 var args = argDialog.getArg();
-                if(args != null)
+                if(args != null) {
+                    System.out.println("clean"+args);
                     IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.CLEAN, args);
+                }
             }
         });
 
@@ -79,7 +81,7 @@ public class mavenButton extends JPanel {
                 ArgumentDialog argDialog = new ArgumentDialog( "Exec");
                 var args = argDialog.getArg();
                 if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC,args);
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC,args.split(" "));
             }
         });
 
