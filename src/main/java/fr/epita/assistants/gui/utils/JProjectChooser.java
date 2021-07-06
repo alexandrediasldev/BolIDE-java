@@ -1,4 +1,6 @@
-package fr.epita.assistants.gui;
+package fr.epita.assistants.gui.utils;
+
+import fr.epita.assistants.gui.IDEConfig;
 
 import javax.swing.*;
 import java.io.File;

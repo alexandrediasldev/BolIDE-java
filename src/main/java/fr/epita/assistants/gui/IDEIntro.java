@@ -1,19 +1,20 @@
 package fr.epita.assistants.gui;
 
 import fr.epita.assistants.gui.utils.JImage;
+import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 public class IDEIntro extends JFrame {
     @SneakyThrows
     public IDEIntro()
     {
         JFrame f = this;
+
 
         JPanel mainPanel = new JPanel();
         BorderLayout box = new BorderLayout();

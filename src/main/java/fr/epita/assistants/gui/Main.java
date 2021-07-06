@@ -18,6 +18,7 @@ public class Main {
         //IDEConfig.INSTANCE.getFrame();
         IDEIntro intro = new IDEIntro();
 
+
         intro.setVisible(true);
 
 
