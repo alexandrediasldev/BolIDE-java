@@ -70,33 +70,12 @@ public enum IDEConfig {
         editorPane = frame.getEditorPane();
     }
 
-    public void add(String args)
-    {
-        if(args != null)
-            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, ".");
-        else
-            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, args);
 
-    }
 
-    public void push(String args)
-    {
-        if(args != null)
-            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
-        else
-            frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, args);
 
-    }
 
-    public void pull(String args)
-    {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PULL, args);
-    }
 
-    public void commit(String args)
-    {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.COMMIT, args);
-    }
+
 
     public void setFont(String font)
     {
