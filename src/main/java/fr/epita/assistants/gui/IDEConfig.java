@@ -21,7 +21,6 @@ public enum IDEConfig {
     private EditorPane editorPane;
     private ReminderLogic reminder;
 
-    private String addArgument = "";
 
     public void setMs(long ms) {
         this.reminder.setMs(ms);
@@ -38,13 +37,6 @@ public enum IDEConfig {
         return editorPane;
     }
 
-    public void setAddArgument(String addArgument) {
-        this.addArgument = addArgument;
-    }
-
-    public String getAddArgument() {
-        return addArgument;
-    }
 
     public TextEditor getTextEditor(String name)
     {

@@ -21,7 +21,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.COMPILE);
+                ArgumentDialog argDialog = new ArgumentDialog( "Compile");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.COMPILE,args);
             }
         });
 
@@ -29,7 +32,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.CLEAN);
+                ArgumentDialog argDialog = new ArgumentDialog( "Clean");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.CLEAN, args);
             }
         });
 
@@ -37,7 +43,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.PACKAGE);
+                ArgumentDialog argDialog = new ArgumentDialog( "Package");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.PACKAGE,args);
             }
         });
 
@@ -45,7 +54,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.TEST);
+                ArgumentDialog argDialog = new ArgumentDialog( "Test");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.TEST,args);
             }
         });
 
@@ -53,7 +65,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.INSTALL);
+                ArgumentDialog argDialog = new ArgumentDialog( "Install");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.INSTALL,args);
             }
         });
 
@@ -61,7 +76,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC);
+                ArgumentDialog argDialog = new ArgumentDialog( "Exec");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC,args);
             }
         });
 
@@ -69,7 +87,10 @@ public class mavenButton extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.TREE);
+                ArgumentDialog argDialog = new ArgumentDialog( "Tree");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.TREE,args);
             }
         });
 
