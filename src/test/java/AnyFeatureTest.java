@@ -15,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class AnyFeatureTest {
-
+    /*
     @SneakyThrows
     void createMyIdeIgnore(String path)
     {
@@ -105,4 +105,6 @@ public class AnyFeatureTest {
 
         assert (b1 && b2 && b3);
     }
+
+     */
 }

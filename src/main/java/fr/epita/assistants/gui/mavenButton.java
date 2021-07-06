@@ -16,7 +16,20 @@ public class mavenButton extends JPanel {
         JButton install = new JButton("install");
         JButton exec = new JButton("exec");
         JButton tree = new JButton("tree");
+        JButton run = new JButton("run");
 
+        run.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArgumentDialog argDialog = new ArgumentDialog( "Jar Name and main class");
+                var args = argDialog.getArg();
+                if(args != null) {
+                    var pa = IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath()+"/target/"+args;
+
+                    System.out.println(pa);
+                }
+            }
+        });
         compile.addActionListener(new ActionListener() {
 
             @Override
@@ -103,5 +116,6 @@ public class mavenButton extends JPanel {
         add(tree);
         add(exec);
         add(test);
+        add(run);
     }
 }
