@@ -3,6 +3,7 @@ package fr.epita.assistants.gui;
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import fr.epita.assistants.gui.optionmenu.ReminderSettings;
 import fr.epita.assistants.gui.utils.FileOperations;
+import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
 
 import javax.media.Manager;
