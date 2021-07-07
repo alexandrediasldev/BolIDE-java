@@ -33,5 +33,9 @@ public class Toolgit extends JMenu {
         var attract = new JMenuItem("attract");
         attract.setIcon(createIcon("src/main/resources/down_left_arrow.png", 15, 15));
         add(attract);
+
+        var pledge = new JMenuItem("pledge");
+        pledge.setIcon(createIcon("src/main/resources/bluecheck.png", 15, 15));
+        add(pledge);
     }
 }

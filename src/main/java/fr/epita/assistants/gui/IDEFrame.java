@@ -6,6 +6,7 @@ import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.gui.shell.IDEShell;
 import fr.epita.assistants.gui.toolbar.Toolgit;
+import fr.epita.assistants.gui.toolbar.Toolmaven;
 import fr.epita.assistants.gui.tree.TreePanel;
 import fr.epita.assistants.myide.domain.entity.Project;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
@@ -50,6 +51,7 @@ public class IDEFrame extends JFrame {
 
         IDEMenu Bar = new IDEMenu();
         Bar.add(new Toolgit());
+        Bar.add(new Toolmaven());
         setJMenuBar(Bar);
 
         p = new ProjectServiceImplementation();
