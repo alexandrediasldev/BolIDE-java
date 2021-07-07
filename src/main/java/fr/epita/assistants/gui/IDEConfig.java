@@ -21,6 +21,7 @@ public enum IDEConfig {
     private EditorPane editorPane;
     private ReminderLogic reminder;
 
+
     public void setMs(long ms) {
         this.reminder.setMs(ms);
     }
@@ -35,6 +36,8 @@ public enum IDEConfig {
     public EditorPane getEditorPane() {
         return editorPane;
     }
+
+
     public TextEditor getTextEditor(String name)
     {
         var editors = editorPane.getTextEditors();
@@ -59,25 +62,12 @@ public enum IDEConfig {
         editorPane = frame.getEditorPane();
     }
 
-    public void add()
-    {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.ADD, ".");
-    }
 
-    public void push()
-    {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
-    }
 
-    public void pull()
-    {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.PULL);
-    }
 
-    public void commit(String msg)
-    {
-        frame.getP().execute(frame.getCurrentProject(), Mandatory.Features.Git.COMMIT, msg);
-    }
+
+
+
 
     public void setFont(String font)
     {

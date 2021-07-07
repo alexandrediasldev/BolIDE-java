@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class IDEMenu extends JMenuBar implements ActionListener {
 
@@ -45,10 +46,10 @@ public class IDEMenu extends JMenuBar implements ActionListener {
 
         final boolean[] music = {false};
         ClassLoader classLoader = getClass().getClassLoader();
-        var res = classLoader.getResource("sussy.wav");
+        //URL res = new URL("");
+        //System.out.println(res.getPath());
 
-
-        final Player p = Manager.createRealizedPlayer(res);
+        //final Player p = Manager.createRealizedPlayer(res);
         item2.addActionListener(new ActionListener() {
 
             @SneakyThrows
@@ -59,12 +60,12 @@ public class IDEMenu extends JMenuBar implements ActionListener {
                 {
                     System.out.println("playing music");
                     music[0] = true;
-                    p.start();
+          //          p.start();
                 }
                 else
                 {
                     music[0] = false;
-                    p.stop();
+            //        p.stop();
                 }
             }
         });

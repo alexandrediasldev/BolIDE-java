@@ -15,6 +15,7 @@ public class Compile implements Feature {
 
     @Override
     public ExecutionReport execute(Project project, Object... params) {
+        System.out.println("EXECUTE COMPILE");
         class Report implements ExecutionReport {
             private boolean success;
 
