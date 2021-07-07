@@ -11,7 +11,7 @@ public class Toolgit extends JMenu {
     public Toolgit() {
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("resources/macadamia_nut.png"));
+            img = ImageIO.read(new File("src/main/resources/macadamia_nut.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
