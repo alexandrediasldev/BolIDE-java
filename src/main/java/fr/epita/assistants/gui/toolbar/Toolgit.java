@@ -25,8 +25,13 @@ public class Toolgit extends JMenu {
         var amplify = new JMenuItem("amplify");
         amplify.setIcon(createIcon("src/main/resources/plus.png", 15, 15));
         add(amplify);
+
         var send = new JMenuItem("send");
         send.setIcon(createIcon("src/main/resources/up_right_arrow.png", 15, 15));
         add(send);
+
+        var attract = new JMenuItem("attract");
+        attract.setIcon(createIcon("src/main/resources/down_left_arrow.png", 15, 15));
+        add(attract);
     }
 }
