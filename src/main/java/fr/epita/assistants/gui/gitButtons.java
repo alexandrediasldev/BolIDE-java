@@ -1,5 +1,7 @@
 package fr.epita.assistants.gui;
 
+import fr.epita.assistants.myide.domain.entity.Mandatory;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +17,15 @@ public class gitButtons extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.add();
+
+
+                ArgumentDialog argDialog = new ArgumentDialog( "Add");
+                var args = argDialog.getArg();
+                if(args != null)
+                    if(args != null)
+                        IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.ADD, ".");
+                    else
+                        IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.ADD, args);
             }
         });
 
@@ -23,22 +33,37 @@ public class gitButtons extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.push();
+                //IDEConfig.INSTANCE.push();
+                ArgumentDialog argDialog = new ArgumentDialog( "Push");
+                var args = argDialog.getArg();
+                if(args != null)
+                    if(args != null)
+                        IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
+                    else
+                        IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PUSH, args);
             }
         });
         commit.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String msg = JOptionPane.showInputDialog("Enter a commit message");
-                IDEConfig.INSTANCE.commit(msg);
+                //String msg = JOptionPane.showInputDialog("Enter a commit message");
+                //
+                ArgumentDialog argDialog = new ArgumentDialog( "Commit");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.COMMIT, args);
+
             }
         });
         pull.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                IDEConfig.INSTANCE.pull();
+                ArgumentDialog argDialog = new ArgumentDialog( "Pull");
+                var args = argDialog.getArg();
+                if(args != null)
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PULL, args);
             }
         });
 
