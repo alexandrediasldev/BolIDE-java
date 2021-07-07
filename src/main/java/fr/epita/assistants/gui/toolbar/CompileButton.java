@@ -14,7 +14,7 @@ public class CompileButton extends JButton implements ActionListener {
         Border emptyBorder = BorderFactory.createEmptyBorder();
         setMaximumSize(new Dimension(35,35));
         setBorder(emptyBorder);
-        setIcon(createIcon("src/main/resources/cog.png", 30, 30));
+        setIcon(createIcon("cog.png", 30, 30));
     }
     @Override
     public void actionPerformed(ActionEvent e) {

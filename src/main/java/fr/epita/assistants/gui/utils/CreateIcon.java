@@ -9,10 +9,11 @@ import java.io.IOException;
 
 public class CreateIcon {
 
-    static public ImageIcon createIcon(String Pathname, int width, int height){
+    static public ImageIcon createIcon(String filename, int width, int height){
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File(Pathname));
+            var loader = CreateIcon.class.getClassLoader().getResource(filename);
+            img = ImageIO.read(loader);
         } catch (IOException e) {
             e.printStackTrace();
         }

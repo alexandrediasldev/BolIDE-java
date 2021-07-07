@@ -14,7 +14,7 @@ public class RunButton extends JButton implements ActionListener {
         Border emptyBorder = BorderFactory.createEmptyBorder();
         setMaximumSize(new Dimension(35,35));
         setBorder(emptyBorder);
-        setIcon(createIcon("src/main/resources/run.png", 30, 30));
+        setIcon(createIcon("run.png", 30, 30));
     }
     @Override
     public void actionPerformed(ActionEvent e) {

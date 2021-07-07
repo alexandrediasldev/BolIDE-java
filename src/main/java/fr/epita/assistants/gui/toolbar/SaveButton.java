@@ -18,7 +18,7 @@ public class SaveButton extends JButton implements ActionListener {
         Border emptyBorder = BorderFactory.createEmptyBorder();
         setMaximumSize(new Dimension(35,35));
         setBorder(emptyBorder);
-        setIcon(createIcon("src/main/resources/floppy.png", 30, 30));
+        setIcon(createIcon("floppy.png", 30, 30));
     }
     @SneakyThrows
     @Override
