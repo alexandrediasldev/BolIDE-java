@@ -23,19 +23,19 @@ public class Toolgit extends JMenu {
 
         setIcon(createIcon("src/main/resources/sun.png", 30, 30));
         var amplify = new JMenuItem("amplify");
-        amplify.setIcon(createIcon("src/main/resources/plus.png", 15, 15));
+        amplify.setIcon(createIcon("src/main/resources/plus.png", 20, 20));
         add(amplify);
 
         var send = new JMenuItem("send");
-        send.setIcon(createIcon("src/main/resources/up_right_arrow.png", 15, 15));
+        send.setIcon(createIcon("src/main/resources/up_right_arrow.png", 20, 20));
         add(send);
 
         var attract = new JMenuItem("attract");
-        attract.setIcon(createIcon("src/main/resources/down_left_arrow.png", 15, 15));
+        attract.setIcon(createIcon("src/main/resources/down_left_arrow.png", 20, 20));
         add(attract);
 
         var pledge = new JMenuItem("pledge");
-        pledge.setIcon(createIcon("src/main/resources/bluecheck.png", 15, 15));
+        pledge.setIcon(createIcon("src/main/resources/bluecheck.png", 20, 20));
         add(pledge);
     }
 }
