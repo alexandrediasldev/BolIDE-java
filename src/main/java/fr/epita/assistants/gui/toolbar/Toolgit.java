@@ -7,18 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Toolgit extends JMenu {
-    private ImageIcon createIcon(String Pathname, int width, int height){
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File(Pathname));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        var dimg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return new ImageIcon(dimg);
+import static fr.epita.assistants.gui.utils.CreateIcon.createIcon;
 
-    }
+public class Toolgit extends JMenu {
+
     public Toolgit() {
 
         setIcon(createIcon("src/main/resources/sun.png", 30, 30));

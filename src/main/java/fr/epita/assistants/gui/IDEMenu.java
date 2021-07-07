@@ -2,6 +2,9 @@ package fr.epita.assistants.gui;
 
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import fr.epita.assistants.gui.optionmenu.ReminderSettings;
+import fr.epita.assistants.gui.toolbar.CompileButton;
+import fr.epita.assistants.gui.toolbar.RunButton;
+import fr.epita.assistants.gui.toolbar.SaveButton;
 import fr.epita.assistants.gui.utils.FileOperations;
 import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
@@ -13,7 +16,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class IDEMenu extends JMenuBar implements ActionListener {
+public class IDEMenu extends JMenuBar {
 
     @SneakyThrows
     public IDEMenu() {
@@ -113,9 +116,18 @@ public class IDEMenu extends JMenuBar implements ActionListener {
 
 
 
-        JButton saveButton = new JButton("Save");
+
+        var saveButton = new SaveButton();
         saveButton.setBackground(royal_blue);
-        saveButton.addActionListener(this);
+
+
+        var compileButton = new CompileButton();
+        compileButton.setBackground(royal_blue);
+
+        var runButton = new RunButton();
+        runButton.setBackground(royal_blue);
+
+
 
         //JButton button = new JButton("Compile");
         //button.setBackground(royal_blue);
@@ -128,25 +140,11 @@ public class IDEMenu extends JMenuBar implements ActionListener {
         add(pan2);
         //add(button);
         add(saveButton);
+        add(compileButton);
+        add(runButton);
         setBackground(royal_blue);
         //add(fermer);
     }
 
-    @SneakyThrows
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Save"))
-        {
-            for (var n : IDEConfig.INSTANCE.getNodes())
-            {
-                var save = new FileOperations(n);
 
-                var editor = IDEConfig.INSTANCE.getTextEditor(String.valueOf(n.getPath().getFileName()));
-                save.saveText(editor.getText().getText());
-
-
-            }
-        }
-
-    }
 }
