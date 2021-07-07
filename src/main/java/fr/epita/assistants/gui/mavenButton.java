@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui;
 
 import fr.epita.assistants.myide.domain.entity.Mandatory;
+import lombok.SneakyThrows;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,14 +20,22 @@ public class mavenButton extends JPanel {
         JButton run = new JButton("run");
 
         run.addActionListener(new ActionListener() {
+            @SneakyThrows
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Jar Name and main class");
                 var args = argDialog.getArg();
                 if(args != null) {
-                    var pa = IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath()+"/target/"+args;
-
+                    var pa = "java -cp " + IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath()+
+                            java.io.File.separator +"target"+ java.io.File.separator+args;
+                    if(System.getProperty("os.name").startsWith("Windows"))
+                        pa = "powershell " + pa;
                     System.out.println(pa);
+                    ProcessBuilder pb = new ProcessBuilder(pa.split(" "));
+                    Process p = pb.start();
+                    p.waitFor();
+
+
                 }
             }
         });
@@ -36,8 +45,10 @@ public class mavenButton extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Compile");
                 var args = argDialog.getArg();
-                if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.COMPILE,args);
+                if(args != null) {
+                    var proj = IDEConfig.INSTANCE.getFrame().getCurrentProject();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(proj, Mandatory.Features.Maven.COMPILE, args);
+                }
             }
         });
 
@@ -48,7 +59,7 @@ public class mavenButton extends JPanel {
                 ArgumentDialog argDialog = new ArgumentDialog( "Clean");
                 var args = argDialog.getArg();
                 if(args != null) {
-                    System.out.println("clean"+args);
+
                     IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.CLEAN, args);
                 }
             }
