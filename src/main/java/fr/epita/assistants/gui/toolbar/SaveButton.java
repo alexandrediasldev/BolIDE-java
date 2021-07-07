@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,7 @@ public class SaveButton extends JButton implements ActionListener {
     public SaveButton()
     {
         Border emptyBorder = BorderFactory.createEmptyBorder();
+        setMaximumSize(new Dimension(35,35));
         setBorder(emptyBorder);
         setIcon(createIcon("src/main/resources/floppy.png", 30, 30));
     }
