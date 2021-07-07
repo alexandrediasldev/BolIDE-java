@@ -250,6 +250,7 @@ class ProcessRunner extends Thread {
         try {
             System.out.println("cmds = " + cmds);
             ProcessBuilder pb = new ProcessBuilder(cmds);
+            pb.directory(new File(String.valueOf(IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath())));
             pb.redirectErrorStream();
             process = pb.start();
 
