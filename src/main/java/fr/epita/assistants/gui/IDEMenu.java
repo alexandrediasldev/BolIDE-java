@@ -1,13 +1,8 @@
 package fr.epita.assistants.gui;
 
-import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import fr.epita.assistants.gui.optionmenu.ReminderSettings;
-import fr.epita.assistants.gui.toolbar.CompileButton;
 import fr.epita.assistants.gui.toolbar.MiddleButtons;
-import fr.epita.assistants.gui.toolbar.RunButton;
-import fr.epita.assistants.gui.toolbar.SaveButton;
-import fr.epita.assistants.gui.utils.FileOperations;
 import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
 
@@ -17,7 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
+import java.io.File;
+import java.nio.file.Paths;
 
 public class IDEMenu extends JMenuBar {
 
@@ -56,11 +52,13 @@ public class IDEMenu extends JMenuBar {
         JMenuItem item2 = new JMenuItem("music");
 
         final boolean[] music = {false};
-        ClassLoader classLoader = getClass().getClassLoader();
-        //URL res = new URL("");
-        //System.out.println(res.getPath());
+        var url = System.getProperty("user.dir") + File.separator + "sussy.wav";
+        System.out.println(url);
 
-        //final Player p = Manager.createRealizedPlayer(res);
+        var res = Paths.get(url).toUri().toURL();
+        System.out.println(res.getPath());
+
+        final Player p = Manager.createRealizedPlayer(res);
         item2.addActionListener(new ActionListener() {
 
             @SneakyThrows
@@ -71,12 +69,12 @@ public class IDEMenu extends JMenuBar {
                 {
                     System.out.println("playing music");
                     music[0] = true;
-          //          p.start();
+                    p.start();
                 }
                 else
                 {
                     music[0] = false;
-            //        p.stop();
+                    p.stop();
                 }
             }
         });
