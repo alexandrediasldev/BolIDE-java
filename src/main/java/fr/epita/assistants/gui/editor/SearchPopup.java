@@ -22,6 +22,8 @@ public class SearchPopup extends JFrame implements ActionListener{
     private RSyntaxTextArea textArea;
     private JTextField searchField;
 
+
+
     public SearchPopup() {
         super("search");
 

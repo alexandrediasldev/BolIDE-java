@@ -2,6 +2,7 @@ package fr.epita.assistants.gui;
 
 import com.google.common.io.Files;
 import fr.epita.assistants.gui.editor.EditorPane;
+import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
@@ -23,7 +24,28 @@ public enum IDEConfig {
     private final ArrayList<Node> nodes = new ArrayList<>();
     private EditorPane editorPane;
     private ReminderLogic reminder;
+    private SearchPopup popup = null;
 
+    public void setPopup()
+    {
+        if(popup == null) {
+            //System.out.println("create popup");
+            popup = new SearchPopup();
+        }
+        else {
+            //System.out.println("Changed text");
+            var currText = getCurrentText();
+            if(currText != null)
+                popup.setTextArea(getCurrentText());
+            else
+                popup.setVisible(false);
+        }
+        popup.setVisible(true);
+    }
+
+    public SearchPopup getPopup() {
+        return popup;
+    }
 
     public void setMs(long ms) {
         this.reminder.setMs(ms);
@@ -41,7 +63,8 @@ public enum IDEConfig {
     }
 
     public RSyntaxTextArea getCurrentText(){
-        return editorPane.getCurrentText();
+
+    return editorPane.getCurrentText();
     }
 
 
@@ -133,6 +156,8 @@ public enum IDEConfig {
         editorPane.addPane(editor);
 
         editor.getText().setText(content);
+        if(popup != null)
+            popup.setTextArea(editorPane.getCurrentText());
 
     }
 

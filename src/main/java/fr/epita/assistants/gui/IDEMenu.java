@@ -44,14 +44,11 @@ public class IDEMenu extends JMenuBar {
             }
         });
         JMenuItem item1 = new JMenuItem("search");
-        final SearchPopup[] search = new SearchPopup[1];
+
         item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(search[0] != null)
-                    search[0].setVisible(false);
-                 search[0] =new SearchPopup();
-                search[0].setVisible(true);
+                IDEConfig.INSTANCE.setPopup();
             }
         });
 
