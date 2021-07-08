@@ -6,18 +6,23 @@ import fr.epita.assistants.gui.toolbar.MiddleButtons;
 import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
 
+import javax.media.CannotRealizeException;
 import javax.media.Manager;
+import javax.media.NoPlayerException;
 import javax.media.Player;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Paths;
 
 public class IDEMenu extends JMenuBar {
 
-    @SneakyThrows
+
     public IDEMenu() {
         //setLayout(new GridLayout(1,3));
         JMenu menu = new JMenu("File");
@@ -55,13 +60,28 @@ public class IDEMenu extends JMenuBar {
         var url = System.getProperty("user.dir") + File.separator + "sussy.wav";
         System.out.println(url);
 
-        var res = Paths.get(url).toUri().toURL();
+        URL res = null;
+        try {
+            res = Paths.get(url).toUri().toURL();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         System.out.println(res.getPath());
 
-        final Player p = Manager.createRealizedPlayer(res);
+        Player p = null;
+        try {
+            p = Manager.createRealizedPlayer(res);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoPlayerException e) {
+            e.printStackTrace();
+        } catch (CannotRealizeException e) {
+            e.printStackTrace();
+        }
+        Player finalP = p;
         item2.addActionListener(new ActionListener() {
 
-            @SneakyThrows
+
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -69,12 +89,14 @@ public class IDEMenu extends JMenuBar {
                 {
                     System.out.println("playing music");
                     music[0] = true;
-                    p.start();
+                    if(finalP!=null)
+                        finalP.start();
                 }
                 else
                 {
                     music[0] = false;
-                    p.stop();
+                    if(finalP!= null)
+                        finalP.stop();
                 }
             }
         });
