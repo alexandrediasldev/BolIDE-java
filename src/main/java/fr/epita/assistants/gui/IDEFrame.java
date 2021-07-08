@@ -3,6 +3,7 @@ package fr.epita.assistants.gui;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.sun.media.ui.ToolTip;
 import fr.epita.assistants.gui.editor.EditorPane;
+import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.gui.shell.IDEShell;
 import fr.epita.assistants.gui.toolbar.Toolgit;
@@ -72,12 +73,10 @@ public class IDEFrame extends JFrame {
         reminder.scheduler();
         IDEConfig.INSTANCE.setReminder(reminder);
 
-        JPanel top = new JPanel();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        gitButtons gitbutton = new gitButtons();
 
-        top.add(gitbutton);
-        add(top, BorderLayout.NORTH);
+        //add(top, BorderLayout.NORTH);
     }
 
     public ProjectServiceImplementation getP() {
