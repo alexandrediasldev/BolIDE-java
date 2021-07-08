@@ -39,6 +39,7 @@ public class IDEIntro extends JFrame {
 
         mainPanel.add(yaka, BorderLayout.CENTER);
 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(mainPanel);
         centreWindow(this);
 
