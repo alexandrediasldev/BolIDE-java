@@ -3,6 +3,7 @@ package fr.epita.assistants.gui.utils;
 import fr.epita.assistants.gui.IDEConfig;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 public class JProjectChooser {
@@ -12,7 +13,7 @@ public class JProjectChooser {
     {
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         this.mainPanel = mainPanel;
-
+        mainPanel.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
     }
     public boolean choose()
     {
