@@ -4,6 +4,7 @@ package fr.epita.assistants.gui.shell;
 
 import com.google.common.base.Ascii;
 import com.jediterm.pty.PtyProcessTtyConnector;
+import com.jediterm.terminal.CursorShape;
 import com.jediterm.terminal.Questioner;
 import com.jediterm.terminal.TerminalColor;
 import com.jediterm.terminal.TtyConnector;
@@ -36,6 +37,7 @@ public class BasicTerm extends JPanel{
         setLayout(new GridLayout());
           this.project = project;
           var term = createTerminalWidget();
+          term.getCurrentSession().getTerminal().cursorShape(CursorShape.BLINK_BLOCK);
           //term.getTerminal().setCurrentPath(String.valueOf(project.getRootNode().getPath()));
           add(term);
 
@@ -47,25 +49,40 @@ public class BasicTerm extends JPanel{
 
         settings = new DefaultSettingsProvider()
         {
+
             @Override
             public ColorPalette getTerminalColorPalette() {
+
                 ColorPalette palette = new ColorPalette() {
 
 
                     @Override
                     protected Color getForegroundByColorIndex(int i) {
-                        if(UIUtil.isWindows)
+                        if(i == 0)
                             return UIManager.getDefaults().getColor("TextPane.foreground");
-                        return defSettings.getTerminalColorPalette().getForeground(TerminalColor.WHITE);
+                        return Color.WHITE;
+
+
+
+                        //return UIManager.getDefaults().getColor("TextPane.foreground");
+
                     }
 
                     @Override
                     protected Color getBackgroundByColorIndex(int i) {
 
-                            return UIManager.getDefaults().getColor("TextPane.background");
+                        if(i==0)
+                            return UIManager.getDefaults().getColor("TextPane.foreground");
+                        return UIManager.getDefaults().getColor("TextPane.background");
+
+
+                          //  return UIManager.getDefaults().getColor("TextPane.background");
 
                     }
                 };
+                var pal = super.getTerminalColorPalette();
+                var w =pal.getForeground(TerminalColor.WHITE);
+
                 return palette;
             }
         };
@@ -73,8 +90,8 @@ public class BasicTerm extends JPanel{
 
         JediTermWidget widget = new JediTermWidget(80, 10, settings);
         widget.setTtyConnector(createTtyConnector());
-        widget.start();
 
+        widget.start();
         return widget;
     }
 
