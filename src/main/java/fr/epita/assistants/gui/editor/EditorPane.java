@@ -36,6 +36,7 @@ public class EditorPane extends JTabbedPane {
                 timer.stop();
             }
         });
+        final SearchPopup[] search = new SearchPopup[1];
         KeyboardFocusManager.getCurrentKeyboardFocusManager()
                 .addKeyEventDispatcher(new KeyEventDispatcher() {
                     @Override
@@ -54,6 +55,10 @@ public class EditorPane extends JTabbedPane {
 
 
                         } else if (e.getKeyCode() == KeyEvent.VK_F) {
+                            if(search[0] != null)
+                                search[0].setVisible(false);
+                            search[0] =new SearchPopup();
+                            search[0].setVisible(true);
                             System.out.println("Search");
                         }
 
