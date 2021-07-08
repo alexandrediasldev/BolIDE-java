@@ -15,7 +15,7 @@ public class IDEIntro extends JFrame {
     {
         JFrame f = this;
 
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
         JPanel mainPanel = new JPanel();
         BorderLayout box = new BorderLayout();
         mainPanel.setLayout(box);
