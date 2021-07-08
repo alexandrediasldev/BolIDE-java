@@ -31,8 +31,6 @@
             <version>${versions.epita.java}</version>
         </dependency>
 
-
-
         <dependency>
             <groupId>javax.media</groupId>
             <artifactId>jmf</artifactId>
@@ -49,13 +47,13 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.fifesoft/rsyntaxtextarea -->
         <dependency>
             <groupId>com.fifesoft</groupId>
             <artifactId>rsyntaxtextarea</artifactId>
             <version>3.1.3</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.formdev</groupId>
@@ -113,6 +111,12 @@
         </dependency>
 
         <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
             <version>${versions.jackson}</version>
@@ -141,7 +145,27 @@
             <version>5.7.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.jetbrains.pty4j/pty4j -->
+        <dependency>
+            <groupId>org.jetbrains.pty4j</groupId>
+            <artifactId>pty4j</artifactId>
+            <version>0.11.4</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jetbrains.jediterm/jediterm-pty -->
+        <dependency>
+            <groupId>org.jetbrains.jediterm</groupId>
+            <artifactId>jediterm-pty</artifactId>
+            <version>2.42</version>
+        </dependency>
+
     </dependencies>
+    <repositories>
+        <repository>
+            <id>jetbrains-intellij-dependencies</id>
+            <url>https://packages.jetbrains.team/maven/p/ij/intellij-dependencies</url>
+        </repository>
+    </repositories>
 <build>
     <plugins>
       <!-- any other plugins -->
