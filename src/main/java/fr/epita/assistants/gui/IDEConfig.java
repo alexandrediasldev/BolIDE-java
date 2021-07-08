@@ -6,6 +6,7 @@ import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
 import lombok.SneakyThrows;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -37,6 +38,10 @@ public enum IDEConfig {
         return editorPane;
     }
 
+    public RSyntaxTextArea getCurrentText(){
+        return editorPane.getCurrentText();
+    }
+
 
     public TextEditor getTextEditor(String name)
     {
@@ -61,13 +66,6 @@ public enum IDEConfig {
         frame = new IDEFrame(path);
         editorPane = frame.getEditorPane();
     }
-
-
-
-
-
-
-
 
     public void setFont(String font)
     {

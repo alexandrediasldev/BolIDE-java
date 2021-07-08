@@ -3,6 +3,7 @@ package fr.epita.assistants.gui;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.sun.media.ui.ToolTip;
 import fr.epita.assistants.gui.editor.EditorPane;
+import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.gui.shell.IDEShell;
 import fr.epita.assistants.gui.toolbar.Toolgit;
