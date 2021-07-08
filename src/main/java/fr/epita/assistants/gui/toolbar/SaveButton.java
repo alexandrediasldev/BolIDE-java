@@ -19,12 +19,13 @@ public class SaveButton extends JButton implements ActionListener {
         setMaximumSize(new Dimension(35,35));
         setBorder(emptyBorder);
         setIcon(createIcon("floppy.png", 30, 30));
+        addActionListener(this);
     }
     @SneakyThrows
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Save"))
-        {
+
+            System.out.println("SAVED files");
             for (var n : IDEConfig.INSTANCE.getNodes())
             {
                 var save = new FileOperations(n);
@@ -34,7 +35,7 @@ public class SaveButton extends JButton implements ActionListener {
 
 
             }
-        }
+
 
     }
 
