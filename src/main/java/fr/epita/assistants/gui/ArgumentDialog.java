@@ -13,7 +13,7 @@ public class ArgumentDialog {
     public String getArg()
     {
         var s = (String) JOptionPane.showInputDialog(
-                null,
+                IDEConfig.INSTANCE.getFrame(),
                 "Argument list:",
                 windowName,
                 JOptionPane.PLAIN_MESSAGE,

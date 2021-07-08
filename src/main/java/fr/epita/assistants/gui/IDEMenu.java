@@ -115,7 +115,6 @@ public class IDEMenu extends JMenuBar {
                     f.setVisible(true);
             }
         });
-        JMenuItem color = new JMenuItem("color");
         JMenuItem pause = new JMenuItem("pause");
 
         pause.addActionListener(new ActionListener() {
@@ -135,7 +134,6 @@ public class IDEMenu extends JMenuBar {
         });
 
         menu2.add(pause);
-        menu2.add(color);
         menu2.add(theme);
         menu2.add(font);
         JPanel pan = new JPanel();
