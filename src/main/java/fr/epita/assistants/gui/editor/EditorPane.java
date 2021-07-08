@@ -4,6 +4,8 @@ import fr.epita.assistants.gui.IDEConfig;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,7 +38,7 @@ public class EditorPane extends JTabbedPane {
                 timer.stop();
             }
         });
-        final SearchPopup[] search = new SearchPopup[1];
+
         KeyboardFocusManager.getCurrentKeyboardFocusManager()
                 .addKeyEventDispatcher(new KeyEventDispatcher() {
                     @Override
@@ -51,15 +53,10 @@ public class EditorPane extends JTabbedPane {
                                 timer.start();
 
 
+                            } else if (e.getKeyCode() == KeyEvent.VK_F) {
+                                IDEConfig.INSTANCE.setPopup();
+                                System.out.println("Search");
                             }
-
-
-                        } else if (e.getKeyCode() == KeyEvent.VK_F) {
-                            if(search[0] != null)
-                                search[0].setVisible(false);
-                            search[0] =new SearchPopup();
-                            search[0].setVisible(true);
-                            System.out.println("Search");
                         }
 
 
@@ -68,6 +65,14 @@ public class EditorPane extends JTabbedPane {
                     }
                 });
 
+
+        addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                if(IDEConfig.INSTANCE.getPopup() != null && IDEConfig.INSTANCE.getPopup().isVisible())
+                    IDEConfig.INSTANCE.setPopup();
+            }
+        });
+
     }
 
     public ArrayList<TextEditor> getTextEditors() {
@@ -75,7 +80,10 @@ public class EditorPane extends JTabbedPane {
     }
 
     public RSyntaxTextArea getCurrentText(){
-      return textEditors.get(getSelectedIndex()).getText();
+        var index = getSelectedIndex();
+        if(index == -1)
+            return null;
+      return textEditors.get(index).getText();
     }
 
     public int getIndex() {
@@ -93,5 +101,6 @@ public class EditorPane extends JTabbedPane {
         textEditors.remove(index-1);
         index--;
     }
+
 
 }
