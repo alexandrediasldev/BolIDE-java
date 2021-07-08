@@ -1,5 +1,6 @@
 package fr.epita.assistants.gui;
 
+import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import fr.epita.assistants.gui.optionmenu.ReminderSettings;
 import fr.epita.assistants.gui.toolbar.CompileButton;
@@ -42,8 +43,16 @@ public class IDEMenu extends JMenuBar {
 
             }
         });
-        JMenuItem item1 = new JMenuItem("git");
+        JMenuItem item1 = new JMenuItem("search");
 
+        item1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                var search = new SearchPopup();
+                search.setVisible(true);
+            }
+        });
 
 
         JMenuItem item2 = new JMenuItem("music");

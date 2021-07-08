@@ -1,6 +1,7 @@
 package fr.epita.assistants.gui.editor;
 
 import fr.epita.assistants.gui.IDEConfig;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,10 +29,9 @@ public class EditorPane extends JTabbedPane {
                 var editor = textEditors.get(index);
 
                 var name = editor.getName();
-
-                                         IDEConfig.INSTANCE.removeNode(name);
-                                        removeTabAt(index);
-                                       removeTab();
+                IDEConfig.INSTANCE.removeNode(name);
+                removeTabAt(index);
+                removeTab();
                 System.out.println("Close window" + name);
                 timer.stop();
             }
@@ -67,6 +67,10 @@ public class EditorPane extends JTabbedPane {
 
     public ArrayList<TextEditor> getTextEditors() {
         return textEditors;
+    }
+
+    public RSyntaxTextArea getCurrentText(){
+      return textEditors.get(getSelectedIndex()).getText();
     }
 
     public int getIndex() {
