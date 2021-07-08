@@ -59,6 +59,7 @@ public enum IDEConfig {
     public void setFrame(String path)
     {
         frame = new IDEFrame(path);
+
         editorPane = frame.getEditorPane();
     }
 
@@ -137,6 +138,7 @@ public enum IDEConfig {
             editor.switchTheme();
         frame.getShell().switchTheme();
         frame.pack();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
 
