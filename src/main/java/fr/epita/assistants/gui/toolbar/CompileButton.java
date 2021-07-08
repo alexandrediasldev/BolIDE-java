@@ -21,13 +21,43 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static fr.epita.assistants.gui.utils.CreateIcon.createIcon;
 
 public class CompileButton extends JButton implements ActionListener {
-    public void RedirectFailingErrorSad()
-    {
+    PrintStream old;
+    PrintStream old2;
+    ByteArrayOutputStream baos;
+    ByteArrayOutputStream baos2;
+    String out = null;
+    String err = null;
+    PrintStream ps = null;
+    PrintStream ps2 = null;
 
+    public void StartRedirectError()
+    {
+        baos = new ByteArrayOutputStream();
+        ps = new PrintStream(baos);
+        old = System.out;
+        System.setOut(ps);
+
+
+        baos2 = new ByteArrayOutputStream();
+        ps2 = new PrintStream(baos);
+        old2 = System.err;
+        System.setOut(ps2);
+    }
+
+    public void StopRedirectError()
+    {
+        System.out.flush();
+        System.setOut(old);
+        out = baos.toString();
+
+        System.err.flush();
+        System.setOut(old2);
+        err = baos2.toString();
     }
 
     public CompileButton()
@@ -46,17 +76,8 @@ public class CompileButton extends JButton implements ActionListener {
             if(args != null) {
                 var proj = IDEConfig.INSTANCE.getFrame().getCurrentProject();
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                PrintStream ps = new PrintStream(baos);
-                PrintStream old = System.out;
-                System.setOut(ps);
 
-
-                ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
-                PrintStream ps2 = new PrintStream(baos);
-                PrintStream old2 = System.err;
-                System.setOut(ps2);
-
+                StartRedirectError();
 
 
                 var executeReport = IDEConfig.INSTANCE.getFrame().getP().execute(proj, Mandatory.Features.Maven.COMPILE, args);
@@ -77,13 +98,7 @@ public class CompileButton extends JButton implements ActionListener {
 
                     p.start();*/
 
-                    System.out.flush();
-                    System.setOut(old);
-                    String out = baos.toString();
-
-                    System.err.flush();
-                    System.setOut(old2);
-                    String err = baos2.toString();
+                    StopRedirectError();
 
                     var compilationPopup = new CompilationPopup(true, "Compilation success");
                     compilationPopup.setVisible(true);
@@ -105,14 +120,8 @@ public class CompileButton extends JButton implements ActionListener {
                     var compilationPopup = new CompilationPopup(false, "Compilation failed");
                     compilationPopup.setVisible(true);
 
-                    System.out.flush();
-                    System.setOut(old);
-                    String out = baos.toString();
 
-                    System.err.flush();
-                    System.setOut(old2);
-                    String err = baos2.toString();
-
+                    StopRedirectError();
                     JOptionPane.showMessageDialog(this, out + "\n" + err);
                 }
             }
