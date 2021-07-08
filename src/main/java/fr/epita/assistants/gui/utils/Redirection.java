@@ -30,7 +30,7 @@ public class Redirection {
         System.setOut(newErr);
     }
 
-    public static void StopRedirectError(Component frame)
+    public static void StopRedirectError(Component frame, String name, int message_type)
     {
         outLog.setLength(0);
         errLog.setLength(0);
@@ -42,6 +42,7 @@ public class Redirection {
         System.err.flush();
         System.setOut(oldErr);
         errLog.append(errStream.toString());
-        JOptionPane.showMessageDialog(frame, outLog.toString() + "\n" + errLog.toString());
+        JOptionPane.showMessageDialog(frame, outLog.toString() + "\n" + errLog.toString(), name,
+                message_type);
     }
 }

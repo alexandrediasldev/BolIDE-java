@@ -2,6 +2,7 @@ package fr.epita.assistants.gui.toolbar;
 
 import fr.epita.assistants.gui.ArgumentDialog;
 import fr.epita.assistants.gui.IDEConfig;
+import fr.epita.assistants.gui.utils.Redirection;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 
 import javax.imageio.ImageIO;
@@ -58,8 +59,10 @@ public class Toolmaven extends JMenu {
                 ArgumentDialog argDialog = new ArgumentDialog( "Compile");
                 var args = argDialog.getArg();
                 if(args != null) {
+                    Redirection.StartRedirectError();
                     var proj = IDEConfig.INSTANCE.getFrame().getCurrentProject();
                     IDEConfig.INSTANCE.getFrame().getP().execute(proj, Mandatory.Features.Maven.COMPILE, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "compilation", 1);
                 }
             }
         });
