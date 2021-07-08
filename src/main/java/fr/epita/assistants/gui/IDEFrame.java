@@ -1,10 +1,14 @@
 package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.jediterm.terminal.ui.JediTermWidget;
+import com.jediterm.terminal.ui.settings.DefaultSettingsProvider;
+import com.jediterm.terminal.ui.settings.SettingsProvider;
 import com.sun.media.ui.ToolTip;
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
+import fr.epita.assistants.gui.shell.BasicTerm;
 import fr.epita.assistants.gui.shell.IDEShell;
 import fr.epita.assistants.gui.toolbar.Toolgit;
 import fr.epita.assistants.gui.toolbar.Toolmaven;
@@ -41,7 +45,7 @@ public class IDEFrame extends JFrame {
         shell = new IDEShell();
         shell.setLayout(new GridLayout());
 
-        add(shell, BorderLayout.SOUTH);
+
 
 
         editorPane = new EditorPane();
@@ -74,6 +78,10 @@ public class IDEFrame extends JFrame {
         IDEConfig.INSTANCE.setReminder(reminder);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        var term = new BasicTerm(currentProject);
+
+        add(term, BorderLayout.SOUTH);
 
 
         //add(top, BorderLayout.NORTH);
