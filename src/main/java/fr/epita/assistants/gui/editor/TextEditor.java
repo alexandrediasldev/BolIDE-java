@@ -25,7 +25,6 @@ public class TextEditor extends JPanel {
 
         setLayout(new GridLayout());
         text = new RSyntaxTextArea();
-        text.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         text.setCodeFoldingEnabled(true);
 
         this.font = IDEConfig.INSTANCE.getFont();

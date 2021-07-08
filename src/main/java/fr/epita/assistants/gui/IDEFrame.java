@@ -7,6 +7,7 @@ import com.jediterm.terminal.ui.settings.SettingsProvider;
 import com.sun.media.ui.ToolTip;
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.TextEditor;
+import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.gui.shell.BasicTerm;
 import fr.epita.assistants.gui.shell.IDEShell;
