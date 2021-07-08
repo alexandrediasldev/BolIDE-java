@@ -2,6 +2,10 @@ package fr.epita.assistants.gui;
 
 import fr.epita.assistants.gui.optionmenu.FontSettings;
 import fr.epita.assistants.gui.optionmenu.ReminderSettings;
+import fr.epita.assistants.gui.toolbar.CompileButton;
+import fr.epita.assistants.gui.toolbar.MiddleButtons;
+import fr.epita.assistants.gui.toolbar.RunButton;
+import fr.epita.assistants.gui.toolbar.SaveButton;
 import fr.epita.assistants.gui.utils.FileOperations;
 import fr.epita.assistants.gui.utils.JProjectChooser;
 import lombok.SneakyThrows;
@@ -14,11 +18,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
-public class IDEMenu extends JMenuBar implements ActionListener {
+public class IDEMenu extends JMenuBar {
 
     @SneakyThrows
     public IDEMenu() {
-
+        //setLayout(new GridLayout(1,3));
         JMenu menu = new JMenu("File");
         var reminder = new ReminderSettings();
         Color royal_blue = new Color(65, 105 , 225);
@@ -75,7 +79,7 @@ public class IDEMenu extends JMenuBar implements ActionListener {
 
         menu.add(item2);
 
-        add(menu);
+
 
         JMenu menu2 = new JMenu("Settings");
         JMenuItem font = new JMenuItem(new AbstractAction("Font") {
@@ -114,40 +118,39 @@ public class IDEMenu extends JMenuBar implements ActionListener {
 
 
 
-        JButton saveButton = new JButton("Save");
-        saveButton.setBackground(royal_blue);
-        saveButton.addActionListener(this);
+
+
+
 
         //JButton button = new JButton("Compile");
         //button.setBackground(royal_blue);
         //JButton fermer = new JButton("X");
        // fermer.setBackground(royal_blue);
+
+        JPanel left = new JPanel();
+        add(menu);
         add(menu2);
         add(pan);
-        //add(new JPanel()); //moving compile button a bit to the right
-        //add(new JPanel());
+
         add(pan2);
         //add(button);
-        add(saveButton);
+        MiddleButtons middle = new MiddleButtons();
+
+        add(middle);
+        JPanel pan3 = new JPanel();
+        JPanel pan4 = new JPanel();
+        JPanel pan5 = new JPanel();
+
+        pan3.setBackground(royal_blue);
+        pan4.setBackground(royal_blue);
+        pan5.setBackground(royal_blue);
+        add(pan3); //moving compile button a bit to the right
+        add(pan4);
         setBackground(royal_blue);
+        //add(left);
+        //add(middle);
         //add(fermer);
     }
 
-    @SneakyThrows
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Save"))
-        {
-            for (var n : IDEConfig.INSTANCE.getNodes())
-            {
-                var save = new FileOperations(n);
 
-                var editor = IDEConfig.INSTANCE.getTextEditor(String.valueOf(n.getPath().getFileName()));
-                save.saveText(editor.getText().getText());
-
-
-            }
-        }
-
-    }
 }

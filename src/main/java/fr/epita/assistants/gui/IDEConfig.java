@@ -56,7 +56,7 @@ public enum IDEConfig {
         return frame;
     }
 
-    public void createFrame(String path)
+    public void setFrame(String path)
     {
         frame = new IDEFrame(path);
         editorPane = frame.getEditorPane();

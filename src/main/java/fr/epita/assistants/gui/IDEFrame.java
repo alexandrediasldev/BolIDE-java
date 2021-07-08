@@ -1,9 +1,12 @@
 package fr.epita.assistants.gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.sun.media.ui.ToolTip;
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.gui.shell.IDEShell;
+import fr.epita.assistants.gui.toolbar.Toolgit;
+import fr.epita.assistants.gui.toolbar.Toolmaven;
 import fr.epita.assistants.gui.tree.TreePanel;
 import fr.epita.assistants.myide.domain.entity.Project;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
@@ -47,6 +50,8 @@ public class IDEFrame extends JFrame {
 
 
         IDEMenu Bar = new IDEMenu();
+        Bar.add(new Toolgit());
+        Bar.add(new Toolmaven());
         setJMenuBar(Bar);
 
         p = new ProjectServiceImplementation();
@@ -58,10 +63,6 @@ public class IDEFrame extends JFrame {
         //setSize(512,512 );
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
-
 
         pack();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
@@ -77,7 +78,6 @@ public class IDEFrame extends JFrame {
         top.add(mavenButton);
         top.add(gitbutton);
         add(top, BorderLayout.NORTH);
-
     }
 
     public ProjectServiceImplementation getP() {
