@@ -76,7 +76,7 @@ public class SearchPopup extends JFrame implements ActionListener{
 
         boolean found = SearchEngine.find(textArea, context).wasFound();
         if (!found) {
-            JOptionPane.showMessageDialog(this, "Text not found");
+            //JOptionPane.showMessageDialog(this, "Text not found");
         }
 
     }
