@@ -49,6 +49,6 @@ public class ReminderSettings extends JFrame {
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("logo.png")));
         setSize(400,200);
-        setVisible(true);
+
     }
 }
