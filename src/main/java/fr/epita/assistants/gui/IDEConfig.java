@@ -1,5 +1,6 @@
 package fr.epita.assistants.gui;
 
+import com.google.common.io.Files;
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
@@ -7,6 +8,7 @@ import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
 import lombok.SneakyThrows;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -96,16 +98,38 @@ public enum IDEConfig {
         return textSize;
     }
 
+    private void setExtension(RSyntaxTextArea textArea, String name)
+    {
+        var extension = Files.getFileExtension(name);
+
+        switch (extension)
+        {
+            case "sh" ->textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_UNIX_SHELL);
+            case "java" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+            case "json" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JSON);
+            case "xml" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_XML);
+            case "cc" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+            case "hh" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+            case "hxx" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+            case "c" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+            case "h" -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
+            default -> textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
+        }
+    }
+
     public void setContent(String content, String fileName)
     {
         int index = editorPane.indexOfTab(fileName);
+
         if(index >= 0)
         {
             editorPane.setSelectedIndex(index);
             return;
         }
+
         TextEditor editor = new TextEditor();
         editor.setName(fileName);
+        setExtension(editor.getText(), fileName);
         editorPane.addPane(editor);
 
         editor.getText().setText(content);
