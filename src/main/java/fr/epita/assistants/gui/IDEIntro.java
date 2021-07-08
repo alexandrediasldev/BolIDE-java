@@ -30,6 +30,7 @@ public class IDEIntro extends JFrame {
 
                     setVisible(false);
                     IDEConfig.INSTANCE.switchTheme();
+
                 }
 
             }
