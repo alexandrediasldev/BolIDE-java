@@ -5,59 +5,53 @@ import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 
 
-import javax.media.CannotRealizeException;
-import javax.media.Manager;
-import javax.media.NoPlayerException;
-import javax.media.Player;
-import javax.media.bean.playerbean.MediaPlayer;
-import javax.print.attribute.standard.Media;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URL;
-import java.util.ArrayList;
 
 import static fr.epita.assistants.gui.utils.CreateIcon.createIcon;
 
 public class CompileButton extends JButton implements ActionListener {
-    PrintStream old;
-    PrintStream old2;
-    ByteArrayOutputStream baos;
-    ByteArrayOutputStream baos2;
-    String out = null;
-    String err = null;
-    PrintStream ps = null;
-    PrintStream ps2 = null;
+    // all this field are here to redirect sout/serr into popup
+    ByteArrayOutputStream outStream;
+    ByteArrayOutputStream errStream;
+    StringBuilder outLog = new StringBuilder();
+    StringBuilder errLog = new StringBuilder();
+    PrintStream newOut = null;
+    PrintStream oldOut = null;
+    PrintStream newErr = null;
+    PrintStream oldErr = null;
 
     public void StartRedirectError()
     {
-        baos = new ByteArrayOutputStream();
-        ps = new PrintStream(baos);
-        old = System.out;
-        System.setOut(ps);
+        outStream = new ByteArrayOutputStream();
+        newOut = new PrintStream(outStream);
+        oldOut = System.out;
+        System.setOut(newOut);
 
 
-        baos2 = new ByteArrayOutputStream();
-        ps2 = new PrintStream(baos);
-        old2 = System.err;
-        System.setOut(ps2);
+        errStream = new ByteArrayOutputStream();
+        newErr = new PrintStream(outStream);
+        oldErr = System.err;
+        System.setOut(newErr);
     }
 
     public void StopRedirectError()
     {
+        outLog.setLength(0);
+        errLog.setLength(0);
+
         System.out.flush();
-        System.setOut(old);
-        out = baos.toString();
+        System.setOut(oldOut);
+        outLog.append(outStream.toString());
 
         System.err.flush();
-        System.setOut(old2);
-        err = baos2.toString();
+        System.setOut(oldErr);
+        errLog.append(errStream.toString());
     }
 
     public CompileButton()
@@ -122,7 +116,7 @@ public class CompileButton extends JButton implements ActionListener {
 
 
                     StopRedirectError();
-                    JOptionPane.showMessageDialog(this, out + "\n" + err);
+                    JOptionPane.showMessageDialog(this, outLog.toString() + "\n" + errLog.toString());
                 }
             }
         }
