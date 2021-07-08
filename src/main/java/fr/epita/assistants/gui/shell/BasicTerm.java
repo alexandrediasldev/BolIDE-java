@@ -6,6 +6,7 @@ import com.google.common.base.Ascii;
 import com.jediterm.pty.PtyProcessTtyConnector;
 import com.jediterm.terminal.Questioner;
 import com.jediterm.terminal.TtyConnector;
+import com.jediterm.terminal.emulator.ColorPalette;
 import com.jediterm.terminal.ui.JediTermWidget;
 import com.jediterm.terminal.ui.TerminalWidget;
 import com.jediterm.terminal.ui.TerminalWidgetListener;
@@ -33,13 +34,36 @@ public class BasicTerm extends JPanel{
     {
         setLayout(new GridLayout());
           this.project = project;
-          add(createTerminalWidget());
+          var term = createTerminalWidget();
+          //term.getTerminal().setCurrentPath(String.valueOf(project.getRootNode().getPath()));
+          add(term);
 
     }
     public JediTermWidget createTerminalWidget() {
 
         SettingsProvider settings;
-        settings = new DefaultSettingsProvider();
+        settings = new DefaultSettingsProvider()
+        {
+            @Override
+            public ColorPalette getTerminalColorPalette() {
+                ColorPalette palette = new ColorPalette() {
+                    @Override
+                    protected Color getForegroundByColorIndex(int i) {
+                        return UIManager.getDefaults().getColor("TextPane.foreground");
+
+                    }
+
+                    @Override
+                    protected Color getBackgroundByColorIndex(int i) {
+
+                            return UIManager.getDefaults().getColor("TextPane.background");
+
+                    }
+                };
+                return palette;
+            }
+        };
+
 
         JediTermWidget widget = new JediTermWidget(80, 10, settings);
         widget.setTtyConnector(createTtyConnector());
@@ -54,6 +78,7 @@ public class BasicTerm extends JPanel{
             String[] command;
             if (UIUtil.isWindows) {
                 command = new String[]{"cmd.exe", "/K", "cd", String.valueOf(project.getRootNode().getPath())};
+                //command = new String[]{"cmd.exe"};
             } else {
                 command = new String[]{"/bin/bash", "--login"};
                 envs = new HashMap<>(System.getenv());
