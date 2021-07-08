@@ -20,7 +20,7 @@ public class JProjectChooser {
         if(option == JFileChooser.APPROVE_OPTION){
 
             File file = fileChooser.getSelectedFile();
-            IDEConfig.INSTANCE.createFrame(file.getPath());
+            IDEConfig.INSTANCE.setFrame(file.getPath());
             IDEConfig.INSTANCE.getFrame();
 
             return true;
