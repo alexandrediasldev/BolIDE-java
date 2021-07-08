@@ -5,6 +5,7 @@ package fr.epita.assistants.gui.shell;
 import com.google.common.base.Ascii;
 import com.jediterm.pty.PtyProcessTtyConnector;
 import com.jediterm.terminal.Questioner;
+import com.jediterm.terminal.TerminalColor;
 import com.jediterm.terminal.TtyConnector;
 import com.jediterm.terminal.emulator.ColorPalette;
 import com.jediterm.terminal.ui.JediTermWidget;
@@ -42,15 +43,20 @@ public class BasicTerm extends JPanel{
     public JediTermWidget createTerminalWidget() {
 
         SettingsProvider settings;
+        var defSettings = new DefaultSettingsProvider();
+
         settings = new DefaultSettingsProvider()
         {
             @Override
             public ColorPalette getTerminalColorPalette() {
                 ColorPalette palette = new ColorPalette() {
+
+
                     @Override
                     protected Color getForegroundByColorIndex(int i) {
-                        return UIManager.getDefaults().getColor("TextPane.foreground");
-
+                        if(UIUtil.isWindows)
+                            return UIManager.getDefaults().getColor("TextPane.foreground");
+                        return defSettings.getTerminalColorPalette().getForeground(TerminalColor.WHITE);
                     }
 
                     @Override
