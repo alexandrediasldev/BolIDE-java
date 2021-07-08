@@ -74,8 +74,10 @@ public class Toolmaven extends JMenu {
                 ArgumentDialog argDialog = new ArgumentDialog( "Clean");
                 var args = argDialog.getArg();
                 if(args != null) {
-
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.CLEAN, args);
+                    Redirection.StartRedirectError();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject()
+                            , Mandatory.Features.Maven.CLEAN, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "clean", 1);
                 }
             }
         });
@@ -86,8 +88,12 @@ public class Toolmaven extends JMenu {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Package");
                 var args = argDialog.getArg();
-                if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.PACKAGE,args);
+                if(args != null) {
+                    Redirection.StartRedirectError();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject()
+                            , Mandatory.Features.Maven.PACKAGE, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "package", 1);
+                }
             }
         });
 
@@ -97,8 +103,12 @@ public class Toolmaven extends JMenu {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Test");
                 var args = argDialog.getArg();
-                if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.TEST,args);
+                if(args != null) {
+                    Redirection.StartRedirectError();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject()
+                            , Mandatory.Features.Maven.TEST, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "test", 1);
+                }
             }
         });
 
@@ -108,8 +118,12 @@ public class Toolmaven extends JMenu {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Install");
                 var args = argDialog.getArg();
-                if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.INSTALL,args);
+                if(args != null) {
+                    Redirection.StartRedirectError();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject()
+                            , Mandatory.Features.Maven.INSTALL, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "install", 1);
+                }
             }
         });
 
@@ -119,8 +133,12 @@ public class Toolmaven extends JMenu {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Exec");
                 var args = argDialog.getArg();
-                if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.EXEC,args);
+                if(args != null) {
+                    Redirection.StartRedirectError();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject()
+                            , Mandatory.Features.Maven.EXEC, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "execution", 1);
+                }
             }
         });
 
@@ -130,8 +148,12 @@ public class Toolmaven extends JMenu {
             public void actionPerformed(ActionEvent e) {
                 ArgumentDialog argDialog = new ArgumentDialog( "Tree");
                 var args = argDialog.getArg();
-                if(args != null)
-                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Maven.TREE,args);
+                if(args != null) {
+                    Redirection.StartRedirectError();
+                    IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject()
+                            , Mandatory.Features.Maven.TREE, args);
+                    Redirection.StopRedirectError(IDEConfig.INSTANCE.getFrame(), "tree", 1);
+                }
             }
         });
 
