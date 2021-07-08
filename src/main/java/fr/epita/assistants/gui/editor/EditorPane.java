@@ -1,6 +1,8 @@
 package fr.epita.assistants.gui.editor;
 
 import fr.epita.assistants.gui.IDEConfig;
+import fr.epita.assistants.gui.utils.FileOperations;
+import lombok.SneakyThrows;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.*;
@@ -34,20 +36,29 @@ public class EditorPane extends JTabbedPane {
                 IDEConfig.INSTANCE.removeNode(name);
                 removeTabAt(index);
                 removeTab();
-                System.out.println("Close window" + name);
+                //System.out.println("Close window" + name);
                 timer.stop();
             }
         });
 
         KeyboardFocusManager.getCurrentKeyboardFocusManager()
                 .addKeyEventDispatcher(new KeyEventDispatcher() {
+                    @SneakyThrows
                     @Override
                     public boolean dispatchKeyEvent(KeyEvent e) {
 
 
                         if (e.isControlDown()) {
                             if (e.getKeyCode() == KeyEvent.VK_S) {
-                                System.out.println("SAVED text");
+
+                                for (var n : IDEConfig.INSTANCE.getNodes())
+                                {
+                                    var save = new FileOperations(n);
+
+                                    var editor = IDEConfig.INSTANCE.getTextEditor(String.valueOf(n.getPath().getFileName()));
+                                    save.saveText(editor.getText().getText());
+
+                                }
                             } else if (e.getKeyCode() == KeyEvent.VK_W && !timer.isRunning()) {
 
                                 timer.start();
@@ -55,7 +66,7 @@ public class EditorPane extends JTabbedPane {
 
                             } else if (e.getKeyCode() == KeyEvent.VK_F) {
                                 IDEConfig.INSTANCE.setPopup();
-                                System.out.println("Search");
+
                             }
                         }
 
