@@ -71,7 +71,7 @@ public class CompileButton extends JButton implements ActionListener {
 
                     p.start();
 
-                    Redirection.StopRedirectError(this);
+                    Redirection.StopRedirectError(this, "compilation", 1);
 
                     var compilationPopup = new CompilationPopup(true, "Compilation success");
                     compilationPopup.setVisible(true);
@@ -101,7 +101,7 @@ public class CompileButton extends JButton implements ActionListener {
                     compilationPopup.setVisible(true);
 
 
-                    Redirection.StopRedirectError(this);
+                    Redirection.StopRedirectError(this, "compilation", 0);
                 }
             }
         }
