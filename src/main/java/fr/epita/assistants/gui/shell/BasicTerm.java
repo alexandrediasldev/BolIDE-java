@@ -86,7 +86,8 @@ public class BasicTerm extends JPanel{
                 command = new String[]{"cmd.exe", "/K", "cd", String.valueOf(project.getRootNode().getPath())};
                 //command = new String[]{"cmd.exe"};
             } else {
-                command = new String[]{"/bin/bash", "--login"};
+                command = new String[]{"/bin/bash","-c", "cd "+String.valueOf(project.getRootNode().getPath())
+                        +" && /bin/bash" };
                 envs = new HashMap<>(System.getenv());
                 envs.put("PWD",String.valueOf(project.getRootNode().getPath()));
                 envs.put("TERM", "xterm-256color");
