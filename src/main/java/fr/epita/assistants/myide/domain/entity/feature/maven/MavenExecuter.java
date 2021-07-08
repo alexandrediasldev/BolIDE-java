@@ -29,13 +29,18 @@ public class MavenExecuter {
         }
 
         //commands.remove(commands.size()-1);
-        System.out.println(commands);
+
         ProcessBuilder pb = new ProcessBuilder(commands);
         System.out.println(project);
         pb.directory(new File(project));
 
-        if(System.getProperty("os.name").startsWith("Windows"))
-            commands.add(0,"powershell");
+        if(System.getProperty("os.name").startsWith("Windows")) {
+            commands.add(0, "/c");
+            commands.add(0, "cmd");
+
+        }
+
+        System.out.println(commands);
         Process p = pb.start();
 
         new StreamHandler(p.getInputStream()).run(false);

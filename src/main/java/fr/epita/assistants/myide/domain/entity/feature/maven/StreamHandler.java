@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-class StreamHandler extends Thread {
+public class StreamHandler extends Thread {
 
     private InputStream inputStream;
 

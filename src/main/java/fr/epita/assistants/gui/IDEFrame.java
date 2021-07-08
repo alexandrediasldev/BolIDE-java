@@ -73,9 +73,9 @@ public class IDEFrame extends JFrame {
         IDEConfig.INSTANCE.setReminder(reminder);
 
         JPanel top = new JPanel();
-        mavenButton mavenButton = new mavenButton();
+
         gitButtons gitbutton = new gitButtons();
-        top.add(mavenButton);
+
         top.add(gitbutton);
         add(top, BorderLayout.NORTH);
     }
