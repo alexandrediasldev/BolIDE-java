@@ -35,7 +35,7 @@ public class CompileButton extends JButton implements ActionListener {
 
 
         errStream = new ByteArrayOutputStream();
-        newErr = new PrintStream(outStream);
+        newErr = new PrintStream(errStream);
         oldErr = System.err;
         System.setOut(newErr);
     }
@@ -96,6 +96,7 @@ public class CompileButton extends JButton implements ActionListener {
 
                     var compilationPopup = new CompilationPopup(true, "Compilation success");
                     compilationPopup.setVisible(true);
+                    JOptionPane.showMessageDialog(this, outLog.toString() + "\n" + errLog.toString());
                 }
                 else
                 {
