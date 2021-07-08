@@ -5,13 +5,22 @@ import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 
 
+import javax.media.CannotRealizeException;
+import javax.media.Manager;
+import javax.media.NoPlayerException;
+import javax.media.Player;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 import static fr.epita.assistants.gui.utils.CreateIcon.createIcon;
 
@@ -80,7 +89,14 @@ public class CompileButton extends JButton implements ActionListener {
 
                 if (executeReport.isSuccess())
                 {
-                    /*var res = getClass().getClassLoader().getResource("yes.wav");
+
+                    var url = System.getProperty("user.dir") + File.separator + "yes.wav";
+                    URL res = null;
+                    try {
+                        res = Paths.get(url).toUri().toURL();
+                    } catch (MalformedURLException malformedURLException) {
+                        malformedURLException.printStackTrace();
+                    }
 
                     Player p = null;
 
@@ -90,7 +106,7 @@ public class CompileButton extends JButton implements ActionListener {
                         System.err.println("Failed to load file: " + res);
                     }
 
-                    p.start();*/
+                    p.start();
 
                     StopRedirectError();
 
@@ -100,7 +116,14 @@ public class CompileButton extends JButton implements ActionListener {
                 }
                 else
                 {
-                    /*var res = getClass().getClassLoader().getResource("bruh.wav");
+                    var url = System.getProperty("user.dir") + File.separator + "bruh.wav";
+                    URL res = null;
+                    try {
+                        res = Paths.get(url).toUri().toURL();
+                    } catch (MalformedURLException malformedURLException) {
+                        malformedURLException.printStackTrace();
+                    }
+
 
                     Player p = null;
 
@@ -110,7 +133,7 @@ public class CompileButton extends JButton implements ActionListener {
                         System.err.println("Failed to load file: " + res);
                     }
 
-                    p.start();*/
+                    p.start();
 
                     var compilationPopup = new CompilationPopup(false, "Compilation failed");
                     compilationPopup.setVisible(true);
