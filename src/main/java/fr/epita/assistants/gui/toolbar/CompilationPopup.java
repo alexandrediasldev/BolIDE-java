@@ -11,8 +11,8 @@ public class CompilationPopup extends JDialog {
     {
         Icon icon = null;
 
-        String sad = "sad_compilation_fail.png";
-        String happy = "happy_compilation_success.png";
+        String sad = "sad.jpg";
+        String happy = "happy.jpg";
 
         BufferedImage image = null;
         try {
