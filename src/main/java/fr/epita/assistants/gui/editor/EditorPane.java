@@ -8,6 +8,8 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,7 +52,7 @@ public class EditorPane extends JTabbedPane {
 
                         if (e.isControlDown()) {
                             if (e.getKeyCode() == KeyEvent.VK_S) {
-
+                                IDEConfig.INSTANCE.setSaved(true);
                                 for (var n : IDEConfig.INSTANCE.getNodes())
                                 {
                                     var save = new FileOperations(n);
@@ -106,6 +108,29 @@ public class EditorPane extends JTabbedPane {
         textEditors.add(editor);
         EditorTab tab = new EditorTab(this, editor);
         index++;
+        final boolean[] firstChange = {true};
+        editor.getText().getDocument().addDocumentListener(new DocumentListener() {
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+
+                if(!firstChange[0])
+                    IDEConfig.INSTANCE.setSaved(false);
+                firstChange[0] = false;
+
+            }
+        });
     }
     public void removeTab()
     {

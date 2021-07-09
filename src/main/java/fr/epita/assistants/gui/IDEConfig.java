@@ -5,7 +5,6 @@ import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
-import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Node;
 import lombok.SneakyThrows;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -25,6 +24,15 @@ public enum IDEConfig {
     private EditorPane editorPane;
     private ReminderLogic reminder;
     private SearchPopup popup = null;
+    boolean saved = true;
+
+    public void setSaved(boolean saved) {
+        this.saved = saved;
+    }
+    public boolean getSaved() {
+        return saved;
+    }
+
 
     public void setPopup()
     {
@@ -183,7 +191,7 @@ public enum IDEConfig {
 
         for(var editor : editorPane.getTextEditors())
             editor.switchTheme();
-        frame.getShell().switchTheme();
+
         frame.pack();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }

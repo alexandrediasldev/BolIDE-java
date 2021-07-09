@@ -26,6 +26,7 @@ public class SaveButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
             System.out.println("SAVED files");
+            IDEConfig.INSTANCE.setSaved(true);
             for (var n : IDEConfig.INSTANCE.getNodes())
             {
                 var save = new FileOperations(n);
