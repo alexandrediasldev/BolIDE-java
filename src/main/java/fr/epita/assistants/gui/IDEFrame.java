@@ -10,7 +10,7 @@ import fr.epita.assistants.gui.editor.TextEditor;
 import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.optionmenu.ReminderLogic;
 import fr.epita.assistants.gui.shell.BasicTerm;
-import fr.epita.assistants.gui.shell.IDEShell;
+
 import fr.epita.assistants.gui.toolbar.Toolgit;
 import fr.epita.assistants.gui.toolbar.Toolmaven;
 import fr.epita.assistants.gui.tree.TreePanel;
@@ -26,7 +26,7 @@ public class IDEFrame extends JFrame {
 
     private EditorPane editorPane;
 
-    private IDEShell shell;
+
     private ProjectServiceImplementation p;
     private Project currentProject;
     @SneakyThrows
@@ -42,10 +42,6 @@ public class IDEFrame extends JFrame {
         //layout.setHgap(2);
         //layout.setVgap(2);
         setLayout(layout);
-
-        shell = new IDEShell();
-        shell.setLayout(new GridLayout());
-
 
 
 
@@ -101,9 +97,7 @@ public class IDEFrame extends JFrame {
         // add action to perform on click
     }
 
-    public IDEShell getShell() {
-        return shell;
-    }
+
 
     public EditorPane getEditorPane() {
         return editorPane;
