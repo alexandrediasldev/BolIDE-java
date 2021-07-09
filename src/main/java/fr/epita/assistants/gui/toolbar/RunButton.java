@@ -2,6 +2,7 @@ package fr.epita.assistants.gui.toolbar;
 
 import fr.epita.assistants.gui.ArgumentDialog;
 import fr.epita.assistants.gui.IDEConfig;
+import fr.epita.assistants.gui.utils.Redirection;
 import fr.epita.assistants.myide.domain.entity.feature.maven.StreamHandler;
 import lombok.SneakyThrows;
 
@@ -10,6 +11,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 import static fr.epita.assistants.gui.utils.CreateIcon.createIcon;
 
@@ -28,6 +30,8 @@ public class RunButton extends JButton implements ActionListener {
         ArgumentDialog argDialog = new ArgumentDialog("Jar Name and main class");
         var args = argDialog.getArg();
         if (args != null) {
+            Redirection.StartRedirectError();
+
             var pa = "java -cp " + IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath() +
                     java.io.File.separator + "target" + java.io.File.separator + args;
             if (System.getProperty("os.name").startsWith("Windows"))
@@ -38,7 +42,13 @@ public class RunButton extends JButton implements ActionListener {
             new StreamHandler(p.getInputStream()).run(false);
 
             new StreamHandler(p.getErrorStream()).run(true);
-            p.waitFor();
+            boolean w = p.waitFor(1, TimeUnit.MICROSECONDS);
+            int execution = 0;
+            if(w == true)
+                execution = 1;
+
+            Redirection.StopRedirectError(this, "run", execution);
+
         }
     }
 }
