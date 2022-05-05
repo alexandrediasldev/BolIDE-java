@@ -39,14 +39,8 @@ public class Add implements Feature {
 
 
         try {
-            /*
-            Repository repository = repositoryBuilder.setGitDir(new File(path))
-                    .readEnvironment()
-                    .findGitDir()
-                    .build();
-*/
+
             Git git = Git.open(new File(path));
-                    //new Git(repository);
             AddCommand add = git.add();
 
             for (var file : params) {
