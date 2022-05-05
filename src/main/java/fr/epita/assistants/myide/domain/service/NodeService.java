@@ -1,9 +1,7 @@
 package fr.epita.assistants.myide.domain.service;
 
 import fr.epita.assistants.myide.domain.entity.Node;
-import fr.epita.assistants.utils.Given;
 
-@Given(overridden = true)
 public interface NodeService {
 
     /**

@@ -1,6 +1,5 @@
 package fr.epita.assistants.myide.domain.entity;
 
-import fr.epita.assistants.utils.Given;
 
 /**
  * Compilation of all mandatory features that you need to implement.
@@ -11,7 +10,7 @@ import fr.epita.assistants.utils.Given;
  * You can add any feature you like (without modifying this file,
  * for obvious reasons).
  */
-@Given(overridden = true) public enum Mandatory {
+public enum Mandatory {
     ;
 
     public enum Aspects implements Aspect.Type {
