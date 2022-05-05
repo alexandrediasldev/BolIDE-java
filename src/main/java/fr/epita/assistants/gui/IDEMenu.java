@@ -55,7 +55,7 @@ public class IDEMenu extends JMenuBar {
         JMenuItem item2 = new JMenuItem("music");
 
         final boolean[] music = {false};
-        var url = System.getProperty("user.dir") + File.separator + "sussy.wav";
+        var url = System.getProperty("user.dir") + File.separator + "music.wav";
         System.out.println(url);
 
         URL res = null;
