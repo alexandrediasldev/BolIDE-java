@@ -13,13 +13,11 @@ public class StreamHandler extends Thread {
     private InputStream inputStream;
 
     public StreamHandler(InputStream inputStream) {
-        //System.out.println("Setup");
         this.inputStream = inputStream;
     }
 
     public void run(boolean isError) {
         try {
-            //System.out.println("Running");
             InputStreamReader reader = new InputStreamReader(inputStream);
             BufferedReader br = new BufferedReader(reader);
             String line = null;
