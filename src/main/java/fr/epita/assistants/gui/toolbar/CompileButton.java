@@ -24,7 +24,6 @@ import java.nio.file.Paths;
 import static fr.epita.assistants.gui.utils.CreateIcon.createIcon;
 
 public class CompileButton extends JButton implements ActionListener {
-    // all this field are here to redirect sout/serr into popup
 
     public CompileButton()
     {
@@ -42,13 +41,9 @@ public class CompileButton extends JButton implements ActionListener {
             if(args != null) {
                 var proj = IDEConfig.INSTANCE.getFrame().getCurrentProject();
 
-
                 Redirection.StartRedirectError();
 
-
                 var executeReport = IDEConfig.INSTANCE.getFrame().getP().execute(proj, Mandatory.Features.Maven.COMPILE, args);
-
-
 
                 if (executeReport.isSuccess())
                 {

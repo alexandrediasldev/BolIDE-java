@@ -19,17 +19,6 @@ public class ReminderSettings extends JFrame {
 
         pan.add(pauseOptionPanel);
 
-        var quit = new JButton("Quitter");
-        /*var discardQuit = new JButton("Discard changes");
-        discardQuit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-            }
-        });*/
-
-
-
         var saveQuit = new JButton("Save & exit");
 
         saveQuit.addActionListener(new ActionListener() {
@@ -42,7 +31,6 @@ public class ReminderSettings extends JFrame {
 
         var pannelQuit = new JPanel();
 
-        //pannelQuit.add(discardQuit);
         pannelQuit.add(saveQuit);
         pan.add(pannelQuit);
         add(pan);

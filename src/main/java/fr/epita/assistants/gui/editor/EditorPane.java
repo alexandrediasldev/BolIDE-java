@@ -22,7 +22,6 @@ public class EditorPane extends JTabbedPane {
     ArrayList<TextEditor> textEditors = new ArrayList<>();
     Timer timer = null;
     public EditorPane() {
-        //setLayout(new BorderLayout()); //Here
         index = 0;
         timer = new Timer(200, new ActionListener() {
             @Override
@@ -38,7 +37,6 @@ public class EditorPane extends JTabbedPane {
                 IDEConfig.INSTANCE.removeNode(name);
                 removeTabAt(index);
                 removeTab();
-                //System.out.println("Close window" + name);
                 timer.stop();
             }
         });
@@ -48,8 +46,6 @@ public class EditorPane extends JTabbedPane {
                     @SneakyThrows
                     @Override
                     public boolean dispatchKeyEvent(KeyEvent e) {
-
-
                         if (e.isControlDown()) {
                             if (e.getKeyCode() == KeyEvent.VK_S) {
                                 IDEConfig.INSTANCE.setSaved(true);
@@ -71,8 +67,6 @@ public class EditorPane extends JTabbedPane {
 
                             }
                         }
-
-
 
                         return false;
                     }
