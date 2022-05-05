@@ -73,7 +73,7 @@ public class CompileButton extends JButton implements ActionListener {
                 }
                 else
                 {
-                    var url = System.getProperty("user.dir") + File.separator + "bruh.wav";
+                    var url = System.getProperty("user.dir") + File.separator + "compile_fail.wav";
                     URL res = null;
                     try {
                         res = Paths.get(url).toUri().toURL();
