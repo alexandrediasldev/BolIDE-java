@@ -1,12 +1,10 @@
 package fr.epita.assistants.myide.domain.entity;
 
-import fr.epita.assistants.utils.Given;
 
 import javax.validation.constraints.NotNull;
 import java.nio.file.Path;
 import java.util.List;
 
-@Given(overridden = true)
 public interface Node {
 
     /**

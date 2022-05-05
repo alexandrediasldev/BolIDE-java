@@ -2,7 +2,6 @@ package fr.epita.assistants;
 
 import fr.epita.assistants.myide.domain.service.ProjectService;
 import fr.epita.assistants.myide.domain.service.ProjectServiceImplementation;
-import fr.epita.assistants.utils.Given;
 
 import java.nio.file.Path;
 
@@ -10,7 +9,6 @@ import java.nio.file.Path;
  * Starter class, we will use this class and the init method to get a
  * configured instance of {@link ProjectService}.
  */
-@Given(overridden = false)
 public class MyIde {
 
     /**

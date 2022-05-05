@@ -1,6 +1,5 @@
 package fr.epita.assistants.myide.domain.entity;
 
-import fr.epita.assistants.utils.Given;
 
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
@@ -9,7 +8,6 @@ import java.util.Optional;
 import java.util.Set;
 
 
-@Given(overridden = true)
 public interface Project {
 
     /**

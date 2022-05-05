@@ -2,7 +2,6 @@ package fr.epita.assistants.myide.domain.service;
 
 import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Project;
-import fr.epita.assistants.utils.Given;
 
 import java.nio.file.Path;
 import javax.validation.constraints.NotNull;
@@ -10,7 +9,6 @@ import javax.validation.constraints.NotNull;
 /**
  * You will handle your projects through this service.
  */
-@Given(overridden = true)
 public interface ProjectService {
 
     /**
