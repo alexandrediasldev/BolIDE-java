@@ -4,12 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!--    <parent>
-        <groupId>fr.epita.java</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0.0</version>
-    </parent> -->
-
     <groupId>fr.epita.assistant</groupId>
     <artifactId>ping-ref</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -22,6 +16,8 @@
         <versions.jgit>5.11.1.202105131744-r</versions.jgit>
         <versions.common.compress>1.20</versions.common.compress>
         <versions.epita.java>1.0.0</versions.epita.java>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -29,6 +25,11 @@
             <groupId>fr.epita.java</groupId>
             <artifactId>lang</artifactId>
             <version>${versions.epita.java}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
         </dependency>
 
         <dependency>
@@ -41,11 +42,6 @@
             <groupId>com.googlecode.lanterna</groupId>
             <artifactId>lanterna</artifactId>
             <version>3.0.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.fifesoft/rsyntaxtextarea -->
