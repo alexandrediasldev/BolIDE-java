@@ -37,11 +37,9 @@ public enum IDEConfig {
     public void setPopup()
     {
         if(popup == null) {
-            //System.out.println("create popup");
             popup = new SearchPopup();
         }
         else {
-            //System.out.println("Changed text");
             var currText = getCurrentText();
             if(currText != null)
                 popup.setTextArea(getCurrentText());
@@ -62,9 +60,6 @@ public enum IDEConfig {
     {
         this.reminder = reminder;
     }
-
-
-
 
     public EditorPane getEditorPane() {
         return editorPane;

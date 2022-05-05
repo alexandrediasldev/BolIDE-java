@@ -24,11 +24,9 @@ public class IDEMenu extends JMenuBar {
 
 
     public IDEMenu() {
-        //setLayout(new GridLayout(1,3));
         JMenu menu = new JMenu("File");
         var reminder = new ReminderSettings();
         Color royal_blue = new Color(65, 105 , 225);
-
 
         JMenuItem item = new JMenuItem("open");
 
@@ -141,24 +139,12 @@ public class IDEMenu extends JMenuBar {
         JPanel pan2 = new JPanel();
         pan2.setBackground(royal_blue);
 
-
-
-
-
-
-
-        //JButton button = new JButton("Compile");
-        //button.setBackground(royal_blue);
-        //JButton fermer = new JButton("X");
-       // fermer.setBackground(royal_blue);
-
         JPanel left = new JPanel();
         add(menu);
         add(menu2);
         add(pan);
 
         add(pan2);
-        //add(button);
         MiddleButtons middle = new MiddleButtons();
 
         add(middle);
@@ -169,13 +155,8 @@ public class IDEMenu extends JMenuBar {
         pan3.setBackground(royal_blue);
         pan4.setBackground(royal_blue);
         pan5.setBackground(royal_blue);
-        add(pan3); //moving compile button a bit to the right
+        add(pan3);
         add(pan4);
         setBackground(royal_blue);
-        //add(left);
-        //add(middle);
-        //add(fermer);
     }
-
-
 }
