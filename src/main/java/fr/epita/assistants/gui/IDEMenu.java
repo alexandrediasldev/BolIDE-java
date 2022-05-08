@@ -28,7 +28,7 @@ public class IDEMenu extends JMenuBar {
         var reminder = new ReminderSettings();
         Color royal_blue = new Color(65, 105 , 225);
 
-        JMenuItem item = new JMenuItem("open");
+        JMenuItem item = new JMenuItem("Open");
 
         item.addActionListener(new ActionListener() {
             @SneakyThrows
@@ -42,7 +42,7 @@ public class IDEMenu extends JMenuBar {
 
             }
         });
-        JMenuItem item1 = new JMenuItem("search");
+        JMenuItem item1 = new JMenuItem("Search");
 
         item1.addActionListener(new ActionListener() {
             @Override
@@ -52,7 +52,7 @@ public class IDEMenu extends JMenuBar {
         });
 
 
-        JMenuItem item2 = new JMenuItem("music");
+        JMenuItem item2 = new JMenuItem("Music");
 
         final boolean[] music = {false};
         var url = System.getProperty("user.dir") + File.separator + "music.wav";
@@ -113,7 +113,7 @@ public class IDEMenu extends JMenuBar {
                     f.setVisible(true);
             }
         });
-        JMenuItem pause = new JMenuItem("pause");
+        JMenuItem pause = new JMenuItem("Pause");
 
         pause.addActionListener(new ActionListener() {
             @Override
@@ -123,7 +123,7 @@ public class IDEMenu extends JMenuBar {
             }
         });
 
-        JMenuItem theme = new JMenuItem("Switchtheme");
+        JMenuItem theme = new JMenuItem("Switch Theme");
         theme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
