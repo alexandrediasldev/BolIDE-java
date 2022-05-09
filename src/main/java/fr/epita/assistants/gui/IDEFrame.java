@@ -26,11 +26,10 @@ public class IDEFrame extends JFrame {
 
     private EditorPane editorPane;
 
-
     private ProjectServiceImplementation p;
     private Project currentProject;
     @SneakyThrows
-    public IDEFrame(String path) // add options to the constructor
+    public IDEFrame(String path)
     {
 
         super("BolIDE");
@@ -38,18 +37,10 @@ public class IDEFrame extends JFrame {
         UIManager.setLookAndFeel("com.formdev.flatlaf.FlatDarculaLaf");
 
         var layout = new BorderLayout();
-
-        //layout.setHgap(2);
-        //layout.setVgap(2);
         setLayout(layout);
 
-
-
         editorPane = new EditorPane();
-
-
         add(editorPane, BorderLayout.CENTER);
-
 
         IDEMenu Bar = new IDEMenu();
         Bar.add(new Toolgit());
@@ -61,8 +52,6 @@ public class IDEFrame extends JFrame {
         var panel =new TreePanel(currentProject.getRootNode());
         add(panel , BorderLayout.WEST);
         panel.setLayout(new GridLayout());
-
-        //setSize(512,512 );
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -79,9 +68,6 @@ public class IDEFrame extends JFrame {
         var term = new BasicTerm(currentProject);
 
         add(term, BorderLayout.SOUTH);
-
-
-        //add(top, BorderLayout.NORTH);
     }
 
     public ProjectServiceImplementation getP() {
@@ -92,20 +78,8 @@ public class IDEFrame extends JFrame {
         return currentProject;
     }
 
-    private void actionPerformed()
-    {
-        // add action to perform on click
-    }
-
-
-
     public EditorPane getEditorPane() {
         return editorPane;
     }
 
-    /*
-    ...
-    Add other listeners for events
-    call objects using these functions with "this"
-     */
 }

@@ -24,8 +24,6 @@ public class SaveButton extends JButton implements ActionListener {
     @SneakyThrows
     @Override
     public void actionPerformed(ActionEvent e) {
-
-            System.out.println("SAVED files");
             IDEConfig.INSTANCE.setSaved(true);
             for (var n : IDEConfig.INSTANCE.getNodes())
             {

@@ -3,10 +3,8 @@ package fr.epita.assistants.gui.utils;
 import fr.epita.assistants.gui.IDEConfig;
 import fr.epita.assistants.myide.domain.entity.Node;
 import fr.epita.assistants.myide.domain.entity.node.File;
-import fr.epita.assistants.myide.domain.service.NodeServiceImplementation;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class FileOperations {

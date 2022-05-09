@@ -65,25 +65,14 @@ public class Toolgit extends JMenu {
             @SneakyThrows
             @Override
             public void actionPerformed(ActionEvent e) {
-                //IDEConfig.INSTANCE.push();
                 ArgumentDialog argDialog = new ArgumentDialog( "Push");
                 Feature.ExecutionReport report;
                 var args = argDialog.getArg();
-                /*
                 if(args != null) {
-                    if (args != null)
-                        report = IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PUSH, "origin", "master");
-                    else
-                        report = IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PUSH, args);
-                    System.out.println("Push:"+report.isSuccess());
-                }*/
-                if(args != null) {
-                    //report = IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PULL, args);
                     var pa = "git push " +args;
                     if (System.getProperty("os.name").startsWith("Windows"))
                         pa = "powershell " + pa;
                     var commands = pa.split(" ");
-                    System.out.println(Arrays.toString(commands));
                     ProcessBuilder pb = new ProcessBuilder(commands);
                     pb.directory(new File(String.valueOf(IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath())));
                     Process p = pb.start();
@@ -91,8 +80,6 @@ public class Toolgit extends JMenu {
 
                     new StreamHandler(p.getErrorStream()).run(true);
                     p.waitFor();
-
-                    //System.out.println("Pull:" + report.isSuccess());
                 }
             }
         });
@@ -101,8 +88,6 @@ public class Toolgit extends JMenu {
             @SneakyThrows
             @Override
             public void actionPerformed(ActionEvent e) {
-                //String msg = JOptionPane.showInputDialog("Enter a commit message");
-                //
                 ArgumentDialog argDialog = new ArgumentDialog( "Commit");
                 var args = argDialog.getArg();
                 Feature.ExecutionReport report;
@@ -123,11 +108,9 @@ public class Toolgit extends JMenu {
                 var args = argDialog.getArg();
                 Feature.ExecutionReport report;
                 if(args != null) {
-                    //report = IDEConfig.INSTANCE.getFrame().getP().execute(IDEConfig.INSTANCE.getFrame().getCurrentProject(), Mandatory.Features.Git.PULL, args);
                         var pa = "git pull " +args;
                         if (System.getProperty("os.name").startsWith("Windows"))
                             pa = "powershell " + pa;
-                        System.out.println(pa);
                         ProcessBuilder pb = new ProcessBuilder(pa.split(" "));
                         pb.directory(new File(String.valueOf(IDEConfig.INSTANCE.getFrame().getCurrentProject().getRootNode().getPath())));
                         Process p = pb.start();
@@ -135,8 +118,6 @@ public class Toolgit extends JMenu {
 
                         new StreamHandler(p.getErrorStream()).run(true);
                         p.waitFor();
-
-                        //System.out.println("Pull:" + report.isSuccess());
                 }
             }
         });

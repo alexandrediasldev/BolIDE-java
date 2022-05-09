@@ -29,14 +29,7 @@ public class TextEditor extends JPanel {
 
         this.font = IDEConfig.INSTANCE.getFont();
         this.textSize = IDEConfig.INSTANCE.getTextSize();
-/*
-        theme = Theme.load(getClass().getResourceAsStream(
-                "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
 
-        theme.apply(text);
-
-        text.setForeground(Color.white);
-        text.setBackground(Color.darkGray);*/
         setFont(font);
         text.setColumns(80);
         text.setLineWrap(true);

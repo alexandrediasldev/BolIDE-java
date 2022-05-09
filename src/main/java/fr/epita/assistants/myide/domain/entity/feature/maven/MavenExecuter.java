@@ -49,21 +49,5 @@ public class MavenExecuter {
 
         return p.waitFor();
 
-/*
-        Runtime runtime = Runtime.getRuntime();
-        StringBuilder arguments = new StringBuilder();
-        for (var arg : args)
-            arguments.append(" " + arg.toString());
-
-        Process process = runtime.exec(command + arguments.toString(), null
-                , new File(project));
-        new StreamHandler(process.getInputStream()).run(false);
-
-        new StreamHandler(process.getErrorStream()).run(true);
-
-
-        return process.waitFor();
-        */
-
     }
 }

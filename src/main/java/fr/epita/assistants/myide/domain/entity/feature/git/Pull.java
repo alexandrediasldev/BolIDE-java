@@ -6,7 +6,6 @@ import fr.epita.assistants.myide.domain.entity.Project;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.PullCommand;
 import org.eclipse.jgit.api.errors.*;
-import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
@@ -45,7 +44,6 @@ public class Pull implements Feature {
             pull.setFastForward(null);
 
             if (params.length != 0) {
-                //verifier si c'est bien des strings
                 pull.setRemote((String) params[0]);
                 if (params.length == 2) {
                     pull.setRemoteBranchName((String) params[1]);

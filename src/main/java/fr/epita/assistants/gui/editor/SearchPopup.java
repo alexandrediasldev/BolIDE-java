@@ -17,15 +17,11 @@ import java.awt.event.ActionListener;
 
 public class SearchPopup extends JFrame implements ActionListener{
 
-
-
     private RSyntaxTextArea textArea;
     private JTextField searchField;
 
-
-
     public SearchPopup() {
-        super("search");
+        super("Search");
 
         textArea = IDEConfig.INSTANCE.getCurrentText();
 
@@ -77,10 +73,6 @@ public class SearchPopup extends JFrame implements ActionListener{
         context.setWholeWord(false);
 
         boolean found = SearchEngine.find(textArea, context).wasFound();
-        if (!found) {
-            //JOptionPane.showMessageDialog(this, "Text not found");
-        }
-
     }
 
     public void setTextArea(RSyntaxTextArea textArea) {

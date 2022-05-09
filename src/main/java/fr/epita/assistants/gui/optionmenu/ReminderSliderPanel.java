@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ReminderSliderPanel extends JPanel{
-     Integer ms = null;
+     Integer ms = 10*10000*60;
     public ReminderSliderPanel() {
         var grid = new BoxLayout(this, BoxLayout.Y_AXIS);
 

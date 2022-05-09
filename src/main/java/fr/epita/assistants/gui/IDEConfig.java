@@ -1,6 +1,5 @@
 package fr.epita.assistants.gui;
 
-import com.google.common.io.Files;
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.editor.TextEditor;
@@ -37,11 +36,9 @@ public enum IDEConfig {
     public void setPopup()
     {
         if(popup == null) {
-            //System.out.println("create popup");
             popup = new SearchPopup();
         }
         else {
-            //System.out.println("Changed text");
             var currText = getCurrentText();
             if(currText != null)
                 popup.setTextArea(getCurrentText());
@@ -62,9 +59,6 @@ public enum IDEConfig {
     {
         this.reminder = reminder;
     }
-
-
-
 
     public EditorPane getEditorPane() {
         return editorPane;
@@ -132,7 +126,11 @@ public enum IDEConfig {
 
     private void setExtension(RSyntaxTextArea textArea, String name)
     {
-        var extension = Files.getFileExtension(name);
+        var extension = "";
+        var index = name.lastIndexOf('.');
+        if(index > 0) {
+            extension = name.substring(index + 1);
+        }
 
         switch (extension)
         {
