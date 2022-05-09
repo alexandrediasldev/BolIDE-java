@@ -2,7 +2,6 @@ package fr.epita.assistants.gui.shell;
 
 
 
-import com.google.common.base.Ascii;
 import com.jediterm.pty.PtyProcessTtyConnector;
 import com.jediterm.terminal.CursorShape;
 import com.jediterm.terminal.Questioner;
@@ -38,7 +37,6 @@ public class BasicTerm extends JPanel{
           this.project = project;
           var term = createTerminalWidget();
           term.getCurrentSession().getTerminal().cursorShape(CursorShape.BLINK_BLOCK);
-          //term.getTerminal().setCurrentPath(String.valueOf(project.getRootNode().getPath()));
           add(term);
 
     }
@@ -61,11 +59,6 @@ public class BasicTerm extends JPanel{
                         if(i == 0)
                             return UIManager.getDefaults().getColor("TextPane.foreground");
                         return Color.WHITE;
-
-
-
-                        //return UIManager.getDefaults().getColor("TextPane.foreground");
-
                     }
 
                     @Override
@@ -74,15 +67,8 @@ public class BasicTerm extends JPanel{
                         if(i==0)
                             return UIManager.getDefaults().getColor("TextPane.foreground");
                         return UIManager.getDefaults().getColor("TextPane.background");
-
-
-                          //  return UIManager.getDefaults().getColor("TextPane.background");
-
                     }
                 };
-                var pal = super.getTerminalColorPalette();
-                var w =pal.getForeground(TerminalColor.WHITE);
-
                 return palette;
             }
         };
@@ -101,7 +87,6 @@ public class BasicTerm extends JPanel{
             String[] command;
             if (UIUtil.isWindows) {
                 command = new String[]{"cmd.exe", "/K", "cd", String.valueOf(project.getRootNode().getPath())};
-                //command = new String[]{"cmd.exe"};
             } else {
                 command = new String[]{"/bin/bash","-c", "cd "+String.valueOf(project.getRootNode().getPath())
                         +" && /bin/bash" };
@@ -111,12 +96,6 @@ public class BasicTerm extends JPanel{
             }
 
             PtyProcess process = new PtyProcessBuilder().setCommand(command).setEnvironment(envs).start();
-            //OutputStream is = process.getOutputStream();
-
-            //String comman = new String("cd "+ project.getRootNode().getPath()+"\r\n");
-            //is.write(comman.getBytes(StandardCharsets.UTF_8));
-
-
 
             var connector = new PtyProcessTtyConnector(process, StandardCharsets.UTF_8);
 
@@ -128,7 +107,6 @@ public class BasicTerm extends JPanel{
 
 
     public static void main(String[] args) {
-        // Create and show this application's GUI in the event-dispatching thread.
 
     }
 }

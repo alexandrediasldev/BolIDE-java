@@ -148,21 +148,5 @@ public class NodeServiceImplementation implements NodeService {
             return moveFileToDirectory(nodeToMove,destinationFolder);
         else
             return moveDirectoryToDirectory(nodeToMove,destinationFolder);
-
-
-        /*
-        Path pathToMove = nodeToMove.getPath().toAbsolutePath();
-        Path moveTo;
-        moveTo = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
-
-        if(destinationFolder.isFolder())
-            ((Folder) destinationFolder).addChild(nodeToMove);
-        Folder folderToMove = (Folder) nodeToMove;
-        folderToMove.getParent().removeChild(nodeToMove);
-        Files.move(pathToMove, moveTo);
-        Path p = Path.of(destinationFolder.getPath().toString() + "/" + nodeToMove.getPath().getFileName().toString());
-        return new File(p);
-        */
-
     }
 }

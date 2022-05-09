@@ -36,7 +36,6 @@ public class RunButton extends JButton implements ActionListener {
                     java.io.File.separator + "target" + java.io.File.separator + args;
             if (System.getProperty("os.name").startsWith("Windows"))
                 pa = "powershell " + pa;
-            System.out.println(pa);
             ProcessBuilder pb = new ProcessBuilder(pa.split(" "));
             Process p = pb.start();
             new StreamHandler(p.getInputStream()).run(false);

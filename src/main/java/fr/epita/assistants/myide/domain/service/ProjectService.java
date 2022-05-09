@@ -6,9 +6,6 @@ import fr.epita.assistants.myide.domain.entity.Project;
 import java.nio.file.Path;
 import javax.validation.constraints.NotNull;
 
-/**
- * You will handle your projects through this service.
- */
 public interface ProjectService {
 
     /**

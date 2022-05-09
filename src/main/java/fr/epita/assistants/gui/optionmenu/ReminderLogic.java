@@ -2,21 +2,16 @@ package fr.epita.assistants.gui.optionmenu;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.Timer;
 
 public class ReminderLogic {
     private final String message;
-    private long ms;
+    private long ms = 10*1000*60;
     private Timer timer;
 
 
     public void setMs(long ms) {
         this.ms = ms * 1000* 60;
-        //System.out.println(this.ms);
         timer.cancel();
         timer.purge();
         scheduler();

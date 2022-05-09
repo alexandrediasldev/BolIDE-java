@@ -6,7 +6,6 @@ import fr.epita.assistants.myide.domain.entity.Project;
 import org.eclipse.jgit.api.CommitCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
@@ -47,14 +46,6 @@ public class Commit implements Feature {
             StringBuilder message = new StringBuilder();
             Arrays.stream(params).forEach(msg -> message.append(msg.toString()));
             commit.setMessage(message.toString());
-            /*
-            for (var file : params) {
-                if (file instanceof String)
-                    commit.setMessage((String) file);
-                else
-                    return new CommitReport(false);
-            }
-            */
             commit.call();
         } catch (IOException | GitAPIException e) {
             return new CommitReport(false);
