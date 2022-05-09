@@ -4,6 +4,12 @@ A custom-made IDE to improve the working conditions and increase the happiness o
 it's developers.
 Reports about the project (in french) are located in french_reports/
 
+## Running the project
+
+- Install java and maven
+- mvn install
+- java -cp target/bolIDE-1.0.0-SNAPSHOT-jar-with-dependencies.jar fr.epita.assistants.gui.Main
+
 ## Features
 
 ### Editor:
