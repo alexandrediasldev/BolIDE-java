@@ -21,15 +21,21 @@
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>fr.epita.java</groupId>
             <artifactId>lang</artifactId>
             <version>${versions.epita.java}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.1-jre</version>
         </dependency>
 
         <dependency>
@@ -118,10 +124,6 @@
             <version>${versions.jackson}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-        </dependency>
         <dependency>
            <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>

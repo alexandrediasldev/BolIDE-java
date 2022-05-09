@@ -2,7 +2,6 @@ package fr.epita.assistants.gui.shell;
 
 
 
-import com.google.common.base.Ascii;
 import com.jediterm.pty.PtyProcessTtyConnector;
 import com.jediterm.terminal.CursorShape;
 import com.jediterm.terminal.Questioner;

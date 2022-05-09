@@ -1,6 +1,5 @@
 package fr.epita.assistants.gui;
 
-import com.google.common.io.Files;
 import fr.epita.assistants.gui.editor.EditorPane;
 import fr.epita.assistants.gui.editor.SearchPopup;
 import fr.epita.assistants.gui.editor.TextEditor;
@@ -127,7 +126,11 @@ public enum IDEConfig {
 
     private void setExtension(RSyntaxTextArea textArea, String name)
     {
-        var extension = Files.getFileExtension(name);
+        var extension = "";
+        var index = name.lastIndexOf('.');
+        if(index > 0) {
+            extension = name.substring(index + 1);
+        }
 
         switch (extension)
         {
