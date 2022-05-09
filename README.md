@@ -13,6 +13,7 @@ Reports about the project (in french) are located in french_reports/
 - Search and Replace
 
 ### Logic:
+- Windows and Linux support
 - Loading projects and editing files
 - Support editing multiple files at the same time
 - File hierarchy
