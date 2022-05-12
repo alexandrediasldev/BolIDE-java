@@ -1,7 +1,7 @@
 # BolIDE
 
 A custom-made IDE to improve the working conditions and increase the happiness of
-it's developers.
+its developers.
 Reports about the project (in french) are located in french_reports/
 
 ## Running the project
