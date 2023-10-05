@@ -13,7 +13,7 @@
         <versions.lucene>8.8.2</versions.lucene>
         <versions.maven.compat>3.8.1</versions.maven.compat>
         <versions.jgit>6.6.1.202309021850-r</versions.jgit>
-        <versions.common.compress>1.20</versions.common.compress>
+        <versions.common.compress>1.21</versions.common.compress>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
