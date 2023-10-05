@@ -11,8 +11,8 @@
     <properties>
         <versions.lombok>1.18.20</versions.lombok>
         <versions.lucene>8.8.2</versions.lucene>
-        <versions.maven.compat>3.6.3</versions.maven.compat>
-        <versions.jgit>5.11.1.202105131744-r</versions.jgit>
+        <versions.maven.compat>3.8.1</versions.maven.compat>
+        <versions.jgit>6.6.1.202309021850-r</versions.jgit>
         <versions.common.compress>1.20</versions.common.compress>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>25.1-jre</version>
+            <version>32.1.2-jre</version>
         </dependency>
 
         <dependency>
